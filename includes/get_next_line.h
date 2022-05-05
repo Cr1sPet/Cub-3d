@@ -20,10 +20,12 @@
 # include <unistd.h>
 # include <stdlib.h>
 
-size_t	ft_strlen(char *str);
-char	*get_next_line(int fd);
-char	*ft_strdup( char *str);
-char	*ft_strjoin(char *s1, char *s2);
-char	*ft_strchr( char *str, int ch);
+# include "./parsing.h"
+
+// size_t	ft_strlen(char *str);
+char	*get_next_line(int fd, t_parse *parse);
+// char	*ft_strdup( char *str);
+// char	*ft_strjoin(char *s1, char *s2);
+// char	*ft_strchr( char *str, int ch);
 
 #endif

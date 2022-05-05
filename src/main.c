@@ -35,13 +35,14 @@ void	init_map (t_map_info *map)
 
 int	main(int argc, char **argv)
 {
-	// parsing(argc, argv);
-	t_map_info	map;
+	t_map_info	*map;
+	parsing(argc, argv, map);
+	// t_map_info	map;
 
-	map.parsed_map = make_map(argv[1]);
-	init_map (&map);
-	draw (&map);
-	mlx_key_hook (map.mlx_win, deal_key, &map);
-	mlx_loop(map.mlx);
+	// map.parsed_map = make_map(argv[1]);
+	// init_map (&map);
+	// draw (&map);
+	// mlx_key_hook (map.mlx_win, deal_key, &map);
+	// mlx_loop(map.mlx);
 	return (0);
 }

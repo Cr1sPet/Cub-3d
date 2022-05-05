@@ -2,11 +2,12 @@ NAME			= cub3D
 
 SRCS			=	./src/main.c\
 					./src/get_next_line/get_next_line.c\
-					./src/get_next_line/get_next_line_utils.c\
 					./src/draw.c\
+					./src/utils.c\
 					./src/parsing/parsing.c\
 					./src/parsing/validation.c\
 					./src/parsing/parsing_utils.c\
+					# ./src/get_next_line/get_next_line_utils.c\
 
 SRCS_B			=
 

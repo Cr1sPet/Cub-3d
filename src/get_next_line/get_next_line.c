@@ -11,8 +11,9 @@
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+#include "parsing.h"
 
-char	*get_ret(char *in_str)
+char	*get_ret(char *in_str, t_parse *parse)
 {
 	int		i;
 	int		len;
@@ -25,7 +26,7 @@ char	*get_ret(char *in_str)
 	len++;
 	ret = (char *)malloc(sizeof(char) * (len + 1));
 	if (NULL == ret)
-		return (NULL);
+		exit_with_error_parse(MALLOC_FAILURE, parse);
 	while (i < len)
 	{
 		ret[i] = in_str[i];
@@ -35,7 +36,7 @@ char	*get_ret(char *in_str)
 	return (ret);
 }
 
-char	*str_proc(char **in_str)
+char	*str_proc(char **in_str, t_parse *parsing)
 {
 	char	*res;
 	char	*new_in_str;
@@ -43,13 +44,17 @@ char	*str_proc(char **in_str)
 	new_in_str = *in_str;
 	if (ft_strchr(new_in_str, '\n'))
 	{
-		res = get_ret(new_in_str);
+		res = get_ret(new_in_str, parsing);
+		if (!res)
+			exit_with_error_parse(MALLOC_FAILURE, parsing);
 		*in_str = ft_strdup(ft_strchr(new_in_str, '\n') + 1);
 		free(new_in_str);
 	}
 	else
 	{			
 		res = ft_strdup(*in_str);
+		if (!res)
+			exit_with_error_parse(MALLOC_FAILURE, parsing);
 		free(*in_str);
 		*in_str = NULL;
 	}
@@ -79,8 +84,9 @@ void	read_buff(int fd, char **str, char *buf)
 	}
 }
 
-char	*get_next_line(int fd)
+char	*get_next_line(int fd, t_parse *parsing)
 {
+	char		*ret;
 	char		*buf;
 	static char	*in_str;
 
@@ -88,7 +94,7 @@ char	*get_next_line(int fd)
 		return (NULL);
 	buf = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (NULL == buf)
-		return (NULL);
+		exit_with_error_parse(MALLOC_FAILURE, parsing);
 	if (!in_str || !ft_strchr(in_str, '\n'))
 		read_buff(fd, &in_str, buf);
 	free(buf);
@@ -100,5 +106,5 @@ char	*get_next_line(int fd)
 		in_str = NULL;
 		return (NULL);
 	}
-	return (str_proc(&in_str));
+	return (str_proc(&in_str, parsing));
 }

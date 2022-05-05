@@ -21,7 +21,7 @@ int	ends_with(char *input, char *postfix)
 	return (ok);
 }
 
-void	validation(int argc, char **argv)
+void	valid_filename(int argc, char **argv)
 {
 	if (2 != argc)
 	{
@@ -35,3 +35,5 @@ void	validation(int argc, char **argv)
 	}
 	ft_putendl_fd("SUCCESS : File format ok", 1);
 }
+
+// void	valid_
