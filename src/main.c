@@ -1,4 +1,5 @@
 #include "cub3d.h"
+#include "parsing.h"
 
 int	deal_key (int keycode, t_map_info *map)
 {
@@ -34,13 +35,9 @@ void	init_map (t_map_info *map)
 
 int	main(int argc, char **argv)
 {
+	// parsing(argc, argv);
 	t_map_info	map;
 
-	if (argc != 2)
-	{
-		write(2, "bad args", ft_strlen("bad args"));
-		return (1);
-	}
 	map.parsed_map = make_map(argv[1]);
 	init_map (&map);
 	draw (&map);

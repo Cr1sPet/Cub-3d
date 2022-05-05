@@ -1,10 +1,12 @@
-NAME			= cub3d
+NAME			= cub3D
 
 SRCS			=	./src/main.c\
-					./src/parsing.c\
 					./src/get_next_line/get_next_line.c\
 					./src/get_next_line/get_next_line_utils.c\
 					./src/draw.c\
+					./src/parsing/parsing.c\
+					./src/parsing/validation.c\
+					./src/parsing/parsing_utils.c\
 
 SRCS_B			=
 
@@ -27,7 +29,7 @@ RM				= @rm -f
 
 all:			$(NAME)
 
-$(NAME):		$(OBJ)
+$(NAME):		$(OBJ) ./includes/cub3d.h ./includes/parsing.h
 				@$(MAKE) all -C ./libft
 				@$(MAKE) bonus -C ./libft
 				$(CC) $(OBJ) -Lmlx -lmlx -L/usr/lib -Imlx -lXext -lX11 -lm -lz -I${HEADER} ${LIBFT} -o $(NAME)

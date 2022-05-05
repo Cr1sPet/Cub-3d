@@ -1,4 +1,5 @@
-#include "cub3d.h"
+#include "parsing.h"
+
 
 
 char	**make_map(char *arg)
@@ -23,4 +24,9 @@ char	**make_map(char *arg)
 	while (map[++i])
 		ft_putendl_fd(map[i], 1);
 	return (map);
+}
+
+char	**parsing(int argc, char **argv) {
+	validation(argc, argv);
+	return NULL;
 }
