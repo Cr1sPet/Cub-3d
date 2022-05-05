@@ -5,7 +5,10 @@
         "string": "c",
         "string_view": "c",
         "cub3d.h": "c",
-        "parsing.h": "c"
+        "parsing.h": "c",
+        "sstream": "c",
+        "cstddef": "c",
+        "limits": "c"
     },
     "C_Cpp.errorSquiggles": "Disabled"
 }

@@ -1,8 +1,9 @@
 #ifndef CUB3D_H
 # define CUB3D_H
 
-# include <mlx.h>
+// # include <mlx.h>
 # include <stdio.h>
+#include <errno.h>
 # include <fcntl.h>
 # include <stddef.h>
 # include <math.h>
@@ -36,9 +37,10 @@ typedef struct s_map_info
 	int			line_length;
 	int			endian;
 	char		**parsed_map;
+	t_config	*config;
 }				t_map_info;
 
-char	**parsing(int argc, char **argv, t_map_info *map);
+t_map_info	*parsing(int argc, char **argv);
 
 int		len_2d_str(char **str);
 void	str_2d_clean(char **s, size_t l);

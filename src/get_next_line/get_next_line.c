@@ -86,7 +86,6 @@ void	read_buff(int fd, char **str, char *buf)
 
 char	*get_next_line(int fd, t_parse *parsing)
 {
-	char		*ret;
 	char		*buf;
 	static char	*in_str;
 

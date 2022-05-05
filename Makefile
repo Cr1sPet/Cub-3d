@@ -2,11 +2,12 @@ NAME			= cub3D
 
 SRCS			=	./src/main.c\
 					./src/get_next_line/get_next_line.c\
-					./src/draw.c\
 					./src/utils.c\
 					./src/parsing/parsing.c\
 					./src/parsing/validation.c\
 					./src/parsing/parsing_utils.c\
+					./src/parsing/config_identifier.c\
+					# ./src/draw.c\
 					# ./src/get_next_line/get_next_line_utils.c\
 
 SRCS_B			=
@@ -24,7 +25,7 @@ CC				= gcc
 
 RM				= @rm -f
 
-#FLAGS			= -Wall -Wextra -Werror
+FLAGS			= -Wall -Wextra -Werror
 
 .PHONY:			all clean fclean re bonus
 
@@ -33,11 +34,14 @@ all:			$(NAME)
 $(NAME):		$(OBJ) ./includes/cub3d.h ./includes/parsing.h
 				@$(MAKE) all -C ./libft
 				@$(MAKE) bonus -C ./libft
-				$(CC) $(OBJ) -Lmlx -lmlx -L/usr/lib -Imlx -lXext -lX11 -lm -lz -I${HEADER} ${LIBFT} -o $(NAME)
+				$(CC) $(OBJ) -I${HEADER} ${LIBFT} -o $(NAME)
+# 				$(CC) $(OBJ) -Lmlx -lmlx -L/usr/lib -Imlx -lXext -lX11 -lm -lz -I${HEADER} ${LIBFT} -o $(NAME)
 #mac				$(CC) $(OBJ) -Lmlx -lmlx -framework OpenGL -framework AppKit -I${HEADER} ${LIBFT} -o $(NAME)
 
 %.o:			%.c $(HEADER)
-					$(CC) -g $(FLAGS) -I/usr/include -Imlx -O3 -I${HEADER} -c $< -o $@			
+					$(CC) -g $(FLAGS) -I${HEADER} -c $< -o $@			
+
+# 					$(CC) -g $(FLAGS) -I/usr/include -Imlx -O3 -I${HEADER} -c $< -o $@			
 #mac				$(CC) -g $(FLAGS) -Imlx -I${HEADER} -c $< -o $@
 
 bonus:
