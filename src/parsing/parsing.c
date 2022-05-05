@@ -45,10 +45,9 @@ t_list	*read_info(char	*file_name, t_parse *parse)
 }
 
 
-void	parse_config(t_parse *parse)
+int	parse_config(t_parse *parse)
 {
-	parse->curent_data = parse->input_data;
-	while (parse->curent_data)
+	while (parse->curent_data && 10 != parse->status)
 	{
 		parse->trimmed_str = ft_strtrim(parse->curent_data->content, " \n");
 		if (parse->trimmed_str && parse->trimmed_str[0])
@@ -68,18 +67,25 @@ void	parse_config(t_parse *parse)
 		parse->trimmed_str = NULL;
 		parse->curent_data = parse->curent_data->next;
 	}
-	ft_putendl_fd("SUCCESS : confing info OK.", STDOUT_FILENO);
+	return (parse->status);
 }
 
 t_map_info	*parsing(int argc, char **argv)
 {
 	t_parse		*parse;
 	t_map_info	*map;
+	int			ret;
 
 	valid_filename(argc, argv);
 	parse = init_parse();
 	parse->input_data = read_info(argv[1], parse);
-	parse_config(parse);
+	parse->curent_data = parse->input_data;
+	ret = parse_config(parse);
+	if (0 == ret && parse->config_count < 6)
+		exit_with_error_parse(CONFIG_INFO_FAILURE, parse);
+	if (10 == ret)
+		ft_putendl_fd("SUCCESS : parse confingure - OK", 1);
+	// parse_map(parse);
 	clean_list(parse->input_data);
 	str_2d_clean(parse->config_names, len_2d_str(parse->config_names));
 	map = parse->map;

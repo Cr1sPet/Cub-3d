@@ -5,11 +5,14 @@
 
 # define FILE_TYPE ".cub"
 # define CONFIG_INFO_FAILURE "Error\nInvalid configuration info."
+# define MAP_FAILURE "Error\nInvalid map."
 # define FILE_FORMAT_FAILURE "Error\nInvalid file format. Expected : *.cub."
 # define NUMBER_ARGS_FAILURE "Error\nInvalid number of arguments! Excpected : 2."
 
 typedef struct s_parse
 {
+	int			config_count;
+	int			status;
 	int			fd_opened;
 	int         fd;
 	t_list      *input_data;
@@ -39,5 +42,8 @@ void	valid_config_str(char *str, t_parse *parse);
 int		check_config(char **config, t_parse *parse);
 void	set_config_funcs(t_parse *parse);
 void	init_texture(char *path, t_parse *parse, char *texture);
+
+int	parse_map(t_parse *parse);
+
 
 #endif

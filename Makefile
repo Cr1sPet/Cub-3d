@@ -7,6 +7,7 @@ SRCS			=	./src/main.c\
 					./src/parsing/validation.c\
 					./src/parsing/parsing_utils.c\
 					./src/parsing/config_identifier.c\
+					./src/parsing/parse_map.c\
 					# ./src/draw.c\
 					# ./src/get_next_line/get_next_line_utils.c\
 
@@ -25,7 +26,7 @@ CC				= gcc
 
 RM				= @rm -f
 
-FLAGS			= -Wall -Wextra -Werror
+# FLAGS			= -Wall -Wextra -Werror
 
 .PHONY:			all clean fclean re bonus
 

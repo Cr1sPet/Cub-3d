@@ -22,6 +22,8 @@ t_parse	*init_parse(void)
 	parse = (t_parse *)malloc(sizeof(t_parse));
 	parse->map = (t_map_info *)malloc(sizeof(t_map_info));
 	parse->map->config = (t_config *)malloc(sizeof(t_config));
+	parse->config_count = 0;
+	parse->status = 2;
 	parse->fd_opened = 0;
 	parse->input_data = NULL;
 	parse->trimmed_str = NULL;
