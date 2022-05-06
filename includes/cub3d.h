@@ -21,14 +21,15 @@ typedef struct s_config
 	char	*f;
 }				t_config;
 
-
-typedef struct s_map_info
+typedef struct s_pers_pos
 {
-	double		x;
-	double		y;
-	double		start;
-	double		end;
-	double		dir;
+	int		x;
+	int		y;
+	char	side;
+}				t_pers_pos;
+
+typedef struct s_mlx
+{
 	void		*mlx;
 	void		*mlx_win;
 	void		*img;
@@ -36,19 +37,34 @@ typedef struct s_map_info
 	int			bits_per_pixel;
 	int			line_length;
 	int			endian;
-	char		**parsed_map;
-	t_config	*config;
-}				t_map_info;
+}				t_mlx;
 
-t_map_info	*parsing(int argc, char **argv);
+typedef struct s_cub
+{
+	double		x;
+	double		y;
+	double		start;
+	double		end;
+	double		dir;
+	char		**map;
+	t_pers_pos	*pers;
+	t_config	*config;
+	t_mlx		*lib_mlx;
+}				t_cub;
+
+t_cub	*parsing(int argc, char **argv);
 
 int		len_2d_str(char **str);
 void	str_2d_clean(char **s, size_t l);
-void	ft_cast_ray(t_map_info *map);
-void	ft_cast_rays(t_map_info *map);
+void	ft_cast_ray(t_cub *map);
+void	ft_cast_rays(t_cub *map);
 void	clear_str_arr(char	**arr);
 void	clear_int_arr(int **arr, int len);
 size_t	count_words(char const *str, char c);
-void	draw (t_map_info *map);
+void	draw (t_cub *map);
+
+void	clean_cub(t_cub *cub);
+void	clean_config(t_config *conf);
+void	exit_with_error(char *message, t_cub *cub);
 
 #endif

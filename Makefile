@@ -31,6 +31,8 @@ RM				= @rm -f
 .PHONY:			all clean fclean re bonus
 
 all:			$(NAME)
+				@$(MAKE) clean -C ./libft
+				$(RM) $(OBJ) $(OBJ_B)
 
 $(NAME):		$(OBJ) ./includes/cub3d.h ./includes/parsing.h
 				@$(MAKE) all -C ./libft

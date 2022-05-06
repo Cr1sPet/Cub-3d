@@ -33,14 +33,14 @@
 // 	map->data_addr = mlx_get_data_addr(map->img, &(map->bits_per_pixel),&(map->line_length), &(map->endian));
 // }
 
+
 int	main(int argc, char **argv)
 {
-	t_map_info	*map;
+	t_cub	*cub;
 
-	map = parsing(argc, argv);
+	cub = parsing(argc, argv);
 
-	free(map->config);
-	free(map);
+	clean_cub(cub);
 
 	// t_map_info	map;
 

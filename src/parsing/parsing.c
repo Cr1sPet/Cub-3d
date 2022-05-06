@@ -70,10 +70,10 @@ int	parse_config(t_parse *parse)
 	return (parse->status);
 }
 
-t_map_info	*parsing(int argc, char **argv)
+t_cub	*parsing(int argc, char **argv)
 {
 	t_parse		*parse;
-	t_map_info	*map;
+	t_cub		*cub;
 	int			ret;
 
 	valid_filename(argc, argv);
@@ -88,7 +88,7 @@ t_map_info	*parsing(int argc, char **argv)
 	// parse_map(parse);
 	clean_list(parse->input_data);
 	str_2d_clean(parse->config_names, len_2d_str(parse->config_names));
-	map = parse->map;
+	cub = parse->cub;
 	free(parse);
-	return (map);
+	return (cub);
 }

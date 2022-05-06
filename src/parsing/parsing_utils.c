@@ -18,10 +18,10 @@ int ft_strcmp( const char *str1, const char *str2 )
 t_parse	*init_parse(void)
 {
 	t_parse	*parse;
-
 	parse = (t_parse *)malloc(sizeof(t_parse));
-	parse->map = (t_map_info *)malloc(sizeof(t_map_info));
-	parse->map->config = (t_config *)malloc(sizeof(t_config));
+	parse->cub = init_cub();
+	parse->cub->config = (t_config *)malloc(sizeof(t_config));
+	init_config(parse->cub->config);
 	parse->config_count = 0;
 	parse->status = 2;
 	parse->fd_opened = 0;
@@ -63,9 +63,35 @@ void	exit_with_error_parse(char *error, t_parse *parse)
 	}
 	clean_list(parse->input_data);
 	str_2d_clean(parse->config_names, len_2d_str(parse->config_names));
-	free(parse->map->config);
-	free(parse->map);
-	free(parse);
+	clean_cub(parse->cub);
 	ft_putendl_fd(error, STDERR_FILENO);
+	free(parse);
 	exit(EXIT_FAILURE);
+}
+
+void	init_config(t_config *conf)
+{
+	conf->no = NULL;
+	conf->so = NULL;
+	conf->we = NULL;
+	conf->ea = NULL;
+	conf->f = NULL;
+	conf->c = NULL;
+}
+
+t_cub	*init_cub()
+{
+	t_cub	*cub;
+
+	cub	= (t_cub *)malloc(sizeof(t_cub));
+	if (NULL == cub)
+	{
+		ft_putendl_fd(MALLOC_FAILURE, STDERR_FILENO);
+		exit(1);
+	}
+	cub->map = NULL;
+	cub->pers = NULL;
+	cub->lib_mlx = NULL;
+	cub->config = NULL;
+	return (cub);
 }

@@ -47,7 +47,10 @@ char	*str_proc(char **in_str, t_parse *parsing)
 		res = get_ret(new_in_str, parsing);
 		if (!res)
 			exit_with_error_parse(MALLOC_FAILURE, parsing);
-		*in_str = ft_strdup(ft_strchr(new_in_str, '\n') + 1);
+		if (ft_strlen(res) == ft_strlen(new_in_str))
+			*in_str = NULL;
+		else
+			*in_str = ft_strdup(ft_strchr(new_in_str, '\n') + 1);
 		free(new_in_str);
 	}
 	else

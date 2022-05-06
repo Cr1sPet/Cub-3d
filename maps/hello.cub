@@ -1,9 +1,6 @@
-NO /home/serj/projects/Cub-3d/includes/cub3d.h
-
-EA /home/serj/projects/Cub-3d/includes/cub3d.h
-
-SO /home/serj/projects/Cub-3d/includes/cubs3d.h
-WE /home/serj/projects/Cub-3d/includes/cub3d.h
-
+SO /home/serj/projects/Cub-3d/includes/cub3d.h
+WE /home/serj/projects/Cub-3d/includes/parsing.h
+EA /home/serj/projects/Cub-3d/includes/get_next_line.h
+NO /home/serj/projects/Cub-3d/includes/cubs3d.h
 F 220,100,0
 C 225,30,0

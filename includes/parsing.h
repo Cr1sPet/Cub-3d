@@ -17,20 +17,22 @@ typedef struct s_parse
 	int         fd;
 	t_list      *input_data;
 	t_list		*curent_data;
-	t_map_info  *map;
+	t_cub		*cub;
 	char		*trimmed_str;
 	char		**splitted_str;
 	void		(*config_init[6])(char *, struct s_parse *);
 	char		**config_names;
-}               t_parse;
+}				t_parse;
 
 
-void	init_no (char *path, t_parse *parse);
-void	init_so (char *path, t_parse *parse);
-void	init_we (char *path, t_parse *parse);
-void	init_ea (char *path, t_parse *parse);
-void	init_f (char *path, t_parse *parse);
-void	init_c (char *path, t_parse *parse);
+void	init_no(char *path, t_parse *parse);
+void	init_so(char *path, t_parse *parse);
+void	init_we(char *path, t_parse *parse);
+void	init_ea(char *path, t_parse *parse);
+void	init_f(char *path, t_parse *parse);
+void	init_c(char *path, t_parse *parse);
+void	init_config(t_config *conf);
+t_cub	*init_cub(void);
 
 char	**make_map(char *arg);
 int		ft_strcmp( const char *str1, const char *str2 );
@@ -41,9 +43,9 @@ t_parse	*init_parse(void);
 void	valid_config_str(char *str, t_parse *parse);
 int		check_config(char **config, t_parse *parse);
 void	set_config_funcs(t_parse *parse);
-void	init_texture(char *path, t_parse *parse, char *texture);
+void	init_texture(char *path, t_parse *parse, char **texture);
 
-int	parse_map(t_parse *parse);
+int		parse_map(t_parse *parse);
 
 
 #endif
