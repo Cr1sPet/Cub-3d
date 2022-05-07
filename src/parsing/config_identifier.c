@@ -17,11 +17,12 @@ void	init_color(char *path, t_parse *parse, char	**color)
 {
 	int	fd;
 
-	fd = open(path, O_RDONLY);
-	if (-1 == fd)
-		exit_with_error_parse("ERROR WITH FILE", parse);
-	*color = get_next_line(fd, parse);
-	close (fd);
+	// fd = open(path, O_RDONLY);
+	// if (-1 == fd)
+	// 	exit_with_error_parse("ERROR WITH FILE", parse);
+	// *color = get_next_line(fd, parse);
+	// close (fd);
+	*color = ft_strdup("hello");
 	ft_putendl_fd("Success : init ", 1);
 }
 int	check_i(int i, t_parse *parse)

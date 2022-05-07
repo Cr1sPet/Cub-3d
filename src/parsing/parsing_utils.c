@@ -47,7 +47,7 @@ void	clean_list(t_list *list)
 	}
 }
 
-void	exit_with_error_parse(char *error, t_parse *parse)
+void	clean_parse_inner(t_parse *parse)
 {
 	if (parse->fd_opened)
 	{
@@ -63,9 +63,14 @@ void	exit_with_error_parse(char *error, t_parse *parse)
 	}
 	clean_list(parse->input_data);
 	str_2d_clean(parse->config_names, len_2d_str(parse->config_names));
+}
+
+void	exit_with_error_parse(char *error, t_parse *parse)
+{
+	clean_parse_inner(parse);
 	clean_cub(parse->cub);
-	ft_putendl_fd(error, STDERR_FILENO);
 	free(parse);
+	ft_putendl_fd(error, STDERR_FILENO);
 	exit(EXIT_FAILURE);
 }
 
@@ -79,7 +84,7 @@ void	init_config(t_config *conf)
 	conf->c = NULL;
 }
 
-t_cub	*init_cub()
+t_cub	*init_cub(void)
 {
 	t_cub	*cub;
 
@@ -90,7 +95,7 @@ t_cub	*init_cub()
 		exit(1);
 	}
 	cub->map = NULL;
-	cub->pers = NULL;
+	cub->pers = (t_pers_pos *) malloc(sizeof(t_pers_pos));
 	cub->lib_mlx = NULL;
 	cub->config = NULL;
 	return (cub);

@@ -46,6 +46,10 @@ void	set_config_funcs(t_parse *parse);
 void	init_texture(char *path, t_parse *parse, char **texture);
 
 int		parse_map(t_parse *parse);
+void	clean_parse_inner(t_parse *parse);
+char    **list_to2darr(t_list *list, t_parse *parse);
+void	firstly_parse(char **map, t_parse *parse);
+
 
 
 #endif

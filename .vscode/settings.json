@@ -11,5 +11,12 @@
         "limits": "c",
         "get_next_line.h": "c"
     },
-    "C_Cpp.errorSquiggles": "Disabled"
+    "C_Cpp.errorSquiggles": "Disabled",
+    "makefile.launchConfigurations": [
+        {
+            "cwd": "/home/serj/projects/Cub-3d",
+            "binaryPath": "/home/serj/projects/Cub-3d/cub3D",
+            "binaryArgs": []
+        }
+    ]
 }

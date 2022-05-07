@@ -39,9 +39,13 @@ int	main(int argc, char **argv)
 	t_cub	*cub;
 
 	cub = parsing(argc, argv);
-
+	
+	int	i = -1;
+	while(cub->map[++i])
+	{
+		ft_putendl_fd(cub->map[i], 1);
+	}
 	clean_cub(cub);
-
 	// t_map_info	map;
 
 	// map.parsed_map = make_map(argv[1]);
