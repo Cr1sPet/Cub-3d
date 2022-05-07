@@ -6,7 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sat May  7 00:32:24 2022
+# Make data base, printed on Sat May  7 12:58:40 2022
 
 # Variables
 
@@ -26,6 +26,7 @@ OBJ = $(SRCS:.c=.o)
 XDG_SESSION_CLASS = user
 # environment
 SNAP_COMMON = /var/snap/code/common
+ 
 # environment
 XDG_SESSION_TYPE = x11
 # environment
@@ -85,7 +86,6 @@ VSCODE_VERBOSE_LOGGING = true
 # environment
 _ = /snap/code/95/usr/share/code/code
 # environment
- 
 MANAGERPID = 1994
 # environment
 VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-39c7691d-14f0-4c24-827d-7518ccacc0f2.sock
@@ -291,6 +291,7 @@ CHROME_DESKTOP = code-url-handler.desktop
 WINDOWPATH = 2
 # makefile (from 'Makefile', line 15)
 SRCS_B = 
+ 
 # default
 .INCLUDE_DIRS = /usr/include /usr/local/include /usr/include
 # environment
@@ -322,7 +323,7 @@ VSCODE_PID = 4317
 
 %.o: %.c includes/
 #  recipe to execute (from 'Makefile', line 46):
-					$(CC) -g $(FLAGS) -I${HEADER} -c $< -o $@			
+					$(CC) -g $(FLAGS) -I/usr/include -Imlx -O3 -I${HEADER} -c $< -o $@			
 
 # 1 implicit rules, 0 (0.0%) terminal.
 
@@ -387,15 +388,15 @@ src/main.o: src/main.c includes/
 # ^ := src/main.c includes/
 # automatic
 # ? := src/main.c includes/
- 
 # variable set hash-table stats:
 # Load=8/32=25%, Rehash=0, Collisions=2/16=12%
 #  recipe to execute (from 'Makefile', line 46):
-					$(CC) -g $(FLAGS) -I${HEADER} -c $< -o $@			
+					$(CC) -g $(FLAGS) -I/usr/include -Imlx -O3 -I${HEADER} -c $< -o $@			
 
+ 
 cub3D: src/main.o src/get_next_line/get_next_line.o src/utils.o src/parsing/parsing.o src/parsing/validation.o src/parsing/parsing_utils.o src/parsing/config_identifier.o src/parsing/parse_map.o src/parsing/parse_map_utils.o includes/cub3d.h includes/parsing.h
 #  Implicit rule search has not been done.
-#  Last modified 2022-05-07 00:32:12.171197573
+#  Last modified 2022-05-07 12:44:25.46701609
 #  File has been updated.
 #  Needs to be updated (-q is set).
 # variable set hash-table stats:
@@ -403,12 +404,12 @@ cub3D: src/main.o src/get_next_line/get_next_line.o src/utils.o src/parsing/pars
 #  recipe to execute (from 'Makefile', line 39):
 				@$(MAKE) all -C ./libft
 				@$(MAKE) bonus -C ./libft
-				$(CC) $(OBJ) -I${HEADER} ${LIBFT} -o $(NAME)
+				$(CC) $(OBJ) -Lmlx -lmlx -L/usr/lib -Imlx -lXext -lX11 -lm -lz -I${HEADER} ${LIBFT} -o $(NAME)
 
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-05-06 14:01:18.831479345
+#  Last modified 2022-05-07 12:58:37.647063612
 #  File has been updated.
 #  Successfully updated.
 
@@ -429,7 +430,7 @@ bonus:
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 52):
+#  recipe to execute (from 'Makefile', line 51):
 				make OBJ="$(OBJ_B)" all
 
 fclean: clean
@@ -437,14 +438,14 @@ fclean: clean
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 59):
+#  recipe to execute (from 'Makefile', line 58):
 				@$(MAKE) fclean -C ./libft
 				$(RM) $(NAME)
 
 # Not a target:
 src/main.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-05-06 11:04:31.303756829
+#  Last modified 2022-05-07 09:48:12.042952206
 #  File has been updated.
 #  Successfully updated.
 
@@ -466,6 +467,7 @@ src/parsing/parsing_utils.o:
 #  Modification time never checked.
 #  File has not been updated.
 
+ 
 re: fclean cub3D
 #  Phony target (prerequisite of .PHONY).
 #  Implicit rule search has not been done.
@@ -483,7 +485,7 @@ clean:
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 55):
+#  recipe to execute (from 'Makefile', line 54):
 				@$(MAKE) clean -C ./libft
 				$(RM) $(OBJ) $(OBJ_B)
 
@@ -519,6 +521,6 @@ src/parsing/config_identifier.o:
 # strcache performance: lookups = 68 / hit rate = 41%
 # hash-table stats:
 # Load=40/8192=0%, Rehash=0, Collisions=1/68=1%
-# Finished Make data base on Sat May  7 00:32:24 2022
+# Finished Make data base on Sat May  7 12:58:40 2022
 
  

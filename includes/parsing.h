@@ -32,7 +32,7 @@ void	init_ea(char *path, t_parse *parse);
 void	init_f(char *path, t_parse *parse);
 void	init_c(char *path, t_parse *parse);
 void	init_config(t_config *conf);
-t_cub	*init_cub(void);
+t_cub	*init_cub(t_parse *parse);
 
 char	**make_map(char *arg);
 int		ft_strcmp( const char *str1, const char *str2 );
@@ -43,13 +43,13 @@ t_parse	*init_parse(void);
 void	valid_config_str(char *str, t_parse *parse);
 int		check_config(char **config, t_parse *parse);
 void	set_config_funcs(t_parse *parse);
-void	init_texture(char *path, t_parse *parse, char **texture);
+void	init_texture(char *path, t_parse *parse, void **texture);
 
 int		parse_map(t_parse *parse);
 void	clean_parse_inner(t_parse *parse);
 char    **list_to2darr(t_list *list, t_parse *parse);
 void	firstly_parse(char **map, t_parse *parse);
-
+int		parse_int(char *str);
 
 
 #endif

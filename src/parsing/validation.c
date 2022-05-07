@@ -20,14 +20,6 @@ int	check_config(char **config, struct s_parse *parse)
 	return(0);
 }
 
-
-// void	valid_config_str(char **config, t_parse *parse)
-// {
-// 	int	fd;
-
-
-// }
-
 int	ends_with(char *input, char *postfix)
 {
 	int		ok;
@@ -63,4 +55,21 @@ void	valid_filename(int argc, char **argv)
 	ft_putendl_fd("SUCCESS : File format ok", 1);
 }
 
-// void	valid_
+int	parse_int(char *str)
+{
+	int	a;
+	int	i;
+
+	i = -1;
+	while (str[++i])
+	{
+		if (ft_strlen(str) > 3)
+			return (-1);
+		if (!ft_isdigit(str[i]))
+			return (-1);
+	}
+	a = ft_atoi(str);
+	if (a > 255)
+		return (-1);
+	return (a);
+}

@@ -38,21 +38,14 @@ void	clean_config(t_config *conf)
 {
 	if (conf)
 	{
-		if (conf->no)
-			free(conf->no);
-		if (conf->so)
-			free(conf->so);
-		if (conf->we)
-			free(conf->we);
-		if (conf->ea)
-		{
-			free(conf->ea);
-
-		}
-		if (conf->c)
-			free(conf->c);
-		if (conf->f)
-			free(conf->f);
+		// if (conf->no)
+		// 	free(conf->no);
+		// if (conf->so)
+		// 	free(conf->so);
+		// if (conf->we)
+		// 	free(conf->we);
+		// if (conf->ea)
+		// 	free(conf->ea);
 	}
 	free(conf);
 }

@@ -19,7 +19,7 @@ t_parse	*init_parse(void)
 {
 	t_parse	*parse;
 	parse = (t_parse *)malloc(sizeof(t_parse));
-	parse->cub = init_cub();
+	parse->cub = init_cub(parse);
 	parse->cub->config = (t_config *)malloc(sizeof(t_config));
 	init_config(parse->cub->config);
 	parse->config_count = 0;
@@ -76,15 +76,30 @@ void	exit_with_error_parse(char *error, t_parse *parse)
 
 void	init_config(t_config *conf)
 {
-	conf->no = NULL;
-	conf->so = NULL;
-	conf->we = NULL;
-	conf->ea = NULL;
-	conf->f = NULL;
-	conf->c = NULL;
+	conf->width = 200;
+	conf->height = 200;
+	conf->no_img = NULL;
+	conf->so_img = NULL;
+	conf->we_img = NULL;
+	conf->ea_img = NULL;
+	conf->f = 0;
+	conf->c = 0;
 }
 
-t_cub	*init_cub(void)
+t_mlx	*lib_mlx_init(t_parse *parse)
+{
+	t_mlx	*lib_mlx;
+
+	lib_mlx = (t_mlx *)malloc(sizeof(t_mlx));
+	// if (NULL == lib_mlx)
+	// 	exit_with_error_parse(MALLOC_FAILURE, parse);
+	lib_mlx->mlx = mlx_init();
+	if (NULL == lib_mlx->mlx)
+		exit_with_error_parse("ERROR\nmlx_init() returned NULL", parse);
+	return (lib_mlx);
+}
+
+t_cub	*init_cub(t_parse *parse)
 {
 	t_cub	*cub;
 
@@ -96,7 +111,7 @@ t_cub	*init_cub(void)
 	}
 	cub->map = NULL;
 	cub->pers = (t_pers_pos *) malloc(sizeof(t_pers_pos));
-	cub->lib_mlx = NULL;
+	cub->lib_mlx = lib_mlx_init(parse);
 	cub->config = NULL;
 	return (cub);
 }

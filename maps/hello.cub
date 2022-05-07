@@ -1,12 +1,12 @@
-SO /home/serj/projects/Cub-3d/includes/cub3d.h
-WE /home/serj/projects/Cub-3d/includes/parsing.h
-EA /home/serj/projects/Cub-3d/includes/get_next_line.h
-NO /home/serj/projects/Cub-3d/includes/cub3d.h
-F 220,100,0
-C 225,30,0
+SO textures/no_img.xpm
+WE textures/no_img.xpm
+EA textures/no_img.xpm
+NO textures/no_img.xpm
+F 220,100,255
+C 225,30,250
 
 
 
 1111
-1NE1
+1N01
 1111
