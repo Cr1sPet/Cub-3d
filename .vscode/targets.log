@@ -6,7 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sat May  7 12:58:40 2022
+# Make data base, printed on Sun May  8 10:55:18 2022
 
 # Variables
 
@@ -26,15 +26,12 @@ OBJ = $(SRCS:.c=.o)
 XDG_SESSION_CLASS = user
 # environment
 SNAP_COMMON = /var/snap/code/common
- 
 # environment
 XDG_SESSION_TYPE = x11
 # environment
 VSCODE_LOG_NATIVE = false
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
-# environment
-IM_CONFIG_PHASE = 1
 # automatic
 @D = $(patsubst %/,%,$(dir $@))
 # environment
@@ -52,9 +49,11 @@ RM = @rm -f
 # environment
 SNAP_DATA = /var/snap/code/95
 # environment
+VTE_VERSION = 6003
+# environment
 VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupport":true}
 # environment
-JOURNAL_STREAM = 8:55523
+JOURNAL_STREAM = 8:53793
 # environment
 XDG_CONFIG_DIRS = /etc/xdg/xdg-ubuntu:/etc/xdg
 # environment
@@ -70,7 +69,7 @@ JAVA_HOME = /usr/lib/jvm/default-java
 # automatic
 @F = $(notdir $@)
 # environment
-GIO_LAUNCHED_DESKTOP_FILE = /var/lib/snapd/desktop/applications/code_code.desktop
+IM_CONFIG_PHASE = 1
 # environment
 USERNAME = serj
 # environment
@@ -84,15 +83,13 @@ DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-_ = /snap/code/95/usr/share/code/code
-# environment
 MANAGERPID = 1994
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-39c7691d-14f0-4c24-827d-7518ccacc0f2.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-085d8c60-dba1-4700-80fd-a29319502800.sock
 # environment
 LC_NAME = ru_RU.UTF-8
 # environment
-VSCODE_CWD = /home/serj
+VSCODE_CWD = /home/serj/projects
 # environment
 GSETTINGS_SCHEMA_DIR = /snap/code/95/usr/share/glib-2.0/schemas
 # default
@@ -122,7 +119,7 @@ DISABLE_WAYLAND = 1
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # environment
-INVOCATION_ID = 1bc9085a0b2e4ee3a54d8e4c29cacf8d
+INVOCATION_ID = c19ae39ee7e849c69b2c116b98961ce5
 # environment
 GDK_PIXBUF_MODULEDIR = /snap/code/95/usr/lib/x86_64-linux-gnu/gdk-pixbuf-2.0/2.10.0/loaders
 # default
@@ -130,13 +127,11 @@ GDK_PIXBUF_MODULEDIR = /snap/code/95/usr/lib/x86_64-linux-gnu/gdk-pixbuf-2.0/2.1
 # environment
 ELECTRON_NO_ATTACH_CONSOLE = 1
 # environment
-LS_COLORS = 
+LS_COLORS = rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:
 # environment
 XDG_SESSION_DESKTOP = ubuntu
 # environment
 SSH_AUTH_SOCK = /run/user/1000/keyring/ssh
-# environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 4269
 # automatic
 %F = $(notdir $%)
 # environment
@@ -189,6 +184,8 @@ GNOME_DESKTOP_SESSION_ID = this-is-deprecated
 LC_TIME = ru_RU.UTF-8
 # environment
 SNAP_REAL_HOME = /home/serj
+# environment
+COLORTERM = truecolor
 # default
 MAKE = $(MAKE_COMMAND)
 # default
@@ -200,7 +197,7 @@ SRCS = ./src/main.c ./src/get_next_line/get_next_line.c ./src/utils.c ./src/pars
 # environment
 SNAP_USER_DATA = /home/serj/snap/code/95
 # environment
-SHLVL = 0
+SHLVL = 1
 # makefile (from 'Makefile', line 19)
 LIBFT = libft/libft.a
 # makefile (from 'Makefile', line 26)
@@ -237,8 +234,6 @@ OLDPWD = /home/serj
 *F = $(notdir $*)
 # environment
 VSCODE_IPC_HOOK = /run/user/1000/vscode-fa80ddbd-1.67.0-main.sock
-# environment
-BAMF_DESKTOP_FILE_HINT = /var/lib/snapd/desktop/applications/code_code.desktop
 # makefile
 MAKEFLAGS = pqrR
 # environment
@@ -253,8 +248,6 @@ OBJ_B = $(SRCS_B:.c=.o)
 GDK_BACKEND = x11
 # environment
 LC_PAPER = ru_RU.UTF-8
-# environment
-LC_IDENTIFICATION = ru_RU.UTF-8
 # environment
 QT_ACCESSIBILITY = 1
 # environment
@@ -278,9 +271,11 @@ LC_ALL = C
 # makefile (from 'Makefile', line 17)
 HEADER = ./includes/
 # environment
-GJS_DEBUG_TOPICS = JS ERROR;JS LOG
+GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/2245abb5_920c_4725_9eb2_04d0b6fe86cb
 # automatic
 ^F = $(notdir $^)
+# environment
+GNOME_TERMINAL_SERVICE = :1.2030
 # default
 SUFFIXES := 
 # environment
@@ -291,11 +286,10 @@ CHROME_DESKTOP = code-url-handler.desktop
 WINDOWPATH = 2
 # makefile (from 'Makefile', line 15)
 SRCS_B = 
- 
 # default
 .INCLUDE_DIRS = /usr/include /usr/local/include /usr/include
 # environment
-GJS_DEBUG_OUTPUT = stderr
+LC_IDENTIFICATION = ru_RU.UTF-8
 # default
 .RECIPEPREFIX := 
 # environment
@@ -303,9 +297,12 @@ LC_ADDRESS = ru_RU.UTF-8
 # environment
 LANG = C
 # environment
-VSCODE_PID = 4317
+TERM = xterm-256color
+# environment
+VSCODE_PID = 218331
 # variable set hash-table stats:
-# Load=146/1024=14%, Rehash=0, Collisions=26/183=14%
+ 
+# Load=145/1024=14%, Rehash=0, Collisions=22/182=12%
 
 # Pattern-specific Variable Values
 
@@ -313,11 +310,11 @@ VSCODE_PID = 4317
 
 # Directories
 
-# . (device 2052, inode 2752562): 12 files, no impossibilities.
+# . (device 2052, inode 2752562): 13 files, no impossibilities.
 # includes (device 2052, inode 3148156): No files, no impossibilities so far.
 # src (device 2052, inode 5243308): 3 files, no impossibilities so far.
 
-# 15 files, no impossibilities in 3 directories.
+# 16 files, no impossibilities in 3 directories.
 
 # Implicit Rules
 
@@ -393,10 +390,9 @@ src/main.o: src/main.c includes/
 #  recipe to execute (from 'Makefile', line 46):
 					$(CC) -g $(FLAGS) -I/usr/include -Imlx -O3 -I${HEADER} -c $< -o $@			
 
- 
 cub3D: src/main.o src/get_next_line/get_next_line.o src/utils.o src/parsing/parsing.o src/parsing/validation.o src/parsing/parsing_utils.o src/parsing/config_identifier.o src/parsing/parse_map.o src/parsing/parse_map_utils.o includes/cub3d.h includes/parsing.h
 #  Implicit rule search has not been done.
-#  Last modified 2022-05-07 12:44:25.46701609
+#  Last modified 2022-05-07 15:43:30.97750563
 #  File has been updated.
 #  Needs to be updated (-q is set).
 # variable set hash-table stats:
@@ -445,7 +441,7 @@ fclean: clean
 # Not a target:
 src/main.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-05-07 09:48:12.042952206
+#  Last modified 2022-05-07 15:45:17.897752098
 #  File has been updated.
 #  Successfully updated.
 
@@ -467,7 +463,6 @@ src/parsing/parsing_utils.o:
 #  Modification time never checked.
 #  File has not been updated.
 
- 
 re: fclean cub3D
 #  Phony target (prerequisite of .PHONY).
 #  Implicit rule search has not been done.
@@ -515,12 +510,13 @@ src/parsing/config_identifier.o:
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 40 / storage = 462 B / avg = 11 B
-# current buf: size = 8162 B / used = 462 B / count = 40 / avg = 11 B
+# strcache buffers: 1 (0) / strings = 41 / storage = 471 B / avg = 11 B
+# current buf: size = 8162 B / used = 471 B / count = 41 / avg = 11 B
 
-# strcache performance: lookups = 68 / hit rate = 41%
+# strcache performance: lookups = 69 / hit rate = 40%
 # hash-table stats:
-# Load=40/8192=0%, Rehash=0, Collisions=1/68=1%
-# Finished Make data base on Sat May  7 12:58:40 2022
+ 
+# Load=41/8192=1%, Rehash=0, Collisions=1/69=1%
+# Finished Make data base on Sun May  8 10:55:18 2022
 
  

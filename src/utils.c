@@ -34,18 +34,18 @@ void	exit_with_error(char *message, t_cub *cub)
 	exit(EXIT_FAILURE);
 }
 
-void	clean_config(t_config *conf)
+void	clean_config(t_config *conf, t_cub *cub)
 {
 	if (conf)
 	{
-		// if (conf->no)
-		// 	free(conf->no);
-		// if (conf->so)
-		// 	free(conf->so);
-		// if (conf->we)
-		// 	free(conf->we);
-		// if (conf->ea)
-		// 	free(conf->ea);
+		if (conf->no_img)
+			mlx_destroy_image(cub->lib_mlx->mlx, conf->no_img);
+		if (conf->so_img)
+			mlx_destroy_image(cub->lib_mlx->mlx, conf->so_img);
+		if (conf->we_img)
+			mlx_destroy_image(cub->lib_mlx->mlx, conf->we_img);
+		if (conf->ea_img)
+			mlx_destroy_image(cub->lib_mlx->mlx, conf->ea_img);
 	}
 	free(conf);
 }
@@ -56,9 +56,10 @@ void	clean_cub(t_cub *cub)
 		str_2d_clean(cub->map, len_2d_str(cub->map));
 	if (cub->pers)
 		free(cub->pers);
-	clean_config(cub->config);
+	clean_config(cub->config, cub);
 	if (cub->lib_mlx)
 	{
+		// free(cub->lib_mlx->mlx);
 		// mlx_destroy_window(cub->lib_mlx->mlx, cub->lib_mlx->mlx_win);
 		free(cub->lib_mlx);
 	}

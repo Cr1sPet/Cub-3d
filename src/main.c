@@ -24,34 +24,12 @@
 // 	return (0);
 // }
 
-
-// void	init_map (t_map_info *map)
-// {
-// 	map->mlx = mlx_init ();
-// 	map->mlx_win = mlx_new_window (map->mlx, 1920, 1080, "Cub-3d");
-// 	map->img = mlx_new_image(map->mlx, 1920, 1080);
-// 	map->data_addr = mlx_get_data_addr(map->img, &(map->bits_per_pixel),&(map->line_length), &(map->endian));
-// }
-
-
 int	main(int argc, char **argv)
 {
 	t_cub	*cub;
 
 	cub = parsing(argc, argv);
-	
-	int	i = -1;
-	while(cub->map[++i])
-	{
-		ft_putendl_fd(cub->map[i], 1);
-	}
 	clean_cub(cub);
-	// t_map_info	map;
-
-	// map.parsed_map = make_map(argv[1]);
-	// init_map (&map);
-	// draw (&map);
-	// mlx_key_hook (map.mlx_win, deal_key, &map);
-	// mlx_loop(map.mlx);
 	return (0);
 }
+

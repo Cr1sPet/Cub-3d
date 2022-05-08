@@ -66,7 +66,7 @@ size_t	count_words(char const *str, char c);
 void	draw (t_cub *map);
 
 void	clean_cub(t_cub *cub);
-void	clean_config(t_config *conf);
+void	clean_config(t_config *conf, t_cub *cub);
 void	exit_with_error(char *message, t_cub *cub);
 
 #endif
