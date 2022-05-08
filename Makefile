@@ -23,7 +23,7 @@ OBJ				= $(SRCS:.c=.o)
 
 OBJ_B			= $(SRCS_B:.c=.o)
 
-CC				= gcc
+CC				= gcc -g
 
 RM				= @rm -f
 
@@ -32,20 +32,19 @@ RM				= @rm -f
 .PHONY:			all clean fclean re bonus
 
 all:			$(NAME)
-				@$(MAKE) clean -C ./libft
-				$(RM) $(OBJ) $(OBJ_B)
+
 
 $(NAME):		$(OBJ) ./includes/cub3d.h ./includes/parsing.h
 				@$(MAKE) all -C ./libft
-				@$(MAKE) bonus -C ./libft
-				$(CC) $(OBJ) -Lmlx -lmlx -L/usr/lib -Imlx -lXext -lX11 -lm -lz -I${HEADER} ${LIBFT} -o $(NAME)
+				$(CC) $(OBJ) -Lmlx -lmlx -framework OpenGL -framework AppKit -I${HEADER} ${LIBFT} -o $(NAME)
+# $(CC) $(OBJ) -Lmlx -lmlx -L/usr/lib -Imlx -lXext -lX11 -lm -lz -I${HEADER} ${LIBFT} -o $(NAME)
 # $(CC) $(OBJ) -I${HEADER} ${LIBFT} -o $(NAME)
-#mac				$(CC) $(OBJ) -Lmlx -lmlx -framework OpenGL -framework AppKit -I${HEADER} ${LIBFT} -o $(NAME)
+
 
 %.o:			%.c $(HEADER)
-					$(CC) -g $(FLAGS) -I/usr/include -Imlx -O3 -I${HEADER} -c $< -o $@			
+# $(CC) -g $(FLAGS) -I/usr/include -Imlx -O3 -I${HEADER} -c $< -o $@			
 # $(CC) -g $(FLAGS) -I${HEADER} -c $< -o $@			
-#mac				$(CC) -g $(FLAGS) -Imlx -I${HEADER} -c $< -o $@
+				$(CC) -g $(FLAGS) -Imlx -I${HEADER} -c $< -o $@
 
 bonus:
 				make OBJ="$(OBJ_B)" all

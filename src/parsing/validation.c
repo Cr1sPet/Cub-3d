@@ -17,7 +17,7 @@ int	check_config(char **config, struct s_parse *parse)
 		i++;
 	}
 	exit_with_error_parse(CONFIG_INFO_FAILURE, parse);
-	return(0);
+	return (0);
 }
 
 int	ends_with(char *input, char *postfix)

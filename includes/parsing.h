@@ -8,6 +8,10 @@
 # define MAP_FAILURE "Error\nInvalid map."
 # define FILE_FORMAT_FAILURE "Error\nInvalid file format. Expected : *.cub."
 # define NUMBER_ARGS_FAILURE "Error\nInvalid number of arguments! Excpected : 2."
+# define NUMBER_CHAR_FAILURE\
+		"Error\nInvalid map : wrong number of characters. Required : 1."
+# define ALLOWED_SYMB_FAILURE\
+		"Error\nInvalid map : unrecognized sumbol. Allowed : \" 01WSNE\"."
 
 typedef struct s_parse
 {
@@ -23,7 +27,6 @@ typedef struct s_parse
 	void		(*config_init[6])(char *, struct s_parse *);
 	char		**config_names;
 }				t_parse;
-
 
 void	init_no(char *path, t_parse *parse);
 void	init_so(char *path, t_parse *parse);

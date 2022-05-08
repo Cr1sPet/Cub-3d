@@ -1,34 +1,65 @@
 #include "parsing.h"
 
-static void	init_perse(char *ch, int i, int j, t_parse *parse)
+static void	init_perse(char ch, int i, int j, t_parse *parse)
 {
 	static int	flag = 0;
 
 	if (1 == flag)
-		exit_with_error_parse(MAP_FAILURE, parse);
+		exit_with_error_parse(NUMBER_CHAR_FAILURE, parse);
 	flag = 1;
-	if ('N' == *ch)
+	if ('N' == ch)
 		parse->cub->pers->side = 'N';
-	else if ('W' == *ch)
+	else if ('W' == ch)
 		parse->cub->pers->side = 'W';
-	else if ('E' == *ch)
+	else if ('E' == ch)
 		parse->cub->pers->side = 'E';
-	else if ('S' == *ch)
+	else if ('S' == ch)
 		parse->cub->pers->side = 'S';
-	*ch = '0';
 	parse->cub->pers->x = i;
 	parse->cub->pers->x = j;
 }
 
-
-static void	proc_symbol(char *ch, int i, int j, t_parse *parse)
+int	is_pers(char ch)
 {
-	if (' ' == *ch)
-		*ch = '1';
-	else if ('N' == *ch || 'W' == *ch || 'E' == *ch || 'S' == *ch)
+	if ('N' == ch || 'W' == ch || 'E' == ch || 'S' == ch)
+		return (1);
+	return (0);
+}
+
+int	check_space_sym(char **map, int i, int j)
+{
+	if (i != 0 && (map[i - 1][j] == '0'
+		|| is_pers(map[i - 1][j])))
+		return (0);
+	if (i != len_2d_str(map) - 1 && (map[i + 1][j] == '0'
+		|| is_pers(map[i + 1][j])))
+		return (0);
+	if (j != 0 && (map[i][j + 1] == '0'
+		|| is_pers(map[i][j + 1])))
+		return (0);
+	if (j != ft_strlen(map[i]) - 1 && (map[i][j - 1] == '0'
+		|| is_pers(map[i][j - 1])))
+		return (0);
+	return (1);
+}
+
+static void	proc_symbol(char **map, int i, int j, t_parse *parse)
+{
+	char	ch;
+
+	ch = map[i][j];
+	if (' ' == ch)
+	{
+		if (0 == check_space_sym(map, i, j))
+			exit_with_error_parse(MAP_FAILURE, parse);
+	}
+	else if (is_pers(ch))
+	{
 		init_perse(ch, i, j, parse);
-	else if ('1' != *ch && '0' != *ch)
-		exit_with_error_parse(MAP_FAILURE, parse);
+		map[i][j] = '0';
+	}
+	else if ('1' != ch && '0' != ch)
+		exit_with_error_parse(ALLOWED_SYMB_FAILURE, parse);
 }
 
 void	firstly_parse(char **map, t_parse *parse)
@@ -42,9 +73,11 @@ void	firstly_parse(char **map, t_parse *parse)
 		j = -1;
 		while (map[i][++j])
 		{
-			proc_symbol(&map[i][j], i, j, parse);
+			proc_symbol(map, i, j, parse);
 		}
 	}
+	if (0 == parse->cub->pers->side)
+		exit_with_error_parse(NUMBER_CHAR_FAILURE, parse);
 }
 
 char	**list_to2darr(t_list *list, t_parse *parse)

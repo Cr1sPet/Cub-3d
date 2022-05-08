@@ -3,12 +3,10 @@
 
 void	init_texture(char *path, t_parse *parse, void	**texture)
 {
-	int	fd;
-
 	*texture = mlx_xpm_file_to_image(parse->cub->lib_mlx->mlx, path,
 			&parse->cub->config->width, &parse->cub->config->height);
 	if (NULL == *texture)
-		exit_with_error_parse("ERROR\ntexture file reading has failed", parse);
+		exit_with_error_parse("ERROR\nTexture file reading has failed", parse);
 	ft_putendl_fd("Success : init ", 1);
 }
 
@@ -54,6 +52,7 @@ int	check_i(int i, t_parse *parse)
 	if (i == 1)
 		exit_with_error_parse(CONFIG_INFO_FAILURE, parse);
 	i = 1;
+	return  (0);
 }
 
 void	init_no(char *path, t_parse *parse)

@@ -95,7 +95,7 @@ t_mlx	*lib_mlx_init(t_parse *parse)
 	// 	exit_with_error_parse(MALLOC_FAILURE, parse);
 	lib_mlx->mlx = mlx_init();
 	if (NULL == lib_mlx->mlx)
-		exit_with_error_parse("ERROR\nmlx_init() returned NULL", parse);
+		exit_with_error_parse(MALLOC_FAILURE, parse);
 	return (lib_mlx);
 }
 
@@ -113,5 +113,6 @@ t_cub	*init_cub(t_parse *parse)
 	cub->pers = (t_pers_pos *) malloc(sizeof(t_pers_pos));
 	cub->lib_mlx = lib_mlx_init(parse);
 	cub->config = NULL;
+	cub->pers->side = 0;
 	return (cub);
 }

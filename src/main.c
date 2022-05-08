@@ -24,12 +24,26 @@
 // 	return (0);
 // }
 
+void	print_map(char **map)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (map[i])
+	{
+		ft_putstr_fd(map[i], 1);
+		ft_putchar_fd('\n', 1);
+		i++;
+	}
+}
+
 int	main(int argc, char **argv)
 {
 	t_cub	*cub;
 
 	cub = parsing(argc, argv);
+	print_map(cub->map);
 	clean_cub(cub);
 	return (0);
 }
-

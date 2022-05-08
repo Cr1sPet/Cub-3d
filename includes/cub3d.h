@@ -3,7 +3,7 @@
 
 # include <mlx.h>
 # include <stdio.h>
-#include <errno.h>
+# include <errno.h>
 # include <fcntl.h>
 # include <stddef.h>
 # include <math.h>

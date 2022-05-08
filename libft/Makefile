@@ -6,7 +6,7 @@
 #    By: jchopped <jchopped@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/16 15:31:36 by jchopped          #+#    #+#              #
-#    Updated: 2021/10/17 10:16:18 by jchopped         ###   ########.fr        #
+#    Updated: 2022/05/08 13:27:27 by jchopped         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,10 +23,8 @@ SRCS		=	ft_isdigit.c ft_isalpha.c ft_isprint.c\
 				ft_strjoin.c ft_strtrim.c ft_split.c\
 				ft_itoa.c ft_strmapi.c ft_putchar_fd.c\
 				ft_putstr_fd.c ft_putendl_fd.c\
-				ft_putnbr_fd.c ft_striteri.c
-
-
-SRCS_B		=	ft_lstnew.c ft_lstlast.c ft_lstadd_front.c\
+				ft_putnbr_fd.c ft_striteri.c\
+				ft_lstnew.c ft_lstlast.c ft_lstadd_front.c\
 				ft_lstsize.c ft_lstadd_back.c ft_lstdelone.c\
 				ft_lstclear.c ft_lstiter.c ft_lstmap.c
 
@@ -34,7 +32,7 @@ HEADER		=	libft.h
 OBJS		=	$(patsubst %.c,%.o,$(SRCS))
 OBJS_B		=	$(SRCS_B:%.c=%.o)
  
-CC			=	gcc -g
+CC			=	gcc
 FLAGS		=	-Wall -Wextra -Werror -I$(HEADER)
 
 .PHONY		:	all clean fclean re bonus

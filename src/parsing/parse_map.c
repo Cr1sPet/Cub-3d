@@ -59,6 +59,7 @@ int	check_top_to_bottom(char **map, t_parse *parse)
 		}
 	}
 	clean_list(filler);
+	return (0);
 }
 
 int	check__bottom_to_top(char **map, t_parse *parse)
@@ -87,6 +88,7 @@ int	check__bottom_to_top(char **map, t_parse *parse)
 		}
 	}
 	clean_list(filler);
+	return (0);
 }
 
 typedef struct s_map_data
@@ -119,9 +121,9 @@ int	check_borders(char *str, t_parse *parse)
 		if ('0' == str[i])
 			exit_with_error_parse(MAP_FAILURE, parse);
 	}
-	if (i == ft_strlen(str))
+	if (i == (int) ft_strlen(str))
 		exit_with_error_parse(MAP_FAILURE, parse);
-	i = ft_strlen(str);
+	i = (int) ft_strlen(str);
 	while (--i >= 0 && str[i] != '1')
 	{
 		if ('0' == str[i])
