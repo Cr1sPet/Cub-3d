@@ -15,7 +15,6 @@ int	create_rgb(int r, int g, int b)
 	return (r << 16 | g << 8 | b);
 }
 
-
 void	init_color(char *rgb, t_parse *parse, int	*color)
 {
 	int		*colors;
@@ -33,7 +32,6 @@ void	init_color(char *rgb, t_parse *parse, int	*color)
 	colors[0] = parse_int(splitted[0]);
 	colors[1] = parse_int(splitted[1]);
 	colors[2] = parse_int(splitted[2]);
-
 	if (-1 == colors[0] || -1 == colors[1] || -1 == colors[2])
 	{
 		free(colors);
@@ -43,7 +41,6 @@ void	init_color(char *rgb, t_parse *parse, int	*color)
 	str_2d_clean(splitted, len_2d_str(splitted));
 	free(colors);
 }
-
 
 int	check_i(int i, t_parse *parse)
 {
