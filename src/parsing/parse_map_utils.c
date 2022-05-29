@@ -15,7 +15,7 @@ static void	init_perse(char ch, int i, int j, t_parse *parse)
 		parse->cub->pers->side = 'E';
 	else if ('S' == ch)
 		parse->cub->pers->side = 'S';
-	parse->cub->pers->x = i;
+	parse->cub->pers->y = i;
 	parse->cub->pers->x = j;
 }
 
@@ -55,6 +55,7 @@ static void	proc_symbol(char **map, int i, int j, t_parse *parse)
 	}
 	else if (is_pers(ch))
 	{
+		printf("PERS X %d\n", i);
 		init_perse(ch, i, j, parse);
 		map[i][j] = '0';
 	}
