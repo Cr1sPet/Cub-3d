@@ -11,9 +11,12 @@
 
 # define MALLOC_FAILURE "Error\nmalloc() returned NULL"
 
-# define WIDTH 640
-# define HEIGHT 480
-# define SCALE 15
+# define WIDTH 1920
+# define HEIGHT 1080
+# define SCALE 30
+# define FORWARD 1
+# define BACKWARD 0
+# define CHARACTER_SIZE 5
 
 
 typedef struct s_config
@@ -33,6 +36,7 @@ typedef struct s_pers_pos
 	int		x;
 	int		y;
 	char	side;
+	double	alpha;
 }				t_pers_pos;
 
 typedef struct s_mlx
@@ -54,6 +58,7 @@ typedef struct s_cub
 	double		end;
 	double		dir;
 	char		**map;
+	int			map_len;
 	t_pers_pos	*pers;
 	t_config	*config;
 	t_mlx		*lib_mlx;
@@ -63,7 +68,7 @@ t_cub	*parsing(int argc, char **argv);
 
 int		len_2d_str(char **str);
 void	str_2d_clean(char **s, size_t l);
-void	ft_cast_ray(t_cub *map);
+// void	ft_cast_ray(t_cub *map);
 void	ft_cast_rays(t_cub *map);
 void	clear_str_arr(char	**arr);
 void	clear_int_arr(int **arr, int len);

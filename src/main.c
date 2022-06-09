@@ -1,37 +1,78 @@
 #include "cub3d.h"
 #include "parsing.h"
+ 
+
+
+
+int	check_step_x(t_pers_pos *perse, int sign, t_cub *cub)
+{
+	int x = perse->x;
+	int y = perse->y;
+
+	if (sign && cub->map[y][x + 1] != '1')
+		return (1);
+	if (!sign && cub->map[y][x - 1] != '1')
+		return (1);
+	return (0);
+}
+
+
+int	check_step_y(t_pers_pos *perse, int sign, t_cub *cub)
+{
+	int x = perse->x;
+	int y = perse->y;
+
+	if (sign && cub->map[y - 1][x] != '1')
+		return (1);
+	if (!sign && cub->map[y + 1][x] != '1')
+		return (1);
+	return (0);
+}
 
 int	deal_key (int keycode, t_cub *cub)
 {
 	printf ("%d\n", keycode);
 	if (119 == keycode)
 	{
-		// if (cub->pers->x >= SCALE)
-		// {
+		if (check_step_y(cub->pers, FORWARD, cub))
+		{
 			cub->pers->y -= 1;
 			draw(cub);
-		// }
+		}
 	}	
 	if (115 == keycode)
 	{
-		// if (cub->pers->x >= SCALE)
-		// {
+		if (check_step_y(cub->pers, BACKWARD, cub))
+		{
 			cub->pers->y += 1;
 			draw(cub);
-		// }
+		}
 	}	
 	if (97 == keycode)
 	{
-		cub->pers->x -= 1;
-		draw(cub);
+		if (check_step_x(cub->pers, BACKWARD, cub))
+		{
+			cub->pers->x -= 1;
+			draw(cub);
+		}
 	}
 	if (100 == keycode)
 	{
-		// if (cub->pers->x <= HEIGHT - SCALE)
-		// {
+		if (check_step_x(cub->pers, FORWARD, cub))
+		{
 			cub->pers->x += 1;
 			draw(cub);
-		// }
+		}
+	}
+	if (65361 == keycode)
+	{
+		cub->pers->alpha -= 0.4;
+		draw(cub);
+	}
+	if (65363 == keycode)
+	{
+		cub->pers->alpha += 0.4;
+		draw(cub);
 	}
 	else if (65307 == keycode)
 	{
@@ -54,7 +95,6 @@ void	print_map(char **map)
 		i++;
 	}
 }
-
 
 
 
