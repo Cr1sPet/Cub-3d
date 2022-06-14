@@ -1,5 +1,6 @@
 #include "parsing.h"
 
+
 static void	init_perse(char ch, int i, int j, t_parse *parse)
 {
 	static int	flag = 0;
@@ -8,7 +9,10 @@ static void	init_perse(char ch, int i, int j, t_parse *parse)
 		exit_with_error_parse(NUMBER_CHAR_FAILURE, parse);
 	flag = 1;
 	if ('N' == ch)
+	{
 		parse->cub->pers->side = 'N';
+		parse->cub->pers->alpha = 0;
+	}
 	else if ('W' == ch)
 		parse->cub->pers->side = 'W';
 	else if ('E' == ch)
@@ -93,6 +97,7 @@ char	**list_to2darr(t_list *list, t_parse *parse)
 	if (NULL == list)
 		exit_with_error_parse(MAP_FAILURE, parse);
 	size = ft_lstsize(list);
+	parse->cub->map_len = size;
 	arr = (char **)malloc(sizeof(char*) * (size + 1));
 	if (NULL == arr)
 		exit_with_error_parse(MALLOC_FAILURE, parse);
