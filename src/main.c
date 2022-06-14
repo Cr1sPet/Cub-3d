@@ -1,18 +1,48 @@
 #include "../includes/cub3d.h"
 
-//void	print_map(char **map)
+//<<<<<<< HEAD
+
+//=======
+//int	deal_key (int keycode, t_cub *cub)
 //{
-//	int	i;
-//	int	j;
-//
-//	i = 0;
-//	while (map[i])
+//	printf ("%d\n", keycode);
+//	if (119 == keycode)
 //	{
-//		ft_putstr_fd(map[i], 1);
-//		ft_putchar_fd('\n', 1);
-//		i++;
+//		// if (cub->pers->x >= SCALE)
+//		// {
+//			cub->pers->y -= 1;
+//			draw(cub);
+//		// }
 //	}
+//	if (115 == keycode)
+//	{
+//		// if (cub->pers->x >= SCALE)
+//		// {
+//			cub->pers->y += 1;
+//			draw(cub);
+//		// }
+//	}
+//	if (97 == keycode)
+//	{
+//		cub->pers->x -= 1;
+//		draw(cub);
+//	}
+//	if (100 == keycode)
+//	{
+//		// if (cub->pers->x <= HEIGHT - SCALE)
+//		// {
+//			cub->pers->x += 1;
+//			draw(cub);
+//		// }
+//	}
+//	else if (65307 == keycode)
+//	{
+//		mlx_destroy_window(cub->lib_mlx->mlx, cub->lib_mlx->mlx_win);
+//		exit(EXIT_SUCCESS);
+//	}
+//	return (0);
 //}
+//>>>>>>> parsing
 
 int	key_hook(int keycode)
 {
@@ -26,28 +56,17 @@ int	main(int argc, char **argv)
 	t_cub	*cub;
 
 	cub = parsing(argc, argv);
-    cub->lib_mlx = mlx_init();
-    cub->lib_mlx->mlx_win = mlx_new_window( cub->lib_mlx, cub->config->width, cub->config->height, "Cub 3D");
-    int y = 0;
-    int x;
-    while (cub->map[++y])
-    {
-        x = 0;
-        while (cub->map[y][++x])
-        {
-            int j = 0;
-            int k;
-            while (++j < 10)
-            {
-                k = 0;
-                while(++k < 10)
-                {
-                    mlx_pixel_put(cub->lib_mlx, cub->lib_mlx->mlx_win, j * y, k * x, 0x990099);
-                }
-            }
-        }
-    }
+    draw(cub);
     mlx_hook(cub->lib_mlx->mlx_win, 2, 1L << 0, key_hook, &cub->lib_mlx);
     mlx_loop( cub->lib_mlx);
+    clean_cub(cub);
+//=======
+//	printf("%d, %d\n", cub->pers->x, cub->pers->y);
+//	print_map(cub->map);
+//	draw(cub);
+//	mlx_key_hook (cub->lib_mlx->mlx_win, deal_key, cub);
+//	mlx_loop(cub->lib_mlx->mlx);
+
+//>>>>>>> parsing
 	return (0);
 }

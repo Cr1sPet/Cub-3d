@@ -11,6 +11,10 @@
 
 # define MALLOC_FAILURE "Error\nmalloc() returned NULL"
 
+# define WIDTH 1280
+# define HEIGHT 980
+# define SCALE 15
+
 typedef struct s_config
 {
 	int		width;
@@ -43,11 +47,6 @@ typedef struct s_mlx
 
 typedef struct s_cub
 {
-	double		x;
-	double		y;
-	double		start;
-	double		end;
-	double		dir;
 	char		**map;
 	t_pers_pos	*pers;
 	t_config	*config;
@@ -63,10 +62,14 @@ void	ft_cast_rays(t_cub *map);
 void	clear_str_arr(char	**arr);
 void	clear_int_arr(int **arr, int len);
 size_t	count_words(char const *str, char c);
-void	draw (t_cub *map);
 
 void	clean_cub(t_cub *cub);
 void	clean_config(t_config *conf, t_cub *cub);
 void	exit_with_error(char *message, t_cub *cub);
+
+//draw
+void draw(t_cub *cub);
+int	create_rgb(int r, int g, int b);
+int draw_3d();
 
 #endif

@@ -86,16 +86,27 @@ void	init_config(t_config *conf)
 	conf->c = 0;
 }
 
-t_mlx	*lib_mlx_init(t_parse *parse)
+// t_mlx	*lib_mlx_init(t_parse *parse)
+// {
+// 	t_mlx	*lib_mlx;
+
+// 	lib_mlx = (t_mlx *)malloc(sizeof(t_mlx));
+// 	if (NULL == lib_mlx)
+// 		exit_with_error_parse(MALLOC_FAILURE, parse);
+// 	return (lib_mlx);
+// }
+
+
+static t_mlx *init_lib_mlx()
 {
 	t_mlx	*lib_mlx;
 
 	lib_mlx = (t_mlx *)malloc(sizeof(t_mlx));
-	// if (NULL == lib_mlx)
-	// 	exit_with_error_parse(MALLOC_FAILURE, parse);
 	lib_mlx->mlx = mlx_init();
-	if (NULL == lib_mlx->mlx)
-		exit_with_error_parse(MALLOC_FAILURE, parse);
+	lib_mlx->mlx_win = mlx_new_window(lib_mlx->mlx, WIDTH, HEIGHT, "CUB3D");
+	lib_mlx->img = mlx_new_image(lib_mlx->mlx, WIDTH, HEIGHT);
+	lib_mlx->data_addr = mlx_get_data_addr(lib_mlx->img, &(lib_mlx->bits_per_pixel),
+	&(lib_mlx->line_length), &(lib_mlx->endian));
 	return (lib_mlx);
 }
 
@@ -111,7 +122,7 @@ t_cub	*init_cub(t_parse *parse)
 	}
 	cub->map = NULL;
 	cub->pers = (t_pers_pos *) malloc(sizeof(t_pers_pos));
-	cub->lib_mlx = lib_mlx_init(parse);
+	cub->lib_mlx = init_lib_mlx(parse);
 	cub->config = NULL;
 	cub->pers->side = 0;
 	return (cub);
