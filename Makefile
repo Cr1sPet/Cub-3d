@@ -38,14 +38,15 @@ all:			$(NAME)
 
 $(NAME):		$(OBJ) ./includes/cub3d.h ./includes/parsing.h
 				@$(MAKE) all -C ./libft
-#$(CC) $(OBJ) -Lmlx -lmlx -framework OpenGL -framework AppKit -I${HEADER} ${LIBFT} -o $(NAME)
-				 $(CC) $(OBJ) -Lmlx -lmlx -L/usr/lib -Imlx -lXext -lX11 -lm -lz -I${HEADER} ${LIBFT} -o $(NAME)
+				$(CC) $(OBJ) -Lmlx -lmlx -framework OpenGL -framework AppKit -I${HEADER} ${LIBFT} -o $(NAME)
+				# $(CC) $(OBJ) -Lmlx -lmlx -L/usr/lib -Imlx -lXext -lX11 -lm -lz -I${HEADER} ${LIBFT} -o $(NAME)
 # $(CC) $(OBJ) -I${HEADER} ${LIBFT} -o $(NAME)
 
 
 %.o:			%.c $(HEADER)
-				$(CC) -g $(FLAGS) -I/usr/include -Imlx -O3 -I${HEADER} -c $< -o $@			
-# $(CC) -g $(FLAGS) -I${HEADER} -c $< -o $@			
+				$(CC) -g $(FLAGS) -I${HEADER} -c $< -o $@
+				#$(CC) -g $(FLAGS) -I/usr/include -Imlx -O3 -I${HEADER} -c $< -o $@
+#
 #				$(CC) -g $(FLAGS) -Imlx -I${HEADER} -c $< -o $@
 
 bonus:

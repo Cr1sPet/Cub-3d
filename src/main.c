@@ -26,66 +26,66 @@ int	check_step_y(t_pers_pos *perse, int sign, t_cub *cub)
 		return (1);
 	if (!sign && cub->map[y + 1][x] != '1')
 		return (1);
-	return (0);
+	return (1);
 }
 
-int	deal_key (int keycode, t_cub *cub)
+int	ft_exit(void)
 {
-	printf ("%d\n", keycode);
-	// if (119 == keycode)
-	// {
-	// 	if (check_step_y(cub->pers, FORWARD, cub))
-	// 	{
-	// 		cub->pers->y -= 1;
-	// 		draw(cub);
-	// 	}
-	// }	
-	// if (115 == keycode)
-	// {
-	// 	if (check_step_y(cub->pers, BACKWARD, cub))
-	// 	{
-	// 		cub->pers->y += 1;
-	// 		draw(cub);
-	// 	}
-	// }	
-	// if (97 == keycode)
-	// {
-	// 	if (check_step_x(cub->pers, BACKWARD, cub))
-	// 	{
-	// 		cub->pers->x -= 1;
-	// 		draw(cub);
-	// 	}
-	// }
-	// if (100 == keycode)
-	// {
-	// 	if (check_step_x(cub->pers, FORWARD, cub))
-	// 	{
-	// 		cub->pers->x += 1;
-	// 		draw(cub);
-	// 	}
-	// }
-	// if (65361 == keycode)
-	// {
-	// 	cub->pers->alpha -= 0.4;
-	// 	draw(cub);
-	// }
-	// if (65363 == keycode)
-	// {
-	// 	cub->pers->alpha += 0.4;
-	// 	draw(cub);
-	// }
-	if (65307 == keycode)
-	{
-		mlx_destroy_window(cub->lib_mlx->mlx, cub->lib_mlx->mlx_win);
-		exit(EXIT_SUCCESS);
-	}
-	return (0);
+    exit(0);
 }
+
+int	key_hook (int keycode, t_cub *cub)
+{
+    printf ("%d\n", keycode);
+    if (13 == keycode)
+    {
+//        if (check_step_y(cub->pers, FORWARD, cub))
+//        {
+            cub->pers->y -= 1;
+//        }
+    }
+    if (1 == keycode)
+    {
+//        if (check_step_y(cub->pers, BACKWARD, cub))
+//        {
+            cub->pers->y += 1;
+//        }
+    }
+    if (0 == keycode)
+    {
+//        if (check_step_x(cub->pers, BACKWARD, cub))
+//        {
+            cub->pers->x -= 1;
+//        }
+    }
+    if (2 == keycode)
+    {
+//        if (check_step_x(cub->pers, FORWARD, cub))
+//        {
+            cub->pers->x += 1;
+//        }
+    }
+    if (123 == keycode)
+    {
+        cub->pers->alpha -= 0.4;
+    }
+    if (124 == keycode)
+    {
+        cub->pers->alpha += 0.4;
+    }
+    else if (53 == keycode)
+    {
+        mlx_destroy_window(cub->lib_mlx->mlx, cub->lib_mlx->mlx_win);
+        exit(EXIT_SUCCESS);
+    }
+    return (0);
+}
+
+
 
 void	print_map(char **map)
 {
 	int	i;
-	int	j;
 
 	i = 0;
 	while (map[i])
@@ -107,8 +107,9 @@ int	main(int argc, char **argv)
 	t_cub	*cub;
 
 	cub = parsing(argc, argv);
-	mlx_key_hook (cub->lib_mlx->mlx_win, deal_key, cub);
-	mlx_loop_hook(cub->lib_mlx->mlx, &render, cub);
+    mlx_hook(cub->lib_mlx->mlx_win, 17, 0, ft_exit, &cub);
+	mlx_key_hook (cub->lib_mlx->mlx_win, key_hook, cub);
+    mlx_loop_hook(cub->lib_mlx->mlx, &render, (void *) cub);
 	mlx_loop(cub->lib_mlx->mlx);
 	// clean_cub(cub);
 	return (0);

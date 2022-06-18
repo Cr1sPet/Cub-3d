@@ -11,7 +11,8 @@ static void	init_perse(char ch, int i, int j, t_parse *parse)
 	if ('N' == ch)
 	{
 		parse->cub->pers->side = 'N';
-		parse->cub->pers->dirX = 0;
+        parse->cub->start = 90;
+		parse->cub->pers->dirX = -1;
 		parse->cub->pers->dirY = 0;
 	}
 	else if ('W' == ch)

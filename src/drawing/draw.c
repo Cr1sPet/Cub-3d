@@ -71,15 +71,14 @@ void	ft_cast_ray(t_cub *cub, int color)
     double y = cub->pers->y;
     point1.x = x * SCALE;
     point1.y = y * SCALE;
-    while (cub->map[(int) point2.y / SCALE][(int) point2.x / SCALE] != '1')
+    while (cub->map[(int) point2.x / SCALE][(int) point2.y / SCALE] != '1')
     {
-        x += cos(cub->pers->alpha);
-        y += sin(cub->pers->alpha);
+//        x += cos(cub->pers->alpha);
+//        y += sin(cub->pers->alpha);
         point2.x = (x) * SCALE;
         point2.y = (y) * SCALE;
         draw_line(point1, point2, cub->lib_mlx);
     }
-    printf("%f  x\n %f y\n %f alpha \n", point1.x, point2.y, cub->pers->alpha);
 }
 
 
@@ -127,7 +126,7 @@ void draw_2d(t_cub *cub)
 		while (j < ft_strlen(map[i]))
 		{
 			draw_square(cub, j, i, map[i][j]); 
-			ft_cast_ray(cub, create_rgb(0, 0, 255));
+//			ft_cast_ray(cub, create_rgb(0, 0, 255));
 			j++;
 		}
 		i++;
@@ -136,7 +135,8 @@ void draw_2d(t_cub *cub)
 
 void draw(t_cub *cub)
 {
-	ft_bzero(cub->lib_mlx->data_addr, WIDTH * HEIGHT * (cub->lib_mlx->bits_per_pixel / 8));
+    ft_bzero(cub->lib_mlx->data_addr, WIDTH * HEIGHT * (cub->lib_mlx->bits_per_pixel / 8));
+//    mlx_clear_window(cub->lib_mlx->mlx, cub->lib_mlx->mlx_win);
 	draw_2d(cub);
 //    draw_3d(cub);
 	mlx_put_image_to_window(cub->lib_mlx->mlx, cub->lib_mlx->mlx_win, cub->lib_mlx->img, 0, 0);

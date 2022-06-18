@@ -13,7 +13,7 @@
 
 # define WIDTH 800
 # define HEIGHT 800
-# define SCALE 30
+# define SCALE 15
 # define FORWARD 1
 # define BACKWARD 0
 # define CHARACTER_SIZE 5
@@ -84,7 +84,9 @@ void	exit_with_error(char *message, t_cub *cub);
 
 //draw
 void draw(t_cub *cub);
+void    draw_3d(t_cub *cub);
 int	create_rgb(int r, int g, int b);
+void put_pixel(int x, int y, t_mlx *lib_mlx, int color);
 // void draw_3d(t_cub *cub);
 
 #endif
