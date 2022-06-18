@@ -11,8 +11,8 @@
 
 # define MALLOC_FAILURE "Error\nmalloc() returned NULL"
 
-# define WIDTH 1920
-# define HEIGHT 1080
+# define WIDTH 800
+# define HEIGHT 800
 # define SCALE 30
 # define FORWARD 1
 # define BACKWARD 0
@@ -29,6 +29,8 @@ typedef struct s_config
 	void	*ea_img;
 	int		c;
 	int		f;
+	double time; //время текущего кадра
+   	double oldTime; //время предыдущего кадра
 }				t_config;
 
 typedef struct s_pers_pos
@@ -36,7 +38,9 @@ typedef struct s_pers_pos
 	int		x;
 	int		y;
 	char	side;
-	double	alpha;
+	double	dirX;
+	double	dirY;
+	double alpha;
 }				t_pers_pos;
 
 typedef struct s_mlx
@@ -81,5 +85,6 @@ void	exit_with_error(char *message, t_cub *cub);
 //draw
 void draw(t_cub *cub);
 int	create_rgb(int r, int g, int b);
+// void draw_3d(t_cub *cub);
 
 #endif

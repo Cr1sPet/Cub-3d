@@ -32,49 +32,49 @@ int	check_step_y(t_pers_pos *perse, int sign, t_cub *cub)
 int	deal_key (int keycode, t_cub *cub)
 {
 	printf ("%d\n", keycode);
-	if (119 == keycode)
-	{
-		if (check_step_y(cub->pers, FORWARD, cub))
-		{
-			cub->pers->y -= 1;
-			draw(cub);
-		}
-	}	
-	if (115 == keycode)
-	{
-		if (check_step_y(cub->pers, BACKWARD, cub))
-		{
-			cub->pers->y += 1;
-			draw(cub);
-		}
-	}	
-	if (97 == keycode)
-	{
-		if (check_step_x(cub->pers, BACKWARD, cub))
-		{
-			cub->pers->x -= 1;
-			draw(cub);
-		}
-	}
-	if (100 == keycode)
-	{
-		if (check_step_x(cub->pers, FORWARD, cub))
-		{
-			cub->pers->x += 1;
-			draw(cub);
-		}
-	}
-	if (65361 == keycode)
-	{
-		cub->pers->alpha -= 0.4;
-		draw(cub);
-	}
-	if (65363 == keycode)
-	{
-		cub->pers->alpha += 0.4;
-		draw(cub);
-	}
-	else if (65307 == keycode)
+	// if (119 == keycode)
+	// {
+	// 	if (check_step_y(cub->pers, FORWARD, cub))
+	// 	{
+	// 		cub->pers->y -= 1;
+	// 		draw(cub);
+	// 	}
+	// }	
+	// if (115 == keycode)
+	// {
+	// 	if (check_step_y(cub->pers, BACKWARD, cub))
+	// 	{
+	// 		cub->pers->y += 1;
+	// 		draw(cub);
+	// 	}
+	// }	
+	// if (97 == keycode)
+	// {
+	// 	if (check_step_x(cub->pers, BACKWARD, cub))
+	// 	{
+	// 		cub->pers->x -= 1;
+	// 		draw(cub);
+	// 	}
+	// }
+	// if (100 == keycode)
+	// {
+	// 	if (check_step_x(cub->pers, FORWARD, cub))
+	// 	{
+	// 		cub->pers->x += 1;
+	// 		draw(cub);
+	// 	}
+	// }
+	// if (65361 == keycode)
+	// {
+	// 	cub->pers->alpha -= 0.4;
+	// 	draw(cub);
+	// }
+	// if (65363 == keycode)
+	// {
+	// 	cub->pers->alpha += 0.4;
+	// 	draw(cub);
+	// }
+	if (65307 == keycode)
 	{
 		mlx_destroy_window(cub->lib_mlx->mlx, cub->lib_mlx->mlx_win);
 		exit(EXIT_SUCCESS);
@@ -96,17 +96,19 @@ void	print_map(char **map)
 	}
 }
 
-
+int	render(void *param)
+{
+	draw_3d(param);
+	return (0);
+}
 
 int	main(int argc, char **argv)
 {
 	t_cub	*cub;
 
 	cub = parsing(argc, argv);
-	printf("%d, %d\n", cub->pers->x, cub->pers->y);
-	print_map(cub->map);
-	draw(cub);
 	mlx_key_hook (cub->lib_mlx->mlx_win, deal_key, cub);
+	mlx_loop_hook(cub->lib_mlx->mlx, &render, cub);
 	mlx_loop(cub->lib_mlx->mlx);
 	// clean_cub(cub);
 	return (0);

@@ -9,6 +9,7 @@ SRCS			=	./src/main.c\
 					./src/parsing/config_identifier.c\
 					./src/parsing/parse_map.c\
 					./src/parsing/parse_map_utils.c\
+					./src/drawing/draw_3d.c\
 					./src/drawing/draw.c\
 					# ./src/draw.c\
 					# ./src/get_next_line/get_next_line_utils.c\
