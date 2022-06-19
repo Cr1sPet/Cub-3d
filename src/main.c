@@ -55,14 +55,14 @@ int	key_hook (int keycode, t_cub *cub)
     {
 //        if (check_step_x(cub->pers, BACKWARD, cub))
 //        {
-            cub->pers->x -= 1;
+            cub->pers->x += 1;
 //        }
     }
     if (2 == keycode)
     {
 //        if (check_step_x(cub->pers, FORWARD, cub))
 //        {
-            cub->pers->x += 1;
+            cub->pers->x -= 1;
 //        }
     }
     if (123 == keycode)
@@ -154,7 +154,8 @@ int	main(int argc, char **argv)
 	cub = parsing(argc, argv);
     mlx_hook(cub->lib_mlx->mlx_win, 17, 0, ft_exit, &cub);
 	mlx_key_hook (cub->lib_mlx->mlx_win, key_hook, cub);
-    mlx_loop_hook(cub->lib_mlx->mlx, &render, (void *) cub);
+    // mlx_loop_hook(cub->lib_mlx->mlx, &render, (void *) cub);
+    draw_3d(cub);
 	mlx_loop(cub->lib_mlx->mlx);
 	// clean_cub(cub);
 	return (0);

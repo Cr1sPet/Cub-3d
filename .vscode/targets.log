@@ -8,15 +8,16 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This program built for i386-apple-darwin11.3.0
  
 
-# Make data base, printed on Sun Jun 19 17:45:55 2022
+# Make data base, printed on Sun Jun 19 18:21:03 2022
 
 # Variables
 
+ 
 # automatic
 <D = $(patsubst %/,%,$(dir $<))
 # automatic
 ?F = $(notdir $?)
-# makefile (from `Makefile', line 24)
+# makefile (from `Makefile', line 27)
 OBJ = $(SRCS:.c=.o)
 # environment
 VSCODE_LOG_NATIVE = false
@@ -30,13 +31,12 @@ VSCODE_LOG_NATIVE = false
 CURDIR := /Users/spurple/Cub-3d
 # makefile
 SHELL = /bin/sh
-# makefile (from `Makefile', line 30)
+# makefile (from `Makefile', line 33)
 RM = @rm -f
 # environment
 VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupport":true}
 # environment
 _ = /usr/bin/make
- 
 # makefile (from `Makefile', line 1)
 MAKEFILE_LIST :=  Makefile
 # environment
@@ -44,7 +44,7 @@ VSCODE_VERBOSE_LOGGING = true
 # environment
 __CFBundleIdentifier = com.microsoft.VSCode
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /var/folders/zz/zyxvpxvq6csfxvn_n003vmzm00yx7x/T/vscode-ipc-f23ecd55-d302-48c0-b29d-5a234f62eca6.sock
+VSCODE_IPC_HOOK_EXTHOST = /var/folders/zz/zyxvpxvq6csfxvn_n003vmzm00yx7x/T/vscode-ipc-07ea371c-e16f-43ba-acac-a1b76854b7d5.sock
 # environment
 VSCODE_CWD = /
 # environment
@@ -57,6 +57,8 @@ LIBRARY_PATH = /usr/local/Cellar/check/0.15.2/lib:/usr/local/lib
 VSCODE_LOG_STACK = false
 # environment
 ELECTRON_RUN_AS_NODE = 1
+# makefile (from `Makefile', line 20)
+MLX_LIB = ./mlx/libmlx.a
 # default
 .FEATURES := target-specific order-only second-expansion else-if archives jobserver check-symlink
 # environment
@@ -82,7 +84,7 @@ VSCODE_CODE_CACHE_PATH = /Users/spurple/Library/Application Support/Code/CachedD
 # environment
 LOGNAME = spurple
 # environment
-APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
 # environment
 VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # automatic
@@ -97,9 +99,9 @@ MAKECMDGOALS := all
 SRCS = ./src/main.c ./src/get_next_line/get_next_line.c ./src/utils.c ./src/parsing/parsing.c ./src/parsing/validation.c ./src/parsing/parsing_utils.c ./src/parsing/config_identifier.c ./src/parsing/parse_map.c ./src/parsing/parse_map_utils.c ./src/drawing/draw_3d.c ./src/drawing/draw.c 
 # environment
 SHLVL = 1
-# makefile (from `Makefile', line 21)
+# makefile (from `Makefile', line 24)
 LIBFT = libft/libft.a
-# makefile (from `Makefile', line 28)
+# makefile (from `Makefile', line 31)
 CC = gcc -g
 # default
 MAKE_VERSION := 3.81
@@ -131,7 +133,7 @@ MFLAGS = -Rrqp
 XPC_SERVICE_NAME = application.com.microsoft.VSCode.1618569.1618771
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
-# makefile (from `Makefile', line 26)
+# makefile (from `Makefile', line 29)
 OBJ_B = $(SRCS_B:.c=.o)
 # automatic
 +F = $(notdir $+)
@@ -143,9 +145,11 @@ COMMAND_MODE = unix2003
 MAKEFILES := 
 # automatic
 <F = $(notdir $<)
+# makefile (from `Makefile', line 19)
+MLX_DIR = ./mlx/
 # environment
 LC_ALL = C
-# makefile (from `Makefile', line 19)
+# makefile (from `Makefile', line 22)
 HEADER = ./includes/
 # automatic
 ^F = $(notdir $^)
@@ -155,7 +159,6 @@ SUFFIXES :=
 SRCS_B = 
 # default
 .INCLUDE_DIRS = /usr/local/include
- 
 # environment
 MAKELEVEL := 0
 # environment
@@ -163,24 +166,25 @@ LANG = C
 # environment
 VSCODE_PID = 97317
 # variable set hash-table stats:
-# Load=74/1024=7%, Rehash=0, Collisions=3/109=3%
+# Load=76/1024=7%, Rehash=0, Collisions=3/111=3%
 
 # Pattern-specific Variable Values
 
+ 
 # No pattern-specific variable values.
 
 # Directories
 
-# . (device 16777230, inode 11016): 13 files, no impossibilities.
+# . (device 16777230, inode 11016): 14 files, no impossibilities.
 # includes (device 16777230, inode 11086): No files, no impossibilities so far.
 # src (device 16777230, inode 11168): 5 files, no impossibilities so far.
 
-# 18 files, no impossibilities in 3 directories.
+# 19 files, no impossibilities in 3 directories.
 
 # Implicit Rules
 
 %.o: %.c ./includes/
-#  commands to execute (from `Makefile', line 47):
+#  commands to execute (from `Makefile', line 51):
 	$(CC) -g $(FLAGS) -I${HEADER} -c $< -o $@
 	
 
@@ -197,7 +201,7 @@ src/parsing/parsing.o:
 # Not a target:
 includes/:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-19 17:45:28
+#  Last modified 2022-06-19 17:51:37
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -225,7 +229,6 @@ all: cub3D
 #  File has not been updated.
 
 src/main.o: src/main.c includes/
- 
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `src/main'
 #  File does not exist.
@@ -249,7 +252,7 @@ src/main.o: src/main.c includes/
 # ? := src/main.c includes/
 # variable set hash-table stats:
 # Load=8/32=25%, Rehash=0, Collisions=2/15=13%
-#  commands to execute (from `Makefile', line 47):
+#  commands to execute (from `Makefile', line 51):
 	$(CC) -g $(FLAGS) -I${HEADER} -c $< -o $@
 	
 
@@ -260,12 +263,14 @@ cub3D: src/main.o src/get_next_line/get_next_line.o src/utils.o src/parsing/pars
 #  Needs to be updated (-q is set).
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/5=0%
-#  commands to execute (from `Makefile', line 40):
+#  commands to execute (from `Makefile', line 43):
+	@($(MAKE)	-C		$(MLX_DIR))
 	@$(MAKE) all -C ./libft
-	$(CC) $(OBJ) -Lmlx -lmlx -framework OpenGL -framework AppKit -I${HEADER} ${LIBFT} -o $(NAME)
+	$(CC) $(OBJ) $(MLX_LIB) -Lmlx -lmlx -framework OpenGL -framework AppKit -I${HEADER} ${LIBFT} -o $(NAME)
 	
 
 # Not a target:
+ 
 src/drawing/draw_3d.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
@@ -280,7 +285,7 @@ src/drawing/draw_3d.o:
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-19 17:45:52
+#  Last modified 2022-06-19 18:20:42
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -303,7 +308,7 @@ bonus:
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  commands to execute (from `Makefile', line 53):
+#  commands to execute (from `Makefile', line 57):
 	make OBJ="$(OBJ_B)" all
 	
 
@@ -312,7 +317,7 @@ fclean: clean
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  commands to execute (from `Makefile', line 60):
+#  commands to execute (from `Makefile', line 65):
 	@$(MAKE) fclean -C ./libft
 	$(RM) $(NAME)
 	
@@ -320,7 +325,7 @@ fclean: clean
 # Not a target:
 src/main.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-19 17:45:28
+#  Last modified 2022-06-19 17:51:37
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -367,8 +372,9 @@ clean:
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  commands to execute (from `Makefile', line 56):
+#  commands to execute (from `Makefile', line 60):
 	@$(MAKE) clean -C ./libft
+	@(make	clean -C	$(MLX_DIR))
 	$(RM) $(OBJ) $(OBJ_B)
 	
 
@@ -403,6 +409,6 @@ src/parsing/config_identifier.o:
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# Finished Make data base on Sun Jun 19 17:45:55 2022
+# Finished Make data base on Sun Jun 19 18:21:03 2022
 
  

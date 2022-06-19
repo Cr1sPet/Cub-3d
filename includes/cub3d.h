@@ -1,7 +1,7 @@
 #ifndef CUB3D_H
 # define CUB3D_H
 
-# include <mlx.h>
+# include "../mlx/mlx.h"
 # include <stdio.h>
 # include <errno.h>
 # include <fcntl.h>
@@ -11,8 +11,8 @@
 
 # define MALLOC_FAILURE "Error\nmalloc() returned NULL"
 
-# define WIDTH 800
-# define HEIGHT 800
+# define WIDTH 640
+# define HEIGHT 480
 # define SCALE 15
 # define FORWARD 1
 # define BACKWARD 0
@@ -35,8 +35,8 @@ typedef struct s_config
 
 typedef struct s_pers_pos
 {
-	int		x;
-	int		y;
+	double		x;
+	double		y;
 	char	side;
 	double	dirX;
 	double	dirY;
@@ -56,11 +56,6 @@ typedef struct s_mlx
 
 typedef struct s_cub
 {
-	double		x;
-	double		y;
-	double		start;
-	double		end;
-	double		dir;
 	char		**map;
 	int			map_len;
 	t_pers_pos	*pers;

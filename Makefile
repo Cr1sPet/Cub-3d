@@ -16,6 +16,9 @@ SRCS			=	./src/main.c\
 
 SRCS_B			=
 
+MLX_DIR			=	./mlx/
+MLX_LIB			=	./mlx/libmlx.a
+
 HEADER			= ./includes/
 
 LIBFT			= libft/libft.a
@@ -37,8 +40,9 @@ all:			$(NAME)
 
 
 $(NAME):		$(OBJ) ./includes/cub3d.h ./includes/parsing.h
+				@($(MAKE)	-C		$(MLX_DIR))
 				@$(MAKE) all -C ./libft
-				$(CC) $(OBJ) -Lmlx -lmlx -framework OpenGL -framework AppKit -I${HEADER} ${LIBFT} -o $(NAME)
+				$(CC) $(OBJ) $(MLX_LIB) -Lmlx -lmlx -framework OpenGL -framework AppKit -I${HEADER} ${LIBFT} -o $(NAME)
 # $(CC) $(OBJ) -Lmlx -lmlx -L/usr/lib -Imlx -lXext -lX11 -lm -lz -I${HEADER} ${LIBFT} -o $(NAME)
 # $(CC) $(OBJ) -I${HEADER} ${LIBFT} -o $(NAME)
 
@@ -54,6 +58,7 @@ bonus:
 
 clean:
 				@$(MAKE) clean -C ./libft
+				@(make	clean -C	$(MLX_DIR))
 				$(RM) $(OBJ) $(OBJ_B)
 
 fclean:			clean
