@@ -34,99 +34,99 @@ int	ft_exit(void)
     exit(0);
 }
 
-// int	key_hook (int keycode, t_cub *cub)
-// {
-//     printf ("%d\n", keycode);
-//     if (13 == keycode)
-//     {
-// //        if (check_step_y(cub->pers, FORWARD, cub))
-// //        {
-//             cub->pers->y -= 1;
-// //        }
-//     }
-//     if (1 == keycode)
-//     {
-// //        if (check_step_y(cub->pers, BACKWARD, cub))
-// //        {
-//             cub->pers->y += 1;
-// //        }
-//     }
-//     if (0 == keycode)
-//     {
-// //        if (check_step_x(cub->pers, BACKWARD, cub))
-// //        {
-//             cub->pers->x -= 1;
-// //        }
-//     }
-//     if (2 == keycode)
-//     {
-// //        if (check_step_x(cub->pers, FORWARD, cub))
-// //        {
-//             cub->pers->x += 1;
-// //        }
-//     }
-//     if (123 == keycode)
-//     {
-//         cub->pers->alpha -= 0.4;
-//     }
-//     if (124 == keycode)
-//     {
-//         cub->pers->alpha += 0.4;
-//     }
-//     else if (53 == keycode)
-//     {
-//         mlx_destroy_window(cub->lib_mlx->mlx, cub->lib_mlx->mlx_win);
-//         exit(EXIT_SUCCESS);
-//     }
-//     return (0);
-// }
-
 int	key_hook (int keycode, t_cub *cub)
 {
     printf ("%d\n", keycode);
-    if (119 == keycode)
+    if (13 == keycode)
     {
 //        if (check_step_y(cub->pers, FORWARD, cub))
 //        {
             cub->pers->y -= 1;
 //        }
     }
-    if (115 == keycode)
+    if (1 == keycode)
     {
 //        if (check_step_y(cub->pers, BACKWARD, cub))
 //        {
             cub->pers->y += 1;
 //        }
     }
-    if (97 == keycode)
+    if (0 == keycode)
     {
 //        if (check_step_x(cub->pers, BACKWARD, cub))
 //        {
             cub->pers->x -= 1;
 //        }
     }
-    if (100 == keycode)
+    if (2 == keycode)
     {
 //        if (check_step_x(cub->pers, FORWARD, cub))
 //        {
             cub->pers->x += 1;
 //        }
     }
-    if (65361 == keycode)
+    if (123 == keycode)
     {
         cub->pers->alpha -= 0.4;
     }
-    if (65363 == keycode)
+    if (124 == keycode)
     {
         cub->pers->alpha += 0.4;
     }
-    else if (65307 == keycode)
+    else if (53 == keycode)
     {
         mlx_destroy_window(cub->lib_mlx->mlx, cub->lib_mlx->mlx_win);
         exit(EXIT_SUCCESS);
     }
     return (0);
 }
+
+// int	key_hook (int keycode, t_cub *cub)
+// {
+//     printf ("%d\n", keycode);
+//     if (119 == keycode)
+//     {
+// //        if (check_step_y(cub->pers, FORWARD, cub))
+// //        {
+//             cub->pers->y -= 1;
+// //        }
+//     }
+//     if (115 == keycode)
+//     {
+// //        if (check_step_y(cub->pers, BACKWARD, cub))
+// //        {
+//             cub->pers->y += 1;
+// //        }
+//     }
+//     if (97 == keycode)
+//     {
+// //        if (check_step_x(cub->pers, BACKWARD, cub))
+// //        {
+//             cub->pers->x -= 1;
+// //        }
+//     }
+//     if (100 == keycode)
+//     {
+// //        if (check_step_x(cub->pers, FORWARD, cub))
+// //        {
+//             cub->pers->x += 1;
+// //        }
+//     }
+//     if (65361 == keycode)
+//     {
+//         cub->pers->alpha -= 0.4;
+//     }
+//     if (65363 == keycode)
+//     {
+//         cub->pers->alpha += 0.4;
+//     }
+//     else if (65307 == keycode)
+//     {
+//         mlx_destroy_window(cub->lib_mlx->mlx, cub->lib_mlx->mlx_win);
+//         exit(EXIT_SUCCESS);
+//     }
+//     return (0);
+// }
 
 // void	print_map(char **map)
 // {

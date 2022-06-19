@@ -1,292 +1,169 @@
 make all --print-data-base --no-builtin-variables --no-builtin-rules --question
-# GNU Make 4.3
- 
-# Built for x86_64-pc-linux-gnu
- 
-# Copyright (C) 1988-2020 Free Software Foundation, Inc.
- 
-# License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
- 
-# This is free software: you are free to change and redistribute it.
- 
-# There is NO WARRANTY, to the extent permitted by law.
+# GNU Make 3.81
+# Copyright (C) 2006  Free Software Foundation, Inc.
+# This is free software; see the source for copying conditions.
+# There is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE.
+
+# This program built for i386-apple-darwin11.3.0
  
 
- 
-# Make data base, printed on Sun Jun 19 13:55:05 2022
- 
+# Make data base, printed on Sun Jun 19 17:45:55 2022
 
 # Variables
- 
 
- 
-# makefile (from 'Makefile', line 24)
- 
+# automatic
+<D = $(patsubst %/,%,$(dir $<))
+# automatic
+?F = $(notdir $?)
+# makefile (from `Makefile', line 24)
 OBJ = $(SRCS:.c=.o)
- 
 # environment
- 
-GDK_BACKEND = x11
-# environment
-LC_ALL = C
-# environment
-GNOME_SHELL_SESSION_MODE = ubuntu
-# environment
-SSH_AGENT_LAUNCHER = gnome-keyring
-# environment
-SNAP_INSTANCE_KEY = 
-# environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-ed50eeef-a736-4dde-894d-6f5a6a4ffae4.sock
-# environment
-VSCODE_CWD = /home/mdev/Cub-3d
-# default
-MAKE_COMMAND := make
-# environment
-QT_ACCESSIBILITY = 1
+VSCODE_LOG_NATIVE = false
+# automatic
+?D = $(patsubst %/,%,$(dir $?))
 # automatic
 @D = $(patsubst %/,%,$(dir $@))
-# environment
-SNAP_INSTANCE_NAME = code
-# environment
-GDK_PIXBUF_MODULEDIR = /snap/code/98/usr/lib/x86_64-linux-gnu/gdk-pixbuf-2.0/2.10.0/loaders
-# environment
-VSCODE_HANDLES_UNCAUGHT_ERRORS = true
-# default
-.VARIABLES := 
-# environment
-PWD = /home/mdev/Cub-3d
-# automatic
-%D = $(patsubst %/,%,$(dir $%))
-# environment
-LSCOLORS = Gxfxcxdxbxegedabagacad
-# environment
-XDG_DATA_DIRS = /usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop
-# environment
-OLDPWD = /home/mdev/Cub-3d
-# automatic
-^D = $(patsubst %/,%,$(dir $^))
-# environment
-VSCODE_LOG_STACK = false
-# automatic
-%F = $(notdir $%)
-# environment
-VSCODE_CODE_CACHE_PATH = /home/mdev/.config/Code/CachedData/4af164ea3a06f701fe3e89a2bcbb421d2026b68f
-# makefile (from 'Makefile', line 21)
-LIBFT = libft/libft.a
-# environment
-LANG = C
-# environment
-XAUTHORITY = /run/user/1000/.mutter-Xwaylandauth.KRLMN1
-# default
-.LOADED := 
-# default
-.INCLUDE_DIRS = /usr/local/include /usr/include /usr/include
-# environment
-GNOME_TERMINAL_SERVICE = :1.1214
-# makefile
-MAKEFLAGS = pqrR
-# makefile (from 'Makefile', line 17)
-SRCS_B = 
-# makefile
-CURDIR := /home/mdev/Cub-3d
-# environment
-VSCODE_PIPE_LOGGING = true
-# environment
-APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
-# environment
-LESSOPEN = | /usr/bin/lesspipe %s
-# makefile (from 'Makefile', line 3)
-SRCS = ./src/main.c ./src/get_next_line/get_next_line.c ./src/utils.c ./src/parsing/parsing.c ./src/parsing/validation.c ./src/parsing/parsing_utils.c ./src/parsing/config_identifier.c ./src/parsing/parse_map.c ./src/parsing/parse_map_utils.c ./src/drawing/draw_3d.c ./src/drawing/draw.c 
-# automatic
-*D = $(patsubst %/,%,$(dir $*))
-# environment
-MFLAGS = -pqrR
-# environment
-SSH_AUTH_SOCK = /run/user/1000/keyring/ssh
-# default
-.SHELLFLAGS := -c
-# environment
-WAYLAND_DISPLAY = wayland-0
-# environment
-XDG_CONFIG_DIRS = /etc/xdg/xdg-ubuntu:/etc/xdg
-# automatic
-+D = $(patsubst %/,%,$(dir $+))
-# environment
-XDG_SESSION_DESKTOP = ubuntu
-# makefile (from 'Makefile', line 1)
-MAKEFILE_LIST := Makefile
-# environment
-SNAP_REEXEC = 
 # automatic
 @F = $(notdir $@)
+# makefile
+CURDIR := /Users/spurple/Cub-3d
+# makefile
+SHELL = /bin/sh
+# makefile (from `Makefile', line 30)
+RM = @rm -f
 # environment
-ZSH = /home/mdev/.oh-my-zsh
+VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupport":true}
+# environment
+_ = /usr/bin/make
+ 
+# makefile (from `Makefile', line 1)
+MAKEFILE_LIST :=  Makefile
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_PID = 23647
+__CFBundleIdentifier = com.microsoft.VSCode
 # environment
-XDG_SESSION_TYPE = wayland
-# automatic
-?D = $(patsubst %/,%,$(dir $?))
+VSCODE_IPC_HOOK_EXTHOST = /var/folders/zz/zyxvpxvq6csfxvn_n003vmzm00yx7x/T/vscode-ipc-f23ecd55-d302-48c0-b29d-5a234f62eca6.sock
 # environment
-SESSION_MANAGER = local/mdev-VirtualBox:@/tmp/.ICE-unix/1533,unix/mdev-VirtualBox:/tmp/.ICE-unix/1533
-# automatic
-*F = $(notdir $*)
+VSCODE_CWD = /
 # environment
-CHROME_DESKTOP = code-url-handler.desktop
+PATH = /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/usr/local/munki:/Library/Apple/usr/bin
 # environment
-DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus
-# automatic
-<D = $(patsubst %/,%,$(dir $<))
+C_INCLUDE_PATH = /usr/local/include/
 # environment
-VSCODE_NLS_CONFIG = {"locale":"ru","availableLanguages":{"*":"ru"},"_languagePackId":"4165c719fdf7a78444ed970b4565033b.ru","_translationsConfigFile":"/home/mdev/.config/Code/clp/4165c719fdf7a78444ed970b4565033b.ru/tcf.json","_cacheRoot":"/home/mdev/.config/Code/clp/4165c719fdf7a78444ed970b4565033b.ru","_resolvedLanguagePackCoreLocation":"/home/mdev/.config/Code/clp/4165c719fdf7a78444ed970b4565033b.ru/4af164ea3a06f701fe3e89a2bcbb421d2026b68f","_corruptedFile":"/home/mdev/.config/Code/clp/4165c719fdf7a78444ed970b4565033b.ru/corrupted.info","_languagePackSupport":true}
+LIBRARY_PATH = /usr/local/Cellar/check/0.15.2/lib:/usr/local/lib
+# environment
+VSCODE_LOG_STACK = false
+# environment
+ELECTRON_RUN_AS_NODE = 1
 # default
-MAKE_HOST := x86_64-pc-linux-gnu
+.FEATURES := target-specific order-only second-expansion else-if archives jobserver check-symlink
 # environment
-GNOME_DESKTOP_SESSION_ID = this-is-deprecated
-# makefile
-SHELL = /bin/sh
-# default
-MAKECMDGOALS := all
+SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.Zp4xZO0vd2/Listeners
 # environment
-XMODIFIERS = @im=ibus
-# environment
-SHLVL = 2
-# environment
-GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/da74dfec_fc64_4158_8068_6b92e51a9d79
-# environment
-MAKELEVEL := 0
-# default
-MAKE = $(MAKE_COMMAND)
-# environment
-SNAP_COOKIE = 24So0Q0ZlZRLmQ6-K1Lq-utHOCodUEIRpaUx2LSDcdZknY0MjWYJ
-# environment
-PATH = /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin
-# default
-MAKEFILES := 
+CPLUS_INCLUDE_PATH = /usr/local/include/
 # automatic
-^F = $(notdir $^)
-# makefile (from 'Makefile', line 19)
-HEADER = ./includes/
+%F = $(notdir $%)
 # environment
-SNAP_USER_COMMON = /home/mdev/snap/code/common
+VSCODE_PIPE_LOGGING = true
 # environment
-SNAP = /snap/code/98
+PWD = /Users/spurple/Cub-3d
 # environment
-SNAP_REVISION = 98
-# environment
-SNAP_REAL_HOME = /home/mdev
-# makefile (from 'Makefile', line 26)
-OBJ_B = $(SRCS_B:.c=.o)
-# environment
-VSCODE_LOG_NATIVE = false
-# environment
-USERNAME = mdev
-# environment
-GNOME_SETUP_DISPLAY = :1
-# environment
-LESSCLOSE = /usr/bin/lesspipe %s %s
-# automatic
-?F = $(notdir $?)
-# makefile (from 'Makefile', line 1)
-NAME = cub3D
-# environment
-XDG_CURRENT_DESKTOP = Unity
-# environment
-LS_COLORS = rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:
-# automatic
-+F = $(notdir $+)
-# environment
-LESS = -R
-# environment
-DESKTOP_SESSION = ubuntu
-# environment
-ORIGINAL_XDG_CURRENT_DESKTOP = ubuntu:GNOME
-# 'override' directive
-GNUMAKEFLAGS := 
-# environment
-LOGNAME = mdev
-# environment
-SNAP_ARCH = amd64
-# makefile
-.DEFAULT_GOAL := all
-# environment
-SYSTEMD_EXEC_PID = 1558
-# makefile (from 'Makefile', line 30)
-RM = @rm -f
-# environment
-DISPLAY = :0
-# environment
-USER = mdev
-# environment
-GTK_MODULES = gail:atk-bridge
-# default
-MAKE_VERSION := 4.3
-# environment
-DISABLE_WAYLAND = 1
-# environment
-SNAP_DATA = /var/snap/code/98
-# environment
-SNAP_CONTEXT = 24So0Q0ZlZRLmQ6-K1Lq-utHOCodUEIRpaUx2LSDcdZknY0MjWYJ
-# environment
-PAGER = less
-# environment
-XDG_RUNTIME_DIR = /run/user/1000
-# environment
-COLORTERM = truecolor
-# environment
-GDK_PIXBUF_MODULE_FILE = /home/mdev/snap/code/common/.cache/gdk-pixbuf-loaders.cache
-# environment
-XDG_SESSION_CLASS = user
+ORIGINAL_XDG_CURRENT_DESKTOP = undefined
 # environment
 VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
 # environment
-HOME = /home/mdev
-# environment
-QT_IM_MODULE = ibus
-# environment
-ELECTRON_RUN_AS_NODE = 1
-# environment
-VSCODE_IPC_HOOK = /run/user/1000/vscode-31d619a6-1.68.0-main.sock
-# environment
-TERM = xterm-256color
-# environment
-SNAP_NAME = code
-# environment
-GSETTINGS_SCHEMA_DIR = /snap/code/98/usr/share/glib-2.0/schemas
-# environment
-IM_CONFIG_PHASE = 1
+HOME = /Users/spurple
 # default
-.RECIPEPREFIX := 
+MAKEFILEPATH := /Applications/Xcode.app/Contents/Developer/Makefiles
+# environment
+VSCODE_CODE_CACHE_PATH = /Users/spurple/Library/Application Support/Code/CachedData/da15b6fd3ef856477bf6f4fb29ba1b7af717770d
+# environment
+LOGNAME = spurple
+# environment
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
+# environment
+VSCODE_HANDLES_UNCAUGHT_ERRORS = true
+# automatic
+^D = $(patsubst %/,%,$(dir $^))
+# environment
+XPC_FLAGS = 0x0
+# default
+MAKE = $(MAKE_COMMAND)
+# default
+MAKECMDGOALS := all
+# makefile (from `Makefile', line 3)
+SRCS = ./src/main.c ./src/get_next_line/get_next_line.c ./src/utils.c ./src/parsing/parsing.c ./src/parsing/validation.c ./src/parsing/parsing_utils.c ./src/parsing/config_identifier.c ./src/parsing/parse_map.c ./src/parsing/parse_map_utils.c ./src/drawing/draw_3d.c ./src/drawing/draw.c 
+# environment
+SHLVL = 1
+# makefile (from `Makefile', line 21)
+LIBFT = libft/libft.a
+# makefile (from `Makefile', line 28)
+CC = gcc -g
+# default
+MAKE_VERSION := 3.81
+# environment
+USER = spurple
+# makefile
+.DEFAULT_GOAL := all
+# makefile (from `Makefile', line 1)
+NAME = cub3D
+# automatic
+%D = $(patsubst %/,%,$(dir $%))
+# default
+MAKE_COMMAND := /Applications/Xcode.app/Contents/Developer/usr/bin/make
+# default
+.VARIABLES := 
+# environment
+TMPDIR = /var/folders/zz/zyxvpxvq6csfxvn_n003vmzm00yx7x/T/
+# automatic
+*F = $(notdir $*)
+# environment
+VSCODE_IPC_HOOK = /Users/spurple/Library/Application Support/Code/1.67.1-main.sock
+# makefile
+MAKEFLAGS = Rrqp
+# environment
+MFLAGS = -Rrqp
+# automatic
+*D = $(patsubst %/,%,$(dir $*))
+# environment
+XPC_SERVICE_NAME = application.com.microsoft.VSCode.1618569.1618771
+# automatic
++D = $(patsubst %/,%,$(dir $+))
+# makefile (from `Makefile', line 26)
+OBJ_B = $(SRCS_B:.c=.o)
+# automatic
++F = $(notdir $+)
+# environment
+__CF_USER_TEXT_ENCODING = 0xF74FD:0x0:0x0
+# environment
+COMMAND_MODE = unix2003
+# default
+MAKEFILES := 
 # automatic
 <F = $(notdir $<)
 # environment
-SNAP_VERSION = 4af164ea
+LC_ALL = C
+# makefile (from `Makefile', line 19)
+HEADER = ./includes/
+# automatic
+^F = $(notdir $^)
 # default
 SUFFIXES := 
-# environment
-VSCODE_CLI = 1
-# environment
-ELECTRON_NO_ATTACH_CONSOLE = 1
-# environment
-VTE_VERSION = 6800
-# environment
-SNAP_COMMON = /var/snap/code/common
+# makefile (from `Makefile', line 17)
+SRCS_B = 
 # default
-.FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell nocomment grouped-target extra-prereqs archives jobserver output-sync check-symlink load
-# makefile (from 'Makefile', line 28)
-CC = gcc -g
+.INCLUDE_DIRS = /usr/local/include
+ 
 # environment
-SNAP_USER_DATA = /home/mdev/snap/code/98
+MAKELEVEL := 0
 # environment
-XDG_MENU_PREFIX = gnome-
+LANG = C
 # environment
-GDMSESSION = ubuntu
-# environment
-SNAP_LIBRARY_PATH = /var/lib/snapd/lib/gl:/var/lib/snapd/lib/gl32:/var/lib/snapd/void
+VSCODE_PID = 97317
 # variable set hash-table stats:
-# Load=131/1024=13%, Rehash=0, Collisions=17/173=10%
+# Load=74/1024=7%, Rehash=0, Collisions=3/109=3%
 
 # Pattern-specific Variable Values
 
@@ -294,31 +171,126 @@ SNAP_LIBRARY_PATH = /var/lib/snapd/lib/gl:/var/lib/snapd/lib/gl32:/var/lib/snapd
 
 # Directories
 
-# src/drawing (device 2051, inode 526255): 3 files, no impossibilities so far.
-# src (device 2051, inode 402088): 8 files, no impossibilities so far.
-# src/get_next_line (device 2051, inode 402090): 1 files, no impossibilities so far.
-# . (device 2051, inode 396025): 13 files, no impossibilities.
-# includes (device 2051, inode 396115): No files, no impossibilities so far.
-# src/parsing (device 2051, inode 402095): 14 files, no impossibilities so far.
+# . (device 16777230, inode 11016): 13 files, no impossibilities.
+# includes (device 16777230, inode 11086): No files, no impossibilities so far.
+# src (device 16777230, inode 11168): 5 files, no impossibilities so far.
 
- 
-# 39 files, no impossibilities in 6 directories.
+# 18 files, no impossibilities in 3 directories.
 
 # Implicit Rules
 
-%.o: %.c includes/
-#  recipe to execute (from 'Makefile', line 48):
-				$(CC) -g $(FLAGS) -I/usr/include -Imlx -O3 -I${HEADER} -c $< -o $@
+%.o: %.c ./includes/
+#  commands to execute (from `Makefile', line 47):
+	$(CC) -g $(FLAGS) -I${HEADER} -c $< -o $@
+	
 
 # 1 implicit rules, 0 (0.0%) terminal.
+
 # Files
 
 # Not a target:
-src/parsing/validation.c:
+src/parsing/parsing.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+includes/:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-17 20:09:53.255146472
+#  Last modified 2022-06-19 17:45:28
 #  File has been updated.
 #  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+includes/cub3d.h:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+all: cub3D
+#  Phony target (prerequisite of .PHONY).
+#  Command-line target.
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/5=0%
+
+.PHONY: all clean fclean re bonus
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+src/main.o: src/main.c includes/
+ 
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `src/main'
+#  File does not exist.
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# automatic
+# @ := src/main.o
+# automatic
+# % := 
+# automatic
+# * := src/main
+# automatic
+# + := src/main.c includes/
+# automatic
+# | := 
+# automatic
+# < := src/main.c
+# automatic
+# ^ := src/main.c includes/
+# automatic
+# ? := src/main.c includes/
+# variable set hash-table stats:
+# Load=8/32=25%, Rehash=0, Collisions=2/15=13%
+#  commands to execute (from `Makefile', line 47):
+	$(CC) -g $(FLAGS) -I${HEADER} -c $< -o $@
+	
+
+cub3D: src/main.o src/get_next_line/get_next_line.o src/utils.o src/parsing/parsing.o src/parsing/validation.o src/parsing/parsing_utils.o src/parsing/config_identifier.o src/parsing/parse_map.o src/parsing/parse_map_utils.o src/drawing/draw_3d.o src/drawing/draw.o includes/cub3d.h includes/parsing.h
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/5=0%
+#  commands to execute (from `Makefile', line 40):
+	@$(MAKE) all -C ./libft
+	$(CC) $(OBJ) -Lmlx -lmlx -framework OpenGL -framework AppKit -I${HEADER} ${LIBFT} -o $(NAME)
+	
+
+# Not a target:
+src/drawing/draw_3d.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+.SUFFIXES:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+Makefile:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-19 17:45:52
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+src/parsing/parse_map_utils.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # Not a target:
 includes/parsing.h:
@@ -326,203 +298,42 @@ includes/parsing.h:
 #  Modification time never checked.
 #  File has not been updated.
 
-# Not a target:
-src/drawing/draw_3d.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-06-19 13:54:08.36254303
-#  File has been updated.
-#  Successfully updated.
-
-src/parsing/parse_map.o: src/parsing/parse_map.c includes/
-#  Implicit rule search has been done.
-#  Implicit/static pattern stem: 'src/parsing/parse_map'
-#  Last modified 2022-06-19 13:54:56.647324202
-#  File has been updated.
-#  Successfully updated.
-#  recipe to execute (from 'Makefile', line 48):
-				$(CC) -g $(FLAGS) -I/usr/include -Imlx -O3 -I${HEADER} -c $< -o $@
-
-# Not a target:
-src/parsing/parse_map_utils.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-06-19 13:54:08.36254303
-#  File has been updated.
-#  Successfully updated.
-
-# Not a target:
-src/parsing/config_identifier.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-06-18 13:31:07.748720172
-#  File has been updated.
-#  Successfully updated.
-
-src/get_next_line/get_next_line.o: src/get_next_line/get_next_line.c includes/
-#  Implicit rule search has been done.
-#  Implicit/static pattern stem: 'src/get_next_line/get_next_line'
-#  Last modified 2022-06-19 13:54:55.678632152
-#  File has been updated.
-#  Successfully updated.
-#  recipe to execute (from 'Makefile', line 48):
-				$(CC) -g $(FLAGS) -I/usr/include -Imlx -O3 -I${HEADER} -c $< -o $@
-
-# Not a target:
-src/parsing/parse_map.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-06-17 20:09:53.255146472
-#  File has been updated.
-#  Successfully updated.
-
-# Not a target:
-Makefile:
-#  Implicit rule search has been done.
-#  Last modified 2022-06-19 13:54:51.607770955
-#  File has been updated.
-#  Successfully updated.
-
-# Not a target:
-src/parsing/parsing_utils.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-06-17 20:09:53.255146472
-#  File has been updated.
-#  Successfully updated.
-
-src/utils.o: src/utils.c includes/
-#  Implicit rule search has been done.
-#  Implicit/static pattern stem: 'src/utils'
-#  Last modified 2022-06-19 13:54:55.810726156
-#  File has been updated.
-#  Successfully updated.
-#  recipe to execute (from 'Makefile', line 48):
-				$(CC) -g $(FLAGS) -I/usr/include -Imlx -O3 -I${HEADER} -c $< -o $@
-
 bonus:
 #  Phony target (prerequisite of .PHONY).
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 53):
-				make OBJ="$(OBJ_B)" all
+#  commands to execute (from `Makefile', line 53):
+	make OBJ="$(OBJ_B)" all
+	
 
-src/drawing/draw_3d.o: src/drawing/draw_3d.c includes/
-#  Implicit rule search has been done.
-#  Implicit/static pattern stem: 'src/drawing/draw_3d'
-#  File does not exist.
-#  File has been updated.
-#  Needs to be updated (-q is set).
-# automatic
-# @ := src/drawing/draw_3d.o
-# automatic
-# * := src/drawing/draw_3d
-# automatic
-# < := src/drawing/draw_3d.c
-# automatic
-# + := src/drawing/draw_3d.c includes/
-# automatic
-# % := 
-# automatic
-# ^ := src/drawing/draw_3d.c includes/
-# automatic
-# ? := src/drawing/draw_3d.c includes/
-# automatic
-# | := 
-# variable set hash-table stats:
-# Load=8/32=25%, Rehash=0, Collisions=2/16=12%
-#  recipe to execute (from 'Makefile', line 48):
-				$(CC) -g $(FLAGS) -I/usr/include -Imlx -O3 -I${HEADER} -c $< -o $@
-
-clean:
+fclean: clean
 #  Phony target (prerequisite of .PHONY).
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 56):
-				@$(MAKE) clean -C ./libft
-				$(RM) $(OBJ) $(OBJ_B)
-
-# Not a target:
-src/parsing/parsing.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-06-17 20:09:53.255146472
-#  File has been updated.
-#  Successfully updated.
+#  commands to execute (from `Makefile', line 60):
+	@$(MAKE) fclean -C ./libft
+	$(RM) $(NAME)
+	
 
 # Not a target:
 src/main.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-19 13:54:08.36254303
+#  Last modified 2022-06-19 17:45:28
 #  File has been updated.
 #  Successfully updated.
-
-re: fclean cub3D
-#  Phony target (prerequisite of .PHONY).
-#  Implicit rule search has not been done.
-#  File does not exist.
-#  File has not been updated.
-
-src/main.o: src/main.c includes/
-#  Implicit rule search has been done.
-#  Implicit/static pattern stem: 'src/main'
-#  Last modified 2022-06-19 13:54:55.470484025
-#  File has been updated.
-#  Successfully updated.
-#  recipe to execute (from 'Makefile', line 48):
-				$(CC) -g $(FLAGS) -I/usr/include -Imlx -O3 -I${HEADER} -c $< -o $@
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # Not a target:
-.DEFAULT:
+src/utils.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 
-src/parsing/parsing.o: src/parsing/parsing.c includes/
-#  Implicit rule search has been done.
-#  Implicit/static pattern stem: 'src/parsing/parsing'
-#  Last modified 2022-06-19 13:54:55.950825857
-#  File has been updated.
-#  Successfully updated.
-#  recipe to execute (from 'Makefile', line 48):
-				$(CC) -g $(FLAGS) -I/usr/include -Imlx -O3 -I${HEADER} -c $< -o $@
-
-all: cub3D
-#  Phony target (prerequisite of .PHONY).
-#  Command line target.
-#  Implicit rule search has not been done.
-#  File does not exist.
-#  File has been updated.
-#  Needs to be updated (-q is set).
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/6=0%
-
-fclean: clean
- 
-#  Phony target (prerequisite of .PHONY).
-#  Implicit rule search has not been done.
-#  File does not exist.
-#  File has not been updated.
-#  recipe to execute (from 'Makefile', line 60):
-				@$(MAKE) fclean -C ./libft
-				$(RM) $(NAME)
-
-src/parsing/parsing_utils.o: src/parsing/parsing_utils.c includes/
-#  Implicit rule search has been done.
-#  Implicit/static pattern stem: 'src/parsing/parsing_utils'
-#  Last modified 2022-06-19 13:54:56.235029068
-#  File has been updated.
-#  Successfully updated.
-#  recipe to execute (from 'Makefile', line 48):
-				$(CC) -g $(FLAGS) -I/usr/include -Imlx -O3 -I${HEADER} -c $< -o $@
-
-src/parsing/validation.o: src/parsing/validation.c includes/
-#  Implicit rule search has been done.
-#  Implicit/static pattern stem: 'src/parsing/validation'
-#  Last modified 2022-06-19 13:54:56.074914452
-#  File has been updated.
-#  Successfully updated.
-#  recipe to execute (from 'Makefile', line 48):
-				$(CC) -g $(FLAGS) -I/usr/include -Imlx -O3 -I${HEADER} -c $< -o $@
-
 # Not a target:
-includes/cub3d.h:
+.DEFAULT:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -534,74 +345,64 @@ src/drawing/draw.o:
 #  File has not been updated.
 
 # Not a target:
-includes/:
-#  Implicit rule search has been done.
-#  Last modified 2022-06-19 13:54:08.36254303
-#  File has been updated.
-#  Successfully updated.
+src/parsing/parsing_utils.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
-cub3D: src/main.o src/get_next_line/get_next_line.o src/utils.o src/parsing/parsing.o src/parsing/validation.o src/parsing/parsing_utils.o src/parsing/config_identifier.o src/parsing/parse_map.o src/parsing/parse_map_utils.o src/drawing/draw_3d.o src/drawing/draw.o includes/cub3d.h includes/parsing.h
+re: fclean cub3D
+#  Phony target (prerequisite of .PHONY).
 #  Implicit rule search has not been done.
 #  File does not exist.
-#  File has been updated.
-#  Needs to be updated (-q is set).
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/6=0%
-#  recipe to execute (from 'Makefile', line 40):
-				@$(MAKE) all -C ./libft
-				$(CC) $(OBJ) -Lmlx -lmlx -L/usr/lib -Imlx -lXext -lX11 -lm -lz -I${HEADER} ${LIBFT} -o $(NAME)
+#  File has not been updated.
 
 # Not a target:
-src/utils.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-06-17 20:09:53.255146472
-#  File has been updated.
-#  Successfully updated.
+src/parsing/parse_map.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
-src/parsing/parse_map_utils.o: src/parsing/parse_map_utils.c includes/
-#  Implicit rule search has been done.
-#  Implicit/static pattern stem: 'src/parsing/parse_map_utils'
-#  Last modified 2022-06-19 13:54:56.83145601
-#  File has been updated.
-#  Successfully updated.
-#  recipe to execute (from 'Makefile', line 48):
-				$(CC) -g $(FLAGS) -I/usr/include -Imlx -O3 -I${HEADER} -c $< -o $@
+clean:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 56):
+	@$(MAKE) clean -C ./libft
+	$(RM) $(OBJ) $(OBJ_B)
+	
 
-.PHONY: all clean fclean re bonus
+# Not a target:
+src/parsing/validation.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 
 # Not a target:
-src/get_next_line/get_next_line.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-06-17 20:09:53.255146472
-#  File has been updated.
-#  Successfully updated.
+src/get_next_line/get_next_line.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
-src/parsing/config_identifier.o: src/parsing/config_identifier.c includes/
-#  Implicit rule search has been done.
-#  Implicit/static pattern stem: 'src/parsing/config_identifier'
-#  Last modified 2022-06-19 13:54:56.423163741
-#  File has been updated.
-#  Successfully updated.
-#  recipe to execute (from 'Makefile', line 48):
-				$(CC) -g $(FLAGS) -I/usr/include -Imlx -O3 -I${HEADER} -c $< -o $@
+# Not a target:
+src/parsing/config_identifier.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # files hash-table stats:
-# Load=34/1024=3%, Rehash=0, Collisions=13/122=11%
+# Load=25/1024=2%, Rehash=0, Collisions=0/65=0%
 # VPATH Search Paths
 
-# No 'vpath' search paths.
+# No `vpath' search paths.
 
-# No general ('VPATH' variable) search path.
+# No general (`VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 83 / storage = 1248 B / avg = 15 B
-# current buf: size = 8162 B / used = 1248 B / count = 83 / avg = 15 B
+# # of strings in strcache: 1
+# # of strcache buffers: 1
+# strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
+# strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# strcache performance: lookups = 142 / hit rate = 41%
-# hash-table stats:
-# Load=83/8192=1%, Rehash=0, Collisions=2/142=1%
-# Finished Make data base on Sun Jun 19 13:55:05 2022
+# Finished Make data base on Sun Jun 19 17:45:55 2022
 
  
