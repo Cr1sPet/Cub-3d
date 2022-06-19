@@ -36,26 +36,40 @@ int	ft_exit(void)
 
 int	key_hook (int keycode, t_cub *cub)
 {
+     double timee = 0; //время текущего кадра
+   double oldTime = 0; //время предыдущего кадра
     printf ("%d\n", keycode);
+    oldTime = timee;
+    timee = time(NULL);
+    double frameTime = (timee - oldTime) / 1000.0;
+    double moveSpeed = frameTime * 5.0; //the constant value is in squares/second
+    double rotSpeed = frameTime * 3.0;
+     double planeX = 0, planeY = 0.66;
     if (13 == keycode)
     {
 //        if (check_step_y(cub->pers, FORWARD, cub))
 //        {
-            cub->pers->y -= 1;
+            cub->pers->x += cub->pers->dirX;
 //        }
     }
     if (1 == keycode)
     {
 //        if (check_step_y(cub->pers, BACKWARD, cub))
 //        {
-            cub->pers->y += 1;
+             cub->pers->x -= cub->pers->dirX;
 //        }
     }
     if (0 == keycode)
     {
 //        if (check_step_x(cub->pers, BACKWARD, cub))
 //        {
-            cub->pers->x += 1;
+
+              double oldDirX = cub->pers->dirX;
+            cub->pers->dirX = cub->pers->dirX * cos(rotSpeed) - cub->pers->dirY * sin(rotSpeed);
+       cub->pers->dirY = oldDirX * sin(rotSpeed) + cub->pers->dirY * cos(rotSpeed);
+      double oldPlaneX = cub->pers->planeX;
+      cub->pers->planeX = cub->pers->planeX * cos(rotSpeed) - cub->pers->planeY * sin(rotSpeed);
+      cub->pers->planeY = oldPlaneX * sin(rotSpeed) + cub->pers->planeY * cos(rotSpeed);
 //        }
     }
     if (2 == keycode)
@@ -153,9 +167,10 @@ int	main(int argc, char **argv)
 
 	cub = parsing(argc, argv);
     mlx_hook(cub->lib_mlx->mlx_win, 17, 0, ft_exit, &cub);
-	mlx_key_hook (cub->lib_mlx->mlx_win, key_hook, cub);
-    // mlx_loop_hook(cub->lib_mlx->mlx, &render, (void *) cub);
-    draw_3d(cub);
+    mlx_hook(cub->lib_mlx->mlx_win, 2, 1L << 0, key_hook, cub);
+	// mlx_key_hook (cub->lib_mlx->mlx_win, key_hook, cub);
+    mlx_loop_hook(cub->lib_mlx->mlx, &render, (void *) cub);
+    // draw_3d(cub);
 	mlx_loop(cub->lib_mlx->mlx);
 	// clean_cub(cub);
 	return (0);

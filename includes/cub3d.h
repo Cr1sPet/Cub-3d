@@ -7,7 +7,9 @@
 # include <fcntl.h>
 # include <stddef.h>
 # include <math.h>
+#include <time.h>
 # include "../libft/libft.h"
+
 
 # define MALLOC_FAILURE "Error\nmalloc() returned NULL"
 
@@ -40,6 +42,8 @@ typedef struct s_pers_pos
 	char	side;
 	double	dirX;
 	double	dirY;
+	double planeX;
+	double planeY;
 	double alpha;
 }				t_pers_pos;
 

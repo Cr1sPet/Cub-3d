@@ -8,7 +8,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This program built for i386-apple-darwin11.3.0
  
 
-# Make data base, printed on Sun Jun 19 18:21:03 2022
+# Make data base, printed on Sun Jun 19 21:11:26 2022
 
 # Variables
 
@@ -44,7 +44,7 @@ VSCODE_VERBOSE_LOGGING = true
 # environment
 __CFBundleIdentifier = com.microsoft.VSCode
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /var/folders/zz/zyxvpxvq6csfxvn_n003vmzm00yx7x/T/vscode-ipc-07ea371c-e16f-43ba-acac-a1b76854b7d5.sock
+VSCODE_IPC_HOOK_EXTHOST = /var/folders/zz/zyxvpxvq6csfxvn_n003vmzm00yx7x/T/vscode-ipc-bdb6d9eb-4b7b-424d-9bc2-3adc05ea0213.sock
 # environment
 VSCODE_CWD = /
 # environment
@@ -62,7 +62,7 @@ MLX_LIB = ./mlx/libmlx.a
 # default
 .FEATURES := target-specific order-only second-expansion else-if archives jobserver check-symlink
 # environment
-SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.Zp4xZO0vd2/Listeners
+SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.zSHg1QJ0ZZ/Listeners
 # environment
 CPLUS_INCLUDE_PATH = /usr/local/include/
 # automatic
@@ -130,7 +130,7 @@ MFLAGS = -Rrqp
 # automatic
 *D = $(patsubst %/,%,$(dir $*))
 # environment
-XPC_SERVICE_NAME = application.com.microsoft.VSCode.1618569.1618771
+XPC_SERVICE_NAME = application.com.microsoft.VSCode.1615554.1615756
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
 # makefile (from `Makefile', line 29)
@@ -159,27 +159,30 @@ SUFFIXES :=
 SRCS_B = 
 # default
 .INCLUDE_DIRS = /usr/local/include
+ 
 # environment
 MAKELEVEL := 0
 # environment
 LANG = C
 # environment
-VSCODE_PID = 97317
+VSCODE_PID = 39599
 # variable set hash-table stats:
-# Load=76/1024=7%, Rehash=0, Collisions=3/111=3%
+# Load=76/1024=7%, Rehash=0, Collisions=3/106=3%
 
 # Pattern-specific Variable Values
 
- 
 # No pattern-specific variable values.
 
 # Directories
 
-# . (device 16777230, inode 11016): 14 files, no impossibilities.
+# . (device 16777230, inode 11016): 15 files, no impossibilities.
 # includes (device 16777230, inode 11086): No files, no impossibilities so far.
-# src (device 16777230, inode 11168): 5 files, no impossibilities so far.
+# src/get_next_line (device 16777230, inode 11170): 3 files, no impossibilities so far.
+# src/drawing (device 16777230, inode 17869): 5 files, no impossibilities so far.
+# src (device 16777230, inode 11168): 8 files, no impossibilities so far.
+# src/parsing (device 16777230, inode 11175): 13 files, no impossibilities so far.
 
-# 19 files, no impossibilities in 3 directories.
+# 44 files, no impossibilities in 6 directories.
 
 # Implicit Rules
 
@@ -193,10 +196,34 @@ VSCODE_PID = 97317
 # Files
 
 # Not a target:
-src/parsing/parsing.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+src/parsing/parsing_utils.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-19 17:51:37
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+src/parsing/parse_map.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-19 17:51:37
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+src/parsing/parsing.o: src/parsing/parsing.c includes/
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `src/parsing/parsing'
+#  Last modified 2022-06-19 20:55:56
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 51):
+	$(CC) -g $(FLAGS) -I${HEADER} -c $< -o $@
+	
 
 # Not a target:
 includes/:
@@ -209,9 +236,21 @@ includes/:
 
 # Not a target:
 includes/cub3d.h:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Implicit rule search has been done.
+#  Last modified 2022-06-19 19:02:11
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+src/parsing/validation.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-19 17:51:37
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 all: cub3D
 #  Phony target (prerequisite of .PHONY).
@@ -219,62 +258,70 @@ all: cub3D
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has been updated.
-#  Needs to be updated (-q is set).
+#  Successfully updated.
 # variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/5=0%
+ 
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 .PHONY: all clean fclean re bonus
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 
+# Not a target:
+src/get_next_line/get_next_line.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-19 17:51:37
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
 src/main.o: src/main.c includes/
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `src/main'
-#  File does not exist.
+#  Last modified 2022-06-19 20:55:56
 #  File has been updated.
-#  Needs to be updated (-q is set).
-# automatic
-# @ := src/main.o
-# automatic
-# % := 
-# automatic
-# * := src/main
-# automatic
-# + := src/main.c includes/
-# automatic
-# | := 
-# automatic
-# < := src/main.c
-# automatic
-# ^ := src/main.c includes/
-# automatic
-# ? := src/main.c includes/
+#  Successfully updated.
 # variable set hash-table stats:
-# Load=8/32=25%, Rehash=0, Collisions=2/15=13%
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 #  commands to execute (from `Makefile', line 51):
 	$(CC) -g $(FLAGS) -I${HEADER} -c $< -o $@
 	
 
+# Not a target:
+src/parsing/config_identifier.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-19 17:51:37
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
 cub3D: src/main.o src/get_next_line/get_next_line.o src/utils.o src/parsing/parsing.o src/parsing/validation.o src/parsing/parsing_utils.o src/parsing/config_identifier.o src/parsing/parse_map.o src/parsing/parse_map_utils.o src/drawing/draw_3d.o src/drawing/draw.o includes/cub3d.h includes/parsing.h
 #  Implicit rule search has not been done.
-#  File does not exist.
+#  Last modified 2022-06-19 20:56:03
 #  File has been updated.
-#  Needs to be updated (-q is set).
+#  Successfully updated.
 # variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/5=0%
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 #  commands to execute (from `Makefile', line 43):
 	@($(MAKE)	-C		$(MLX_DIR))
 	@$(MAKE) all -C ./libft
 	$(CC) $(OBJ) $(MLX_LIB) -Lmlx -lmlx -framework OpenGL -framework AppKit -I${HEADER} ${LIBFT} -o $(NAME)
 	
 
-# Not a target:
- 
-src/drawing/draw_3d.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+src/drawing/draw_3d.o: src/drawing/draw_3d.c includes/
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `src/drawing/draw_3d'
+#  Last modified 2022-06-19 20:55:57
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 51):
+	$(CC) -g $(FLAGS) -I${HEADER} -c $< -o $@
+	
 
 # Not a target:
 .SUFFIXES:
@@ -285,23 +332,41 @@ src/drawing/draw_3d.o:
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-19 18:20:42
+#  Last modified 2022-06-19 20:58:56
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+src/parsing/parse_map_utils.o: src/parsing/parse_map_utils.c includes/
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `src/parsing/parse_map_utils'
+#  Last modified 2022-06-19 20:55:57
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 51):
+	$(CC) -g $(FLAGS) -I${HEADER} -c $< -o $@
+	
+
+# Not a target:
+includes/parsing.h:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-19 17:51:37
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # Not a target:
-src/parsing/parse_map_utils.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-includes/parsing.h:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+src/parsing/parsing.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-19 17:51:37
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 bonus:
 #  Phony target (prerequisite of .PHONY).
@@ -325,17 +390,32 @@ fclean: clean
 # Not a target:
 src/main.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-19 17:51:37
+#  Last modified 2022-06-19 19:22:36
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # Not a target:
-src/utils.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+src/drawing/draw_3d.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-19 20:55:54
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+src/utils.o: src/utils.c includes/
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `src/utils'
+#  Last modified 2022-06-19 20:55:56
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 51):
+	$(CC) -g $(FLAGS) -I${HEADER} -c $< -o $@
+	
 
 # Not a target:
 .DEFAULT:
@@ -343,17 +423,39 @@ src/utils.o:
 #  Modification time never checked.
 #  File has not been updated.
 
-# Not a target:
-src/drawing/draw.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+src/drawing/draw.o: src/drawing/draw.c includes/
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `src/drawing/draw'
+#  Last modified 2022-06-19 20:55:57
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 51):
+	$(CC) -g $(FLAGS) -I${HEADER} -c $< -o $@
+	
 
 # Not a target:
-src/parsing/parsing_utils.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+src/parsing/parse_map_utils.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-19 18:34:47
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+src/parsing/parsing_utils.o: src/parsing/parsing_utils.c includes/
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `src/parsing/parsing_utils'
+#  Last modified 2022-06-19 20:55:56
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 51):
+	$(CC) -g $(FLAGS) -I${HEADER} -c $< -o $@
+ 
+	
 
 re: fclean cub3D
 #  Phony target (prerequisite of .PHONY).
@@ -361,11 +463,17 @@ re: fclean cub3D
 #  File does not exist.
 #  File has not been updated.
 
-# Not a target:
-src/parsing/parse_map.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+src/parsing/parse_map.o: src/parsing/parse_map.c includes/
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `src/parsing/parse_map'
+#  Last modified 2022-06-19 20:55:57
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 51):
+	$(CC) -g $(FLAGS) -I${HEADER} -c $< -o $@
+	
 
 clean:
 #  Phony target (prerequisite of .PHONY).
@@ -378,26 +486,62 @@ clean:
 	$(RM) $(OBJ) $(OBJ_B)
 	
 
-# Not a target:
-src/parsing/validation.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+src/parsing/validation.o: src/parsing/validation.c includes/
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `src/parsing/validation'
+#  Last modified 2022-06-19 20:55:56
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 51):
+	$(CC) -g $(FLAGS) -I${HEADER} -c $< -o $@
+	
+
+src/get_next_line/get_next_line.o: src/get_next_line/get_next_line.c includes/
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `src/get_next_line/get_next_line'
+#  Last modified 2022-06-19 20:55:56
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 51):
+	$(CC) -g $(FLAGS) -I${HEADER} -c $< -o $@
+	
+
+src/parsing/config_identifier.o: src/parsing/config_identifier.c includes/
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `src/parsing/config_identifier'
+#  Last modified 2022-06-19 20:55:56
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 51):
+	$(CC) -g $(FLAGS) -I${HEADER} -c $< -o $@
+	
 
 # Not a target:
-src/get_next_line/get_next_line.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+src/utils.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-19 17:51:37
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # Not a target:
-src/parsing/config_identifier.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+src/drawing/draw.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-19 17:51:37
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # files hash-table stats:
-# Load=25/1024=2%, Rehash=0, Collisions=0/65=0%
+# Load=35/1024=3%, Rehash=0, Collisions=0/125=0%
 # VPATH Search Paths
 
 # No `vpath' search paths.
@@ -409,6 +553,6 @@ src/parsing/config_identifier.o:
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# Finished Make data base on Sun Jun 19 18:21:03 2022
+# Finished Make data base on Sun Jun 19 21:11:26 2022
 
  

@@ -22,6 +22,8 @@ static void	init_perse(char ch, int i, int j, t_parse *parse)
 		parse->cub->pers->side = 'S';
 	parse->cub->pers->y = i;
 	parse->cub->pers->x = j;
+	parse->cub->pers->planeX = 0;
+	parse->cub->pers->planeY = 0.66;
 }
 
 int	is_pers(char ch)
