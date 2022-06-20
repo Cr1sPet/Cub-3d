@@ -49,19 +49,6 @@ void	draw_game(t_cub *cub)
 //        }
 //    }
 }
-void	print_map(char **map)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (map[i])
-	{
-		ft_putstr_fd(map[i], 1);
-		ft_putchar_fd('\n', 1);
-		i++;
-	}
-}
 
 void	ft_cast_rays(t_cub *all)
 {
@@ -160,8 +147,6 @@ void	ft_cast_rays(t_cub *all)
 // }
 // }
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-  double dirX = -1, dirY = 0; //initial direction vector
    for (int x = 0; x < WIDTH; x++)
    {
       double cameraX = 2 * x / (double)WIDTH - 1;;

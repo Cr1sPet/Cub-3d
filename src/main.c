@@ -29,6 +29,31 @@ int	check_step_y(t_pers_pos *perse, int sign, t_cub *cub)
 	return (1);
 }
 
+void	print_map(char **map, int k, int q)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (map[i])
+	{
+        j = 0;
+        while (map[i][j])
+        {
+            if (k == i && q == j)
+            {
+                     ft_putchar_fd('P', 1);
+            }
+            else {
+                ft_putchar_fd(map[i][j], 1);
+            }
+           
+           j++;
+        }
+		ft_putchar_fd('\n', 1);
+		i++;
+	}
+}
 int	ft_exit(void)
 {
     exit(0);
@@ -36,48 +61,47 @@ int	ft_exit(void)
 
 int	key_hook (int keycode, t_cub *cub)
 {
-     double timee = 0; //время текущего кадра
-   double oldTime = 0; //время предыдущего кадра
-    printf ("%d\n", keycode);
-    oldTime = timee;
-    timee = time(NULL);
-    double frameTime = (timee - oldTime) / 1000.0;
-    double moveSpeed = frameTime * 5.0; //the constant value is in squares/second
-    double rotSpeed = frameTime * 3.0;
-     double planeX = 0, planeY = 0.66;
+    printf("%d\n", keycode);
+    double moveSpeed = 0.1; //the constant value is in squares/second
     if (13 == keycode)
     {
-//        if (check_step_y(cub->pers, FORWARD, cub))
-//        {
-            cub->pers->x += cub->pers->dirX;
-//        }
+        if(cub->map[(int)(cub->pers->x + cub->pers->dirX * moveSpeed)][(int)cub->pers->y]  == '0')
+        {
+           cub->pers->x += cub->pers->dirX * moveSpeed;
+        }
+        if (cub->map[(int)cub->pers->x][(int)(cub->pers->y + cub->pers->dirY * moveSpeed)]  == '0')
+        {
+            cub->pers->y += cub->pers->dirY * moveSpeed;
+        }  
     }
     if (1 == keycode)
     {
-//        if (check_step_y(cub->pers, BACKWARD, cub))
-//        {
-             cub->pers->x -= cub->pers->dirX;
-//        }
+        if(cub->map[(int)(cub->pers->x - cub->pers->dirX * moveSpeed)][(int)cub->pers->y]  == '0')
+        {
+            cub->pers->x -= cub->pers->dirX * moveSpeed;
+        } 
+        if (cub->map[(int)cub->pers->x][(int)(cub->pers->y - cub->pers->dirY * moveSpeed)] == '0')
+        {
+            cub->pers->y -= cub->pers->dirY * moveSpeed;
+        }  
     }
     if (0 == keycode)
     {
-//        if (check_step_x(cub->pers, BACKWARD, cub))
-//        {
-
-              double oldDirX = cub->pers->dirX;
-            cub->pers->dirX = cub->pers->dirX * cos(rotSpeed) - cub->pers->dirY * sin(rotSpeed);
-       cub->pers->dirY = oldDirX * sin(rotSpeed) + cub->pers->dirY * cos(rotSpeed);
-      double oldPlaneX = cub->pers->planeX;
-      cub->pers->planeX = cub->pers->planeX * cos(rotSpeed) - cub->pers->planeY * sin(rotSpeed);
-      cub->pers->planeY = oldPlaneX * sin(rotSpeed) + cub->pers->planeY * cos(rotSpeed);
-//        }
+        double oldDirX = cub->pers->dirX;
+        cub->pers->dirX = cub->pers->dirX * cos(-0.035) - cub->pers->dirY * sin(-0.035);
+        cub->pers->dirY = oldDirX * sin(-0.035) + cub->pers->dirY * cos(-0.035);
+        double oldPlaneX =  cub->pers->planeX;
+        cub->pers->planeX =  cub->pers->planeX * cos(-0.035) -  cub->pers->planeY * sin(-0.035);
+        cub->pers->planeY = oldPlaneX * sin(-0.035) + cub->pers->planeY * cos(-0.035);
     }
     if (2 == keycode)
     {
-//        if (check_step_x(cub->pers, FORWARD, cub))
-//        {
-            cub->pers->x -= 1;
-//        }
+        double oldDirX = cub->pers->dirX;
+        cub->pers->dirX = cub->pers->dirX * cos(0.035) - cub->pers->dirY * sin(0.035);
+        cub->pers->dirY = oldDirX * sin(0.035) + cub->pers->dirY * cos(0.035);
+        double oldPlaneX =  cub->pers->planeX;
+        cub->pers->planeX =  cub->pers->planeX * cos(0.035) -  cub->pers->planeY * sin(0.035);
+        cub->pers->planeY = oldPlaneX * sin(0.035) + cub->pers->planeY * cos(0.035);
     }
     if (123 == keycode)
     {
@@ -92,6 +116,7 @@ int	key_hook (int keycode, t_cub *cub)
         mlx_destroy_window(cub->lib_mlx->mlx, cub->lib_mlx->mlx_win);
         exit(EXIT_SUCCESS);
     }
+       print_map(cub->map,  (int)cub->pers->x, (int)cub->pers->y);
     return (0);
 }
 
@@ -160,6 +185,7 @@ int	render(void *param)
 	draw_3d(param);
 	return (0);
 }
+
 
 int	main(int argc, char **argv)
 {

@@ -12,7 +12,9 @@ static void	init_perse(char ch, int i, int j, t_parse *parse)
 	{
 		parse->cub->pers->side = 'N';
 		parse->cub->pers->dirX = -1;
-		parse->cub->pers->dirY = 0;
+		parse->cub->pers->dirY = -1;
+		parse->cub->pers->planeX = 0.66;
+		parse->cub->pers->planeY = 0;
 	}
 	else if ('W' == ch)
 		parse->cub->pers->side = 'W';
@@ -22,8 +24,6 @@ static void	init_perse(char ch, int i, int j, t_parse *parse)
 		parse->cub->pers->side = 'S';
 	parse->cub->pers->y = i;
 	parse->cub->pers->x = j;
-	parse->cub->pers->planeX = 0;
-	parse->cub->pers->planeY = 0.66;
 }
 
 int	is_pers(char ch)
