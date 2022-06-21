@@ -52,102 +52,59 @@ void	draw_game(t_cub *cub)
 
 void	ft_cast_rays(t_cub *all)
 {
-//     t_pers_pos 	ray = *all->pers; // задаем координаты и направление луча равные координатам игрока
-//     int start_pos = all->start + 60 / 2;
-//     all->end = 300;
-//     while (start_pos <= all->end)
-//     {
-//         ray.dirX = (double)all->pers->x; // каждый раз возвращаемся в точку начала
-//         ray.dirY = (double)all->pers->y;
-//         while (all->map[(int)(ray.dirY / SCALE)][(int)(ray.dirX / SCALE)] != '1')
-//         {
-//             ray.dirX += cos((double) all->pers->alpha);
-//             ray.dirY += cos((double) all->pers->alpha);
-// ////            mlx_pixel_put(all->lib_mlx->mlx, all->lib_mlx->mlx_win, ray.x, ray.y, 0x990099);
-//         //    put_pixel(ray.dirX, ray.dirY, all->lib_mlx, 0x990099);
-//            for (int i = 0; i < 20; i++) {
-//                for (int j = 0; j < 20; j++) {
-//            put_pixel(ray.dirX + i, ray.dirY + j, all->lib_mlx, create_rgb(0, 0, 255));
+  // for(int y = 0; y < HEIGHT; y++)
+  //   {
+  //     // rayDir for leftmost ray (x = 0) and rightmost ray (x = w)
+  //     float rayDirX0 = all->pers->dirX - all->pers->planeX;
+  //     float rayDirY0 = all->pers->dirY -  all->pers->planeY;
+  //     float rayDirX1 = all->pers->dirX +  all->pers->planeX;
+  //     float rayDirY1 = all->pers->dirY +  all->pers->planeY;
 
-//        }
-//     }
-//         }
-//          start_pos++;
-        
-// }
- ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// double fPlayerX = 1.0f; // Координата игрока по оси X
-// double fPlayerY = 1.0f; // Координата игрока по оси Y
-// double fPlayerA = 0.0f; // Направление игрока
- 
-// int nMapHeight = 16; // Высота игрового поля
-// int nMapWidth = 16;  // Ширина игрового поля
- 
-// double fFOV = 3.14159 / 3; // Угол обзора (поле видимости)
-// double fDepth = 30.0f;     // Максимальная дистанция обзора
-// char map[] = "111111111111111110000000000000011000000000000001100000000000000110000000000000011000000000000001100000000000000110000000000000011000000000000001100000000000000110000000000000011000000000000001100000000N000001100000000000000110000000000000011111111111111111";
-// for (int x = 0; x < WIDTH; x++) // Проходим по всем X
-// {
-//     double fRayAngle = (all->pers->x- fFOV/2.0f) + ((double)x / (double)WIDTH) * fFOV; // Направление луча
-//     // Находим расстояние до стенки в направлении fRayAngle 
- 
-//     double fDistanceToWall = 0.0f; // Расстояние до препятствия в направлении fRayAngle
-//     int bHitWall = 0; // Достигнул ли луч стенку
- 
-//     double fEyeX = sinf(fRayAngle); // Координаты единичного вектора fRayAngle
-//     double fEyeY = cosf(fRayAngle);
- 
-//     while (bHitWall == 0 && fDistanceToWall < fDepth) // Пока не столкнулись со стеной
-//     {                                           // Или не вышли за радиус видимости
-//         fDistanceToWall += 0.1f;
- 
-//         int nTestX = (int)(all->pers->x+ fEyeX*fDistanceToWall); // Точка на игровом поле
-//         int nTestY = (int)(all->pers->y+ fEyeY*fDistanceToWall); // в которую попал луч
- 
-//         if (nTestX < 0 || nTestX >= nMapWidth || nTestY < 0 || nTestY >= nMapHeight)
-//         { // Если мы вышли за зону
-//             bHitWall = 1;
-//             fDistanceToWall = fDepth;
-//         }
-//         else if (map[nTestY*nMapWidth + nTestX] == '1')
-//         {
-//             // printf("asdasdasdasdfrewfsafer\n");
-//              bHitWall = 1;
-//         }
-           
-//            int nCeiling = (double)(HEIGHT/2.0) - HEIGHT / ((double)fDistanceToWall);
-// 		int nFloor = HEIGHT - nCeiling;
-//         //    printf("%s <----\n", all->map[nTestY*nMapWidth + nTestX]);
-//         if (bHitWall == 0) {
-//     for (int y = 0; y < HEIGHT; y++) // При заданном X проходим по всем Y
-//     {
-//         // В этом цикле рисуется вертикальная полоска
-   
-//         		if(y <= nCeiling)
-// 					 put_pixel(x, y, all->lib_mlx, create_rgb(0, 0, 0));
-// 				else if(y > nCeiling && y <= nFloor)
-// 					     put_pixel(x, y, all->lib_mlx, create_rgb(0, 0, 255));
-// 				else // Floor
-// 				{				
-// 					// Shade floor based on distance
-// 					// float b = 1.0f - (((float)y -nScreenHeight/2.0f) / ((float)nScreenHeight / 2.0f));
-// 					// if (b < 0.25)		nShade = create_rgb(0, 255, 255));
-// 					// else if (b < 0.5)	nShade = create_rgb(0, 123, 255));
-// 					// else if (b < 0.75)	nShade = create_rgb(23, 123, 255));
-// 					// else if (b < 0.9)	nShade = create_rgb(0, y, 255));
-// 					// else				nShade = create_rgb(0, y, 255));
-// 					     put_pixel(x, y, all->lib_mlx, 0x990099);
-                         
-// 				}
-//     }
-//         }
+  //     // Current y position compared to the center of the screen (the horizon)
+  //     int p = y - HEIGHT / 2;
 
-//     // print_map(all->map);
-//     // fPlayerA -= (1.5f) * fElapsedTime;
-// }
-// }
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-   for (int x = 0; x < WIDTH; x++)
+  //     // Vertical position of the camera.
+  //     float posZ = 0.5 * HEIGHT;
+
+  //     // Horizontal distance from the camera to the floor for the current row.
+  //     // 0.5 is the z position exactly in the middle between floor and ceiling.
+  //     float rowDistance = posZ / p;
+
+  //     // calculate the real world step vector we have to add for each x (parallel to camera plane)
+  //     // adding step by step avoids multiplications with a weight in the inner loop
+  //     float floorStepX = rowDistance * (rayDirX1 - rayDirX0) / WIDTH;
+  //     float floorStepY = rowDistance * (rayDirY1 - rayDirY0) / WIDTH;
+
+  //     // real world coordinates of the leftmost column. This will be updated as we step to the right.
+  //     float floorX = all->pers->x + rowDistance * rayDirX0;
+  //     float floorY = all->pers->y + rowDistance * rayDirY0;
+
+  //     for(int x = 0; x < WIDTH; ++x)
+  //     {
+  //       // the cell coord is simply got from the integer parts of floorX and floorY
+  //       int cellX = (int)(floorX);
+  //       int cellY = (int)(floorY);
+
+  //       // get the texture coordinate from the fractional part
+  //       int tx = (int)(texWidth * (floorX - cellX)) & (texWidth - 1);
+  //       int ty = (int)(texHeight * (floorY - cellY)) & (texHeight - 1);
+
+  //       floorX += floorStepX;
+  //       floorY += floorStepY;
+
+  //       // choose texture and draw the pixel
+  //       int floorTexture = 3;
+  //       int ceilingTexture = 6;
+  //       int color;
+
+  //       // floor
+  //       color = 0x00FF0000;
+  //        put_pixel(x, y, all->lib_mlx, color); 
+  //       //ceiling (symmetrical, at screenHeight - y - 1 instead of y)
+  //     }
+  //   }
+
+  for (int x = 0; x < WIDTH; x++)
    {
       double cameraX = 2 * x / (double)WIDTH - 1;;
       double rayDirX = all->pers->dirX + all->pers->planeX * cameraX;
@@ -157,20 +114,14 @@ void	ft_cast_rays(t_cub *all)
       double sideDistX;
       double sideDistY;
 
-      double deltaDistX = (rayDirX == 0) ? 1e30 : fabs(1 / rayDirX);
-      double deltaDistY = (rayDirY == 0) ? 1e30 : fabs(1 / rayDirY);
-        // deltaDistX = fabs(1 / rayDirX);
-        // deltaDistY = fabs(1 / rayDirY); 
-      // printf("%f <<<<<<<<<< CAMERA\n", cameraX);
-        //  printf("%f %f<----\n", rayDirX, rayDirY);
-    double perpWallDist;
+      double deltaDistX = fabs(1 / rayDirX);
+      double deltaDistY = fabs(1 / rayDirY);
+      double perpWallDist;
 
-      //what direction to step in x or y-direction (either +1 or -1)
       int stepX;
       int stepY;
-    int hit = 0; //was there a wall hit?
-      int side; //was a NS or a EW wall hit?
-      //calculate step and initial sideDist
+      int hit = 0;
+      int side;
        if(rayDirX < 0)
       {
         stepX = -1;
@@ -220,16 +171,7 @@ void	ft_cast_rays(t_cub *all)
 
       //choose wall color
       int color;
-      if (all->map[mapX][mapY] == '1')
-      {
-         color = 0x00FF0000; 
-      }
-      else if (all->map[mapX][mapY] == '0')
-      {
-          color = 0x0000FF00;
-      }
-      else
-        color = 0x990099;
+      color = 0x990099;
 
       //give x and y sides different brightness
       if(side == 1) {color = color / 2;}
@@ -238,7 +180,18 @@ void	ft_cast_rays(t_cub *all)
      put_pixel(x, drawStart, all->lib_mlx, color); 
      drawStart++;
     }
-       }
+    	int	y;
+
+	if (drawEnd < 0)
+    drawEnd = HEIGHT;
+	y = drawEnd + 1;
+	while (y < HEIGHT)
+	{
+		put_pixel(x, y,  all->lib_mlx, 0x00FF0000);
+		put_pixel(x, HEIGHT - y - 1, all->lib_mlx, 0x000000FF);
+		y++;
+	}
+    }
 
 }
 

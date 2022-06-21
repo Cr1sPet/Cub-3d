@@ -13,9 +13,11 @@
 
 # define MALLOC_FAILURE "Error\nmalloc() returned NULL"
 
-# define WIDTH 640
-# define HEIGHT 480
+# define WIDTH 1200
+# define HEIGHT 800
 # define SCALE 15
+# define texWidth 64
+# define texHeight 64
 # define FORWARD 1
 # define BACKWARD 0
 # define CHARACTER_SIZE 5
@@ -31,8 +33,6 @@ typedef struct s_config
 	void	*ea_img;
 	int		c;
 	int		f;
-	double time; //время текущего кадра
-   	double oldTime; //время предыдущего кадра
 }				t_config;
 
 typedef struct s_pers_pos
