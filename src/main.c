@@ -85,7 +85,7 @@ int	key_hook (int keycode, t_cub *cub)
             cub->pers->y -= cub->pers->dirY * moveSpeed;
         }  
     }
-    if (0 == keycode)
+    if (0 == keycode || 123 == keycode)
     {
         double oldDirX = cub->pers->dirX;
         cub->pers->dirX = cub->pers->dirX * cos(-0.035) - cub->pers->dirY * sin(-0.035);
@@ -94,7 +94,7 @@ int	key_hook (int keycode, t_cub *cub)
         cub->pers->planeX =  cub->pers->planeX * cos(-0.035) -  cub->pers->planeY * sin(-0.035);
         cub->pers->planeY = oldPlaneX * sin(-0.035) + cub->pers->planeY * cos(-0.035);
     }
-    if (2 == keycode)
+    if (2 == keycode || 124 == keycode)
     {
         double oldDirX = cub->pers->dirX;
         cub->pers->dirX = cub->pers->dirX * cos(0.035) - cub->pers->dirY * sin(0.035);
@@ -102,14 +102,6 @@ int	key_hook (int keycode, t_cub *cub)
         double oldPlaneX =  cub->pers->planeX;
         cub->pers->planeX =  cub->pers->planeX * cos(0.035) -  cub->pers->planeY * sin(0.035);
         cub->pers->planeY = oldPlaneX * sin(0.035) + cub->pers->planeY * cos(0.035);
-    }
-    if (123 == keycode)
-    {
-        cub->pers->alpha -= 0.4;
-    }
-    if (124 == keycode)
-    {
-        cub->pers->alpha += 0.4;
     }
     else if (53 == keycode)
     {

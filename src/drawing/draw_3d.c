@@ -161,9 +161,8 @@ void	ft_cast_rays(t_cub *all)
       }
       if(side == 0) perpWallDist = (sideDistX - deltaDistX);
       else          perpWallDist =  (sideDistY - deltaDistY);
-      // printf("%f %f %d\n", sideDistX, deltaDistX, side);
+      
       int lineHeight = (int)(HEIGHT / perpWallDist);
-      // printf("%d %f\n", lineHeight, perpWallDist);
       int drawStart = -lineHeight / 2 + HEIGHT / 2;
       int drawEnd = lineHeight / 2 + HEIGHT / 2;
       if(drawStart < 0) drawStart = 0;
