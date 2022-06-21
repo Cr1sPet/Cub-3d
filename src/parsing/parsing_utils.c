@@ -76,12 +76,10 @@ void	exit_with_error_parse(char *error, t_parse *parse)
 
 void	init_config(t_config *conf)
 {
-	conf->width = 200;
-	conf->height = 200;
-	conf->no_img = NULL;
-	conf->so_img = NULL;
-	conf->we_img = NULL;
-	conf->ea_img = NULL;
+	conf->no_texture = NULL;
+	conf->so_texture = NULL;
+	conf->we_texture = NULL;
+	conf->ea_texture = NULL;
 	conf->f = 0;
 	conf->c = 0;
 }

@@ -46,7 +46,7 @@ t_parse	*init_parse(void);
 void	valid_config_str(char *str, t_parse *parse);
 int		check_config(char **config, t_parse *parse);
 void	set_config_funcs(t_parse *parse);
-void	init_texture(char *path, t_parse *parse, void **texture);
+void init_texture(char *path, t_parse *parse, t_texture **texture1);
 
 int		parse_map(t_parse *parse);
 void	clean_parse_inner(t_parse *parse);

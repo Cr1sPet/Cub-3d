@@ -38,14 +38,29 @@ void	clean_config(t_config *conf, t_cub *cub)
 {
 	if (conf)
 	{
-		if (conf->no_img)
-			mlx_destroy_image(cub->lib_mlx->mlx, conf->no_img);
-		if (conf->so_img)
-			mlx_destroy_image(cub->lib_mlx->mlx, conf->so_img);
-		if (conf->we_img)
-			mlx_destroy_image(cub->lib_mlx->mlx, conf->we_img);
-		if (conf->ea_img)
-			mlx_destroy_image(cub->lib_mlx->mlx, conf->ea_img);
+		if (conf->no_texture)
+		{
+			mlx_destroy_image(cub->lib_mlx->mlx, conf->no_texture->img);
+			free(conf->no_texture);
+		}
+
+		if (conf->so_texture)
+		{
+			mlx_destroy_image(cub->lib_mlx->mlx, conf->so_texture->img);
+			free(conf->so_texture);
+		}
+	
+		if (conf->we_texture)
+		{
+			mlx_destroy_image(cub->lib_mlx->mlx, conf->we_texture->img);
+			free(conf->we_texture);
+		}
+		
+		if (conf->ea_texture)
+		{
+			mlx_destroy_image(cub->lib_mlx->mlx, conf->ea_texture->img);
+			free(conf->ea_texture);
+		}
 	}
 	free(conf);
 }

@@ -23,14 +23,24 @@
 # define CHARACTER_SIZE 5
 
 
+typedef struct s_texture
+{
+	int			width;
+	int			height;
+	void		*img;
+	char		*data_addr;
+	int			bits_per_pixel;
+	int			line_length;
+	int			endian;
+}				t_texture;
+
+
 typedef struct s_config
 {
-	int		width;
-	int		height;
-	void	*no_img;
-	void	*so_img;
-	void	*we_img;
-	void	*ea_img;
+	t_texture	*no_texture;
+	t_texture	*so_texture;
+	t_texture	*we_texture;
+	t_texture	*ea_texture;
 	int		c;
 	int		f;
 }				t_config;

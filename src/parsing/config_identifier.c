@@ -1,13 +1,29 @@
 #include "parsing.h"
 #include "get_next_line.h"
 
-void	init_texture(char *path, t_parse *parse, void	**texture)
+void	init_texture(char *path, t_parse *parse, t_texture **texture1)
 {
-	*texture = mlx_xpm_file_to_image(parse->cub->lib_mlx->mlx, path,
-			&parse->cub->config->width, &parse->cub->config->height);
-	if (NULL == *texture)
+	t_texture	*texture;
+
+	texture = (t_texture *) malloc(sizeof(t_texture));
+	if (NULL == texture)
+		exit_with_error_parse(MALLOC_FAILURE, parse);
+	texture->width = 200;
+	texture->height = 200;
+	texture->img = mlx_xpm_file_to_image(parse->cub->lib_mlx->mlx, path,
+			&texture->width, &texture->height);
+	if (NULL == texture->img)
 		exit_with_error_parse("ERROR\nTexture file reading has failed", parse);
+
+	texture->data_addr = mlx_get_data_addr(texture->img, &texture->bits_per_pixel,
+						&texture->line_length, &texture->endian);
+
+	if (NULL == texture->data_addr)
+		exit_with_error_parse("ERROR\nMLX get data addr failed", parse);
+
 	ft_putendl_fd("Success : init ", 1);
+
+	*texture1 = texture;
 }
 
 int	create_rgb(int r, int g, int b)
@@ -62,7 +78,7 @@ void	init_no(char *path, t_parse *parse)
 	check_i(i, parse);
 	i = 1;
 	ft_putendl_fd("init NO", 1);
-	init_texture(path, parse, &parse->cub->config->no_img);
+	init_texture(path, parse, &parse->cub->config->no_texture);
 }
 
 void	init_so(char *path, t_parse *parse)
@@ -73,7 +89,7 @@ void	init_so(char *path, t_parse *parse)
 	i = 1;
 
 	ft_putendl_fd("init SO", 1);
-	init_texture(path, parse, &parse->cub->config->so_img);
+	init_texture(path, parse, &parse->cub->config->so_texture);
 }
 
 void	init_we(char *path, t_parse *parse)
@@ -84,7 +100,7 @@ void	init_we(char *path, t_parse *parse)
 	i = 1;
 
 	ft_putendl_fd("init WE", 1);
-	init_texture(path, parse, &parse->cub->config->we_img);
+	init_texture(path, parse, &parse->cub->config->we_texture);
 
 }
 
@@ -95,7 +111,7 @@ void	init_ea(char *path, t_parse *parse)
 	check_i(i, parse);
 	i = 1;
 	ft_putendl_fd("init EA", 1);
-	init_texture(path, parse, &parse->cub->config->ea_img);
+	init_texture(path, parse, &parse->cub->config->ea_texture);
 }
 
 void	init_f(char *path, t_parse *parse)
