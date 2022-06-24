@@ -114,8 +114,8 @@ void	ft_cast_rays(t_cub *all)
       double sideDistX;
       double sideDistY;
 
-      double deltaDistX = fabs(1 / rayDirX);
-      double deltaDistY = fabs(1 / rayDirY);
+      double deltaDistX = (rayDirX == 0) ? 1e30 : fabs(1 / rayDirX);
+      double deltaDistY = (rayDirY == 0) ? 1e30 : fabs(1 / rayDirY);
       double perpWallDist;
 
       int stepX;
@@ -142,7 +142,7 @@ void	ft_cast_rays(t_cub *all)
         stepY = 1;
         sideDistY = (mapY + 1.0 - all->pers->y) * deltaDistY;
       }
-            while(hit == 0)
+      while(hit == 0)
       {
         //jump to next map square, either in x-direction, or in y-direction
         if(sideDistX < sideDistY)
@@ -157,15 +157,20 @@ void	ft_cast_rays(t_cub *all)
           mapY += stepY;
           side = 1;
         }
-        if(all->map[mapX][mapY] && all->map[mapX][mapY] == '1') hit = 1;
+        if(all->map[mapX][mapY] && all->map[mapX][mapY] != '0') hit = 1;
       }
-      if(side == 0) perpWallDist = (sideDistX - deltaDistX);
-      else          perpWallDist =  (sideDistY - deltaDistY);
+      if(side == 0) {
+        perpWallDist = (sideDistX - deltaDistX);
+      }
+      else {
+        perpWallDist =  (sideDistY - deltaDistY);
+      }
+    
       
       int lineHeight = (int)(HEIGHT / perpWallDist);
       int drawStart = -lineHeight / 2 + HEIGHT / 2;
-      int drawEnd = lineHeight / 2 + HEIGHT / 2;
       if(drawStart < 0) drawStart = 0;
+      int drawEnd = lineHeight / 2 + HEIGHT / 2;
       if(drawEnd >= HEIGHT) drawEnd = HEIGHT - 1;
 
       //choose wall color
