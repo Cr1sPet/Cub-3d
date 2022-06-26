@@ -116,6 +116,7 @@ int	check_borders(char *str, t_parse *parse)
 	int	i;
 
 	i = -1;
+
 	while (str[++i] && str[i] != '1')
 	{
 		if ('0' == str[i])
@@ -142,11 +143,25 @@ int	parse_map(t_parse *parse)
 	i = -1;
 	parse->cub->map = list_to2darr(parse->curent_data, parse);
 	map = parse->cub->map;
+    int j = -1;
+
+    while (map[0][++j])
+        if (map[0][j] == '0')
+            exit_with_error_parse(MAP_FAILURE, parse);
+
+    int len = len_2d_str(map);
+
+    j = -1;
+    while (map[len - 1][++j])
+        if (map[len - 1][j] == '0') {
+            printf("I == %d, J == %d", len, j);
+            exit_with_error_parse(MAP_FAILURE, parse);
+        }
+    printf("HOL\n");
+
+    while (map[++i])
+        check_borders(map[i], parse);
 	firstly_parse(map, parse);
-	while (map[++i])
-		check_borders(map[i], parse);
-	check_top_to_bottom(map, parse);
-	check__bottom_to_top(map, parse);
 	ft_putendl_fd("MAP OK", 1);
 	return (1);
 }

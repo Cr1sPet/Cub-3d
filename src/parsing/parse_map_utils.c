@@ -55,18 +55,60 @@ int	is_pers(char ch)
 
 int	check_space_sym(char **map, int i, int j)
 {
-	if (i != 0 && (map[i - 1][j] == '0'
-		|| is_pers(map[i - 1][j])))
-		return (0);
-	if (i != len_2d_str(map) - 1 && (map[i + 1][j] == '0'
-		|| is_pers(map[i + 1][j])))
-		return (0);
-	if (j != 0 && (map[i][j + 1] == '0'
-		|| is_pers(map[i][j + 1])))
-		return (0);
-	if (j != ft_strlen(map[i]) - 1 && (map[i][j - 1] == '0'
-		|| is_pers(map[i][j - 1])))
-		return (0);
+//	if ( (i != 0 && (map[i - 1][j] == '0'||\
+//        is_pers(map[i - 1][j]))))
+//		return (0);
+//	if (i != len_2d_str(map) - 1 && (map[i + 1][j] == '0'
+//		|| is_pers(map[i + 1][j])))
+//		return (0);
+//	if (j != 0 && (map[i][j + 1] == '0'
+//		|| is_pers(map[i][j + 1])))
+//		return (0);
+//	if (j != ft_strlen(map[i]) - 1 && (map[i][j - 1] == '0'
+//		|| is_pers(map[i][j - 1])))
+//		return (0);
+	return (1);
+}
+
+int	check_zerro_sym(char **map, int i, int j)
+{
+//    printf(" TOM %c I == %d, J == %d\n", map[i][j], i, j);
+	if (i != 0)
+    {
+        if ((ft_strlen(map[i - 1]) - 2 < j))
+        {
+            printf("ERR 1\n");
+            return (0);
+        }
+        if ((map[i - 1][j] == ' ') || (j != 0 && map[i - 1][j - 1] == ' '))
+        {
+            printf("ERR 1\n");
+            return (0);
+        }
+    }
+	if (i != len_2d_str(map) - 1)
+    {
+        if ((ft_strlen(map[i + 1]) - 2 < j))
+        {
+            printf("ERR 1\n");
+            return (0);
+        }
+        if ((map[i + 1][j] == ' ') || (map[i + 1][j - 1] == ' '))
+        {
+            printf("ERR 2\n");
+            return (0);
+        }
+    }
+	if (j != 0 && (map[i][j - 1] == ' '))
+    {
+        printf("ERR 3\n");
+        return (0);
+    }
+	if (j != ft_strlen(map[i]) - 1 &&(map[i][j + 1] == ' '))
+    {
+        printf("ERR 4\n");
+        return (0);
+    }
 	return (1);
 }
 
@@ -86,8 +128,14 @@ static void	proc_symbol(char **map, int i, int j, t_parse *parse)
 		init_perse(ch, i, j, parse);
 		map[i][j] = '0';
 	}
-	else if ('1' != ch && '0' != ch)
-		exit_with_error_parse(ALLOWED_SYMB_FAILURE, parse);
+    else if ('0' == ch && (0 == check_zerro_sym(map, i, j))) {
+        printf("ERROR TTTUUUUUTT\n");
+        printf("I == %d, J == %d\n", i, j);
+        exit_with_error_parse(MAP_FAILURE, parse);
+    }
+    else if ('1' != ch && '0' != ch) {
+        exit_with_error_parse(ALLOWED_SYMB_FAILURE, parse);
+    }
 }
 
 void	firstly_parse(char **map, t_parse *parse)
@@ -96,12 +144,13 @@ void	firstly_parse(char **map, t_parse *parse)
 	int	j;
 
 	i = -1;
+    printf("FIRSTLY PARSE!!!\n");
 	while (map[++i])
 	{
 		j = -1;
 		while (map[i][++j])
 		{
-			proc_symbol(map, i, j, parse);
+            proc_symbol(map, i, j, parse);
 		}
 	}
 	if (0 == parse->cub->pers->side)

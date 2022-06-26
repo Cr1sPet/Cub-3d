@@ -17,12 +17,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="62b84045-172a-4d0b-80ba-d36613753faa" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/includes/cub3d.h" beforeDir="false" afterPath="$PROJECT_DIR$/includes/cub3d.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/maps/hello.cub" beforeDir="false" afterPath="$PROJECT_DIR$/maps/hello.cub" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/drawing/draw.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/drawing/draw.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/drawing/draw_3d.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/drawing/draw_3d.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/maps/test01.cub" beforeDir="false" afterPath="$PROJECT_DIR$/maps/test01.cub" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/parsing/parse_map.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/parsing/parse_map.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/parsing/parse_map_utils.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/parsing/parse_map_utils.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -113,6 +110,7 @@
       <updated>1655225568546</updated>
       <workItem from="1655225571640" duration="4817000" />
       <workItem from="1655559096892" duration="8471000" />
+      <workItem from="1656245459602" duration="1911000" />
     </task>
     <servers />
   </component>
