@@ -15,13 +15,11 @@
 
 # define WIDTH 1200
 # define HEIGHT 800
-# define SCALE 15
-# define texWidth 64
-# define texHeight 64
-# define FORWARD 1
-# define BACKWARD 0
+# define SCALE 10
 # define CHARACTER_SIZE 5
-
+# define MOVESPEED 0.3
+# define MOUSESPEED 0.05
+# define ROTATESPEED 0.2
 
 typedef struct s_texture
 {
@@ -34,7 +32,6 @@ typedef struct s_texture
 	int			endian;
 }				t_texture;
 
-
 typedef struct s_config
 {
 	t_texture	*no_texture;
@@ -43,6 +40,8 @@ typedef struct s_config
 	t_texture	*ea_texture;
 	int		c;
 	int		f;
+	int		map_length;
+	double wall_x;
 }				t_config;
 
 typedef struct s_pers_pos
@@ -54,7 +53,6 @@ typedef struct s_pers_pos
 	double	dirY;
 	double planeX;
 	double planeY;
-	double alpha;
 }				t_pers_pos;
 
 typedef struct s_mlx
@@ -70,6 +68,9 @@ typedef struct s_mlx
 
 typedef struct s_cub
 {
+	int			x;
+	int			prev_x;
+	double 		prev_z;
 	char		**map;
 	int			map_len;
 	t_pers_pos	*pers;
@@ -92,8 +93,8 @@ void	clean_config(t_config *conf, t_cub *cub);
 void	exit_with_error(char *message, t_cub *cub);
 
 //draw
-void draw(t_cub *cub);
 void    draw_3d(t_cub *cub);
+void draw_minimap(t_cub *cub);
 int	create_rgb(int r, int g, int b);
 void put_pixel(int x, int y, t_mlx *lib_mlx, int color);
 // void draw_3d(t_cub *cub);

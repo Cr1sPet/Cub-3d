@@ -1,5 +1,32 @@
 #include "../../includes/cub3d.h"
 
+void draw_wool(int side, int drawStart, int drawEnd, int x, t_cub *cub, int lineHeight)
+{
+  int	r;
+	int	g;
+	int	b;
+
+  int tex_x = (int)(cub->config->wall_x * (double)cub->config->no_texture->width);
+  if (side == 0 && cub->pers->dirX < 0) tex_x = cub->config->no_texture->width - tex_x - 1;
+  if (side == 1 && cub->pers->dirY > 0) tex_x = cub->config->no_texture->width - tex_x - 1;
+  double step = 1.0 * cub->config->no_texture->height / lineHeight;
+  double pos = (drawStart - HEIGHT / 2 + lineHeight / 2) * step;
+
+  while (drawStart < drawEnd)
+  {
+
+    int tex_y = (int)pos & (cub->config->no_texture->height - 1);
+    pos += step;
+    b = (unsigned char)cub->config->no_texture->data_addr[tex_y * cub->config->no_texture->line_length
+			+ tex_x * cub->config->no_texture->bits_per_pixel / 8];
+		g = (unsigned char)cub->config->no_texture->data_addr[tex_y * cub->config->no_texture->line_length
+			+ tex_x * cub->config->no_texture->bits_per_pixel / 8 + 1];
+		r = (unsigned char)cub->config->no_texture->data_addr[tex_y * cub->config->no_texture->line_length
+			+ tex_x * cub->config->no_texture->bits_per_pixel / 8 + 2];
+    put_pixel(x, drawStart, cub->lib_mlx, create_rgb(r,g, b)); 
+    drawStart++;
+  }
+}
 
 void draw_floors(int drawEnd, t_cub *cub, int x)
 {
@@ -11,9 +38,18 @@ void draw_floors(int drawEnd, t_cub *cub, int x)
 	i = drawEnd + 1;
 	while (i < HEIGHT)
 	{
-		put_pixel(x, i,  cub->lib_mlx, 0x00FF0000);
-		put_pixel(x, HEIGHT - i - 1, cub->lib_mlx, 0x000000FF);
+		put_pixel(x, i,  cub->lib_mlx, cub->config->c);
+		put_pixel(x, HEIGHT - i - 1, cub->lib_mlx,  cub->config->f);
 		i++;
+	}
+}
+void char_put_pixel(int x, int y, t_texture *texture, int color)
+{
+	char	*dst;
+	if (x > 0 && x < WIDTH && y > 0 && y < HEIGHT)
+	{
+		dst = texture->data_addr + (y * texture->line_length + x * (texture->bits_per_pixel / 8));
+		*(unsigned int*)dst = color;
 	}
 }
 
@@ -74,9 +110,17 @@ void	ft_cast_rays(t_cub *all)
         if(all->map[mapX][mapY] != '0') hit = 1;
       }
       if(side == 0)
-        perpWallDist = (sideDistX - deltaDistX);
+      {
+         perpWallDist = (sideDistX - deltaDistX);
+         all->config->wall_x = all->pers->y + perpWallDist * rayDirY;
+      }
       else
+      {
         perpWallDist =  (sideDistY - deltaDistY);
+        all->config->wall_x = all->pers->x + perpWallDist * rayDirX;
+      }
+      all->config->wall_x -= floor(all->config->wall_x);
+        
       
       int lineHeight = (int)(HEIGHT / perpWallDist);
 
@@ -84,16 +128,8 @@ void	ft_cast_rays(t_cub *all)
       if(drawStart < 0) drawStart = 0;
       int drawEnd = lineHeight / 2 + HEIGHT / 2;
       if(drawEnd >= HEIGHT) drawEnd = HEIGHT - 1;
-
-      int color;
-      color = 0x990099;
-      if(side == 1) {color = color / 2;}
-      while (drawStart < drawEnd)
-      {
-        put_pixel(x, drawStart, all->lib_mlx, color); 
-        drawStart++;
-      }
-    draw_floors(drawEnd, all, x);
+      draw_wool(side, drawStart, drawEnd, x, all, lineHeight);
+      draw_floors(drawEnd, all, x);
     }
 
 }
@@ -102,5 +138,6 @@ void draw_3d(t_cub *cub)
 {
     ft_bzero(cub->lib_mlx->data_addr, WIDTH * HEIGHT * (cub->lib_mlx->bits_per_pixel / 8));
     ft_cast_rays(cub);
+    draw_minimap(cub);
     mlx_put_image_to_window(cub->lib_mlx->mlx, cub->lib_mlx->mlx_win, cub->lib_mlx->img, 0, 0);
 }

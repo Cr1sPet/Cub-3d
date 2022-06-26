@@ -8,8 +8,6 @@ void	init_texture(char *path, t_parse *parse, t_texture **texture1)
 	texture = (t_texture *) malloc(sizeof(t_texture));
 	if (NULL == texture)
 		exit_with_error_parse(MALLOC_FAILURE, parse);
-	texture->width = 200;
-	texture->height = 200;
 	texture->img = mlx_xpm_file_to_image(parse->cub->lib_mlx->mlx, path,
 			&texture->width, &texture->height);
 	if (NULL == texture->img)
