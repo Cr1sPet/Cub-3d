@@ -15,11 +15,11 @@
 
 # define WIDTH 1200
 # define HEIGHT 800
-# define SCALE 10
+# define SCALE 5
 # define CHARACTER_SIZE 5
-# define MOVESPEED 0.3
+# define MOVESPEED 0.1
 # define MOUSESPEED 0.05
-# define ROTATESPEED 0.2
+# define ROTATESPEED 0.1
 
 typedef struct s_texture
 {
@@ -66,6 +66,14 @@ typedef struct s_mlx
 	int			endian;
 }				t_mlx;
 
+typedef struct s_key
+{
+	int		w;
+	int		s;
+	int		a;
+	int		d;
+}				t_key;
+
 typedef struct s_cub
 {
 	int			x;
@@ -76,6 +84,7 @@ typedef struct s_cub
 	t_pers_pos	*pers;
 	t_config	*config;
 	t_mlx		*lib_mlx;
+	t_key		*key;
 }				t_cub;
 
 t_cub	*parsing(int argc, char **argv);
@@ -99,4 +108,10 @@ int	create_rgb(int r, int g, int b);
 void put_pixel(int x, int y, t_mlx *lib_mlx, int color);
 // void draw_3d(t_cub *cub);
 
+//move
+int key_press(int keycode, t_cub *cub);
+int key_release(int keycode, t_cub *cub);
+
+void move(t_cub *cub);
+int	ft_exit(t_cub *cub);
 #endif

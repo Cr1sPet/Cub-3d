@@ -1,28 +1,28 @@
 #include "../../includes/cub3d.h"
 
-void draw_wool(int side, int drawStart, int drawEnd, int x, t_cub *cub, int lineHeight)
+void draw_wool(int side, int drawStart, int drawEnd, int x, t_cub *cub, int lineHeight, t_texture *texture)
 {
   int	r;
 	int	g;
 	int	b;
 
-  int tex_x = (int)(cub->config->wall_x * (double)cub->config->no_texture->width);
-  if (side == 0 && cub->pers->dirX < 0) tex_x = cub->config->no_texture->width - tex_x - 1;
-  if (side == 1 && cub->pers->dirY > 0) tex_x = cub->config->no_texture->width - tex_x - 1;
-  double step = 1.0 * cub->config->no_texture->height / lineHeight;
+  int tex_x = (int)(cub->config->wall_x * (double)texture->width);
+  if (side == 0 && cub->pers->dirX < 0) tex_x = texture->width - tex_x - 1;
+  if (side == 1 && cub->pers->dirY > 0) tex_x = texture->width - tex_x - 1;
+  double step = 1.0 * texture->height / lineHeight;
   double pos = (drawStart - HEIGHT / 2 + lineHeight / 2) * step;
 
   while (drawStart < drawEnd)
   {
 
-    int tex_y = (int)pos & (cub->config->no_texture->height - 1);
+    int tex_y = (int)pos & (texture->height - 1);
     pos += step;
-    b = (unsigned char)cub->config->no_texture->data_addr[tex_y * cub->config->no_texture->line_length
-			+ tex_x * cub->config->no_texture->bits_per_pixel / 8];
-		g = (unsigned char)cub->config->no_texture->data_addr[tex_y * cub->config->no_texture->line_length
-			+ tex_x * cub->config->no_texture->bits_per_pixel / 8 + 1];
-		r = (unsigned char)cub->config->no_texture->data_addr[tex_y * cub->config->no_texture->line_length
-			+ tex_x * cub->config->no_texture->bits_per_pixel / 8 + 2];
+    b = (unsigned char)texture->data_addr[tex_y * texture->line_length
+			+ tex_x * texture->bits_per_pixel / 8];
+		g = (unsigned char)texture->data_addr[tex_y * texture->line_length
+			+ tex_x * texture->bits_per_pixel / 8 + 1];
+		r = (unsigned char)texture->data_addr[tex_y * texture->line_length
+			+ tex_x * texture->bits_per_pixel / 8 + 2];
     put_pixel(x, drawStart, cub->lib_mlx, create_rgb(r,g, b)); 
     drawStart++;
   }
@@ -128,7 +128,16 @@ void	ft_cast_rays(t_cub *all)
       if(drawStart < 0) drawStart = 0;
       int drawEnd = lineHeight / 2 + HEIGHT / 2;
       if(drawEnd >= HEIGHT) drawEnd = HEIGHT - 1;
-      draw_wool(side, drawStart, drawEnd, x, all, lineHeight);
+
+
+    if (side == 0 && rayDirX > 0)
+		draw_wool(side, drawStart, drawEnd, x, all, lineHeight, all->config->so_texture);
+	else if (side == 0 && rayDirX < 0)
+		draw_wool(side, drawStart, drawEnd, x, all, lineHeight, all->config->no_texture);
+	else if (side == 1 && rayDirY > 0)
+		draw_wool(side, drawStart, drawEnd, x, all, lineHeight, all->config->ea_texture);
+	else if (side == 1 && rayDirY < 0)
+		draw_wool(side, drawStart, drawEnd, x, all, lineHeight, all->config->we_texture);
       draw_floors(drawEnd, all, x);
     }
 

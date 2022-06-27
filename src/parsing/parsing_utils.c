@@ -15,13 +15,23 @@ int ft_strcmp( const char *str1, const char *str2 )
 		 return 0;
 }
 
+void init_flags(t_key *key)
+{
+	key->a = 0;
+	key->d = 0;
+	key->w = 0;
+	key->s = 0;
+}
+
 t_parse	*init_parse(void)
 {
 	t_parse	*parse;
 	parse = (t_parse *)malloc(sizeof(t_parse));
 	parse->cub = init_cub(parse);
 	parse->cub->config = (t_config *)malloc(sizeof(t_config));
+	parse->cub->key = (t_key *)malloc(sizeof(t_key));
 	init_config(parse->cub->config);
+	init_flags(parse->cub->key);
 	parse->config_count = 0;
 	parse->status = 2;
 	parse->fd_opened = 0;

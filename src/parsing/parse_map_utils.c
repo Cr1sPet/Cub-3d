@@ -11,35 +11,35 @@ static void	init_perse(char ch, int i, int j, t_parse *parse)
 	if ('N' == ch)
 	{
 		parse->cub->pers->side = 'N';
-		parse->cub->pers->dirX = 0;
-		parse->cub->pers->dirY = -1;
-		parse->cub->pers->planeX = 0.66;
-		parse->cub->pers->planeY = 0;
+		parse->cub->pers->dirX = -1.0;
+		parse->cub->pers->dirY = 0.0;
+		parse->cub->pers->planeX = 0.0;
+		parse->cub->pers->planeY = 0.66;
 	}
 	else if ('W' == ch)
 	{
 		parse->cub->pers->side = 'W';
-		parse->cub->pers->dirX = -1;
-		parse->cub->pers->dirY = 0;
-		parse->cub->pers->planeX = 0;
-		parse->cub->pers->planeY = -0.66;
+		parse->cub->pers->dirX = 0;
+		parse->cub->pers->dirY = -1;
+		parse->cub->pers->planeX = -0.66;
+		parse->cub->pers->planeY = 0;
 	}
 		
 	else if ('E' == ch)
 	{
 		parse->cub->pers->side = 'E';
-		parse->cub->pers->dirX = 1;
-		parse->cub->pers->dirY = 0;
-		parse->cub->pers->planeX = 0;
-		parse->cub->pers->planeY = 0.66;
+		parse->cub->pers->dirX = 0;
+		parse->cub->pers->dirY = 1;
+		parse->cub->pers->planeX = 0.66;
+		parse->cub->pers->planeY = 0;
 	}
 	else if ('S' == ch)
 	{
 		parse->cub->pers->side = 'S';
-		parse->cub->pers->dirX = 0;
-		parse->cub->pers->dirY = 1;
-		parse->cub->pers->planeX = -0.66;
-		parse->cub->pers->planeY = 0;
+		parse->cub->pers->dirX = 1.0;
+		parse->cub->pers->dirY = 0.0;
+		parse->cub->pers->planeX = 0.0;
+		parse->cub->pers->planeY = -0.66;
 	}
 	parse->cub->pers->x = (double)i + 0.5;
 	parse->cub->pers->y = (double)j + 0.5;

@@ -31,62 +31,16 @@ void	print_map(char **map, int k, int q)
 
 int	ft_exit(t_cub *cub)
 {
+    mlx_destroy_window(cub->lib_mlx->mlx, cub->lib_mlx->mlx_win);
     clean_cub(cub);    
     exit(0);
 }
 
-int	key_hook (int keycode, t_cub *cub)
-{
-    if (13 == keycode)
-    {
-        if(cub->map[(int)(cub->pers->x + cub->pers->dirX * MOVESPEED)][(int)cub->pers->y]  == '0')
-        {
-           cub->pers->x += cub->pers->dirX * MOVESPEED;
-        }
-        if (cub->map[(int)cub->pers->x][(int)(cub->pers->y + cub->pers->dirY * MOVESPEED)]  == '0')
-        {
-            cub->pers->y += cub->pers->dirY * MOVESPEED;
-        }  
-    }
-    if (1 == keycode)
-    {
-        if(cub->map[(int)(cub->pers->x - cub->pers->dirX * MOVESPEED)][(int)cub->pers->y]  == '0')
-        {
-            cub->pers->x -= cub->pers->dirX * MOVESPEED;
-        } 
-        if (cub->map[(int)cub->pers->x][(int)(cub->pers->y - cub->pers->dirY * MOVESPEED)] == '0')
-        {
-            cub->pers->y -= cub->pers->dirY * MOVESPEED;
-        }  
-    }
-    if (0 == keycode || 123 == keycode)
-    {
-        double oldDirX = cub->pers->dirX;
-        cub->pers->dirX = cub->pers->dirX * cos(-ROTATESPEED) - cub->pers->dirY * sin(-ROTATESPEED);
-        cub->pers->dirY = oldDirX * sin(-ROTATESPEED) + cub->pers->dirY * cos(-ROTATESPEED);
-        double oldPlaneX =  cub->pers->planeX;
-        cub->pers->planeX =  cub->pers->planeX * cos(-ROTATESPEED) -  cub->pers->planeY * sin(-ROTATESPEED);
-        cub->pers->planeY = oldPlaneX * sin(-ROTATESPEED) + cub->pers->planeY * cos(-ROTATESPEED);
-    }
-    if (2 == keycode || 124 == keycode)
-    {
-        double oldDirX = cub->pers->dirX;
-        cub->pers->dirX = cub->pers->dirX * cos(ROTATESPEED) - cub->pers->dirY * sin(ROTATESPEED);
-        cub->pers->dirY = oldDirX * sin(ROTATESPEED) + cub->pers->dirY * cos(ROTATESPEED);
-        double oldPlaneX =  cub->pers->planeX;
-        cub->pers->planeX =  cub->pers->planeX * cos(ROTATESPEED) -  cub->pers->planeY * sin(ROTATESPEED);
-        cub->pers->planeY = oldPlaneX * sin(ROTATESPEED) + cub->pers->planeY * cos(ROTATESPEED);
-    }
-    else if (53 == keycode)
-    {
-        ft_exit(cub);
-    }
-    return (0);
-}
-
-int	render(void *param)
+int	render(t_cub *param)
 {
 	draw_3d(param);
+    move(param);
+    print_map(param->map, param->pers->x, param->pers->y);
 	return (0);
 }
 
@@ -95,7 +49,7 @@ int mouse_hook(int x, int y, t_cub *cub)
     double z = (double)x;
     if (abs(x - cub->prev_x) > 10)
     {
-        if (x - cub->prev_x < 0)
+        if (x - cub->prev_x > 0)
             z = -1 * MOUSESPEED;
         else
             z = MOUSESPEED;
@@ -126,7 +80,8 @@ int	main(int argc, char **argv)
 	cub = parsing(argc, argv);
     cub->x = 0;
     mlx_hook(cub->lib_mlx->mlx_win, 17, 0, ft_exit, cub);
-    mlx_hook(cub->lib_mlx->mlx_win, 2, 1L << 0, key_hook, cub);
+    mlx_hook(cub->lib_mlx->mlx_win, 2, 1L << 0, key_press, cub);
+	mlx_hook(cub->lib_mlx->mlx_win, 3, 1L << 1, key_release, cub);
 	mlx_hook(cub->lib_mlx->mlx_win, 6, 0, mouse_hook, cub);
     mlx_mouse_hide();
     mlx_loop_hook(cub->lib_mlx->mlx, &render, (void *) cub);
