@@ -111,16 +111,17 @@ void	ft_cast_rays(t_cub *all)
       }
       if(side == 0)
       {
-         perpWallDist = (sideDistX - deltaDistX);
+          // perpWallDist = (mapX - all->pers->x + (double)(1 - stepX) / 2) / rayDirX;
+          perpWallDist = (sideDistX - deltaDistX);
          all->config->wall_x = all->pers->y + perpWallDist * rayDirY;
       }
       else
       {
-        perpWallDist =  (sideDistY - deltaDistY);
+        // perpWallDist = (mapY - all->pers->y + (double)(1 - stepY) / 2) / rayDirY;
+        perpWallDist = (sideDistY - deltaDistY);
         all->config->wall_x = all->pers->x + perpWallDist * rayDirX;
       }
       all->config->wall_x -= floor(all->config->wall_x);
-        
       
       int lineHeight = (int)(HEIGHT / perpWallDist);
 

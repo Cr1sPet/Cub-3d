@@ -41,8 +41,8 @@ static void	init_perse(char ch, int i, int j, t_parse *parse)
 		parse->cub->pers->planeX = 0.0;
 		parse->cub->pers->planeY = -0.66;
 	}
-	parse->cub->pers->x = (double)i + 0.5;
-	parse->cub->pers->y = (double)j + 0.5;
+	parse->cub->pers->x = i + 0.5;
+	parse->cub->pers->y = j + 0.5;
 
 }
 
