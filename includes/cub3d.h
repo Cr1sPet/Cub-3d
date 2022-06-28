@@ -7,18 +7,15 @@
 # include <fcntl.h>
 # include <stddef.h>
 # include <math.h>
-#include <time.h>
 # include "../libft/libft.h"
-
-
 # define MALLOC_FAILURE "Error\nmalloc() returned NULL"
 
-# define WIDTH 1200
-# define HEIGHT 800
+# define WIDTH 1800
+# define HEIGHT 1200
 # define SCALE 5
 # define CHARACTER_SIZE 5
 # define MOVESPEED 0.1
-# define MOUSESPEED 0.05
+# define MOUSESPEED 0.5
 # define ROTATESPEED 0.1
 
 typedef struct s_texture
@@ -38,21 +35,21 @@ typedef struct s_config
 	t_texture	*so_texture;
 	t_texture	*we_texture;
 	t_texture	*ea_texture;
-	int		c;
-	int		f;
-	int		map_length;
-	double wall_x;
+	int			c;
+	int			f;
+	int			map_length;
+	double		wall_x;
 }				t_config;
 
 typedef struct s_pers_pos
 {
 	double		x;
 	double		y;
-	char	side;
-	double	dirX;
-	double	dirY;
-	double planeX;
-	double planeY;
+	char		side;
+	double		dirX;
+	double		dirY;
+	double		planeX;
+	double		planeY;
 }				t_pers_pos;
 
 typedef struct s_mlx
@@ -72,15 +69,43 @@ typedef struct s_key
 	int		s;
 	int		a;
 	int		d;
+	int		mouse_left;
+	int		mouse_right;
 }				t_key;
+
+typedef struct s_add
+{
+	double	camera_x;
+	double	ray_dir_x;
+	double	ray_dir_y;
+	double	side_dist_x;
+	double	side_dist_y;
+	double	delta_dist_x;
+	double	delta_dist_y;
+	double	perp_wall_dist;
+	int		map_x;
+	int		line_height;
+	int		draw_start;
+	int		draw_end;
+	int		map_y;
+	int		step_x;
+	int		step_y;
+	int		tex_x;
+	int		tex_y;
+	int		hit;
+	int		side;
+}				t_dda;
+
 
 typedef struct s_cub
 {
 	int			x;
 	int			prev_x;
-	double 		prev_z;
+	double		z;
+	double		prev_z;
 	char		**map;
 	int			map_len;
+	t_dda		*dda;
 	t_pers_pos	*pers;
 	t_config	*config;
 	t_mlx		*lib_mlx;
@@ -101,17 +126,26 @@ void	clean_cub(t_cub *cub);
 void	clean_config(t_config *conf, t_cub *cub);
 void	exit_with_error(char *message, t_cub *cub);
 
+void	str_2d_clean(char **s, size_t l);
+
 //draw
-void    draw_3d(t_cub *cub);
 void draw_minimap(t_cub *cub);
 int	create_rgb(int r, int g, int b);
 void put_pixel(int x, int y, t_mlx *lib_mlx, int color);
+void	init_t_add(t_cub *cub, int x);
+void calc_ray(t_cub *cub);
+void hit(t_cub *cub);
+void side(t_cub *cub);
 // void draw_3d(t_cub *cub);
 
 //move
-int key_press(int keycode, t_cub *cub);
-int key_release(int keycode, t_cub *cub);
-
-void move(t_cub *cub);
-int	ft_exit(t_cub *cub);
+int		key_press(int keycode, t_cub *cub);
+int		key_release(int keycode, t_cub *cub);
+void	move(t_cub *cub);
+void	move_w(t_cub *cub);
+void	move_s(t_cub *cub);
+void	move_a(t_cub *cub);
+void	move_d(t_cub *cub);
+void	move_mouse(t_cub *cub, double z);
+int		ft_exit(t_cub *cub);
 #endif

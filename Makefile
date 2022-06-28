@@ -12,8 +12,8 @@ SRCS			=	./src/main.c\
 					./src/drawing/draw_3d.c\
 					./src/drawing/draw_minimap.c\
 					./src/moving/move.c\
-					# ./src/draw.c\
-					# ./src/get_next_line/get_next_line_utils.c\
+					./src/moving/utils.c\
+					./src/drawing/utils.c\
 
 SRCS_B			=
 

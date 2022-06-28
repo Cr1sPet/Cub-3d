@@ -1,153 +1,102 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   draw_3d.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: spurple <spurple@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/06/28 19:20:11 by spurple           #+#    #+#             */
+/*   Updated: 2022/06/28 21:29:22 by spurple          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/cub3d.h"
 
-void draw_wool(int side, int drawStart, int drawEnd, int x, t_cub *cub, int lineHeight, t_texture *texture)
+void	calc_tex_x(t_cub *cub, t_texture *texture)
 {
-  int	r;
-	int	g;
-	int	b;
-
-  int tex_x = (int)(cub->config->wall_x * (double)texture->width);
-  if (side == 0 && cub->pers->dirX < 0) tex_x = texture->width - tex_x - 1;
-  if (side == 1 && cub->pers->dirY > 0) tex_x = texture->width - tex_x - 1;
-  double step = 1.0 * texture->height / lineHeight;
-  double pos = (drawStart - HEIGHT / 2 + lineHeight / 2) * step;
-
-  while (drawStart < drawEnd)
-  {
-
-    int tex_y = (int)pos & (texture->height - 1);
-    pos += step;
-    b = (unsigned char)texture->data_addr[tex_y * texture->line_length
-			+ tex_x * texture->bits_per_pixel / 8];
-		g = (unsigned char)texture->data_addr[tex_y * texture->line_length
-			+ tex_x * texture->bits_per_pixel / 8 + 1];
-		r = (unsigned char)texture->data_addr[tex_y * texture->line_length
-			+ tex_x * texture->bits_per_pixel / 8 + 2];
-    put_pixel(x, drawStart, cub->lib_mlx, create_rgb(r,g, b)); 
-    drawStart++;
-  }
+	cub->dda->tex_x = (int)(cub->config->wall_x * (double)texture->width);
+	if (cub->dda->side == 0 && cub->pers->dirX < 0)
+		cub->dda->tex_x = texture->width - cub->dda->tex_x - 1;
+	if (cub->dda->side == 1 && cub->pers->dirY > 0)
+		cub->dda->tex_x = texture->width - cub->dda->tex_x - 1;
 }
 
-void draw_floors(int drawEnd, t_cub *cub, int x)
+void	draw_wool(t_cub *cub, int x, t_texture *texture)
 {
-  int i;
+	int		r;
+	int		g;
+	int		b;
+	double	step;
+	double	pos;
 
-  i = 0;
-	if (drawEnd < 0)
-    drawEnd = HEIGHT;
-	i = drawEnd + 1;
+	calc_tex_x(cub, texture);
+	step = 1.0 * texture->height / cub->dda->line_height;
+	pos = (cub->dda->draw_start - HEIGHT / 2 \
+	+ cub->dda->line_height / 2) * step;
+	while (cub->dda->draw_start++ < cub->dda->draw_end)
+	{
+		cub->dda->tex_y = (int)pos & (texture->height - 1);
+		pos += step;
+		b = (unsigned char)texture->data_addr[cub->dda->tex_y \
+		* texture->line_length + cub->dda->tex_x * texture->bits_per_pixel / 8];
+		g = (unsigned char)texture->data_addr[cub->dda->tex_y * \
+		texture->line_length + cub->dda->tex_x \
+		* texture->bits_per_pixel / 8 + 1];
+		r = (unsigned char)texture->data_addr[cub->dda->tex_y \
+		* texture->line_length + cub->dda->tex_x \
+		* texture->bits_per_pixel / 8 + 2];
+		put_pixel(x, cub->dda->draw_start, cub->lib_mlx, \
+		create_rgb(r, g, b));
+	}
+}
+
+void	draw_floors(t_cub *cub, int x)
+{
+	int	i;
+
+	i = 0;
+	if (cub->dda->draw_end < 0)
+		cub->dda->draw_end = HEIGHT;
+	i = cub->dda->draw_end + 1;
 	while (i < HEIGHT)
 	{
-		put_pixel(x, i,  cub->lib_mlx, cub->config->c);
-		put_pixel(x, HEIGHT - i - 1, cub->lib_mlx,  cub->config->f);
+		put_pixel(x, i, cub->lib_mlx, cub->config->c);
+		put_pixel(x, HEIGHT - i - 1, cub->lib_mlx, cub->config->f);
 		i++;
 	}
 }
-void char_put_pixel(int x, int y, t_texture *texture, int color)
+
+void	drawning(t_cub *cub, int x)
 {
-	char	*dst;
-	if (x > 0 && x < WIDTH && y > 0 && y < HEIGHT)
+	cub->dda->line_height = (int)(HEIGHT / cub->dda->perp_wall_dist);
+	cub->dda->draw_start = -cub->dda->line_height / 2 + HEIGHT / 2;
+	cub->dda->draw_end = cub->dda->line_height / 2 + HEIGHT / 2;
+	if (cub->dda->draw_start < 0)
+		cub->dda->draw_start = 0;
+	if (cub->dda->draw_end >= HEIGHT)
+		cub->dda->draw_end = HEIGHT - 1;
+	if (cub->dda->side == 0 && cub->dda->ray_dir_x > 0)
+		draw_wool(cub, x, cub->config->so_texture);
+	else if (cub->dda->side == 0 && cub->dda->ray_dir_x < 0)
+		draw_wool(cub, x, cub->config->no_texture);
+	else if (cub->dda->side == 1 && cub->dda->ray_dir_y > 0)
+		draw_wool(cub, x, cub->config->ea_texture);
+	else if (cub->dda->side == 1 && cub->dda->ray_dir_y < 0)
+		draw_wool(cub, x, cub->config->we_texture);
+	draw_floors(cub, x);
+}
+
+void	ft_cast_rays(t_cub *cub)
+{
+	int	x;
+
+	x = 0;
+	while (x++ < WIDTH)
 	{
-		dst = texture->data_addr + (y * texture->line_length + x * (texture->bits_per_pixel / 8));
-		*(unsigned int*)dst = color;
+		init_t_add(cub, x);
+		calc_ray(cub);
+		hit(cub);
+		side(cub);
+		drawning(cub, x);
 	}
-}
-
-void	ft_cast_rays(t_cub *all)
-{
-  for (int x = 0; x < WIDTH; x++)
-   {
-      double cameraX = 2 * x / (double)WIDTH - 1;;
-      double rayDirX = all->pers->dirX + all->pers->planeX * cameraX;
-      double rayDirY = all->pers->dirY + all->pers->planeY * cameraX;
-      int mapX = (int)all->pers->x;
-      int mapY = (int)all->pers->y;
-      double sideDistX;
-      double sideDistY;
-
-      double deltaDistX = fabs(1 / rayDirX);
-      double deltaDistY = fabs(1 / rayDirY);
-      double perpWallDist;
-
-      int stepX;
-      int stepY;
-      int hit = 0;
-      int side;
-       if(rayDirX < 0)
-      {
-        stepX = -1;
-        sideDistX = (all->pers->x - mapX) * deltaDistX;
-      }
-      else
-      {
-        stepX = 1;
-        sideDistX = (mapX + 1.0 - all->pers->x) * deltaDistX;
-      }
-      if(rayDirY < 0)
-      {
-        stepY = -1;
-        sideDistY = (all->pers->y - mapY) * deltaDistY;
-      }
-      else
-      {
-        stepY = 1;
-        sideDistY = (mapY + 1.0 - all->pers->y) * deltaDistY;
-      }
-      while(hit == 0)
-      {
-        if(sideDistX < sideDistY)
-        {
-          sideDistX += deltaDistX;
-          mapX += stepX;
-          side = 0;
-        }
-        else
-        {
-          sideDistY += deltaDistY;
-          mapY += stepY;
-          side = 1;
-        }
-        if(all->map[mapX][mapY] != '0') hit = 1;
-      }
-      if(side == 0)
-      {
-          // perpWallDist = (mapX - all->pers->x + (double)(1 - stepX) / 2) / rayDirX;
-          perpWallDist = (sideDistX - deltaDistX);
-         all->config->wall_x = all->pers->y + perpWallDist * rayDirY;
-      }
-      else
-      {
-        // perpWallDist = (mapY - all->pers->y + (double)(1 - stepY) / 2) / rayDirY;
-        perpWallDist = (sideDistY - deltaDistY);
-        all->config->wall_x = all->pers->x + perpWallDist * rayDirX;
-      }
-      all->config->wall_x -= floor(all->config->wall_x);
-      
-      int lineHeight = (int)(HEIGHT / perpWallDist);
-
-      int drawStart = -lineHeight / 2 + HEIGHT / 2;
-      if(drawStart < 0) drawStart = 0;
-      int drawEnd = lineHeight / 2 + HEIGHT / 2;
-      if(drawEnd >= HEIGHT) drawEnd = HEIGHT - 1;
-
-
-    if (side == 0 && rayDirX > 0)
-		draw_wool(side, drawStart, drawEnd, x, all, lineHeight, all->config->so_texture);
-	else if (side == 0 && rayDirX < 0)
-		draw_wool(side, drawStart, drawEnd, x, all, lineHeight, all->config->no_texture);
-	else if (side == 1 && rayDirY > 0)
-		draw_wool(side, drawStart, drawEnd, x, all, lineHeight, all->config->ea_texture);
-	else if (side == 1 && rayDirY < 0)
-		draw_wool(side, drawStart, drawEnd, x, all, lineHeight, all->config->we_texture);
-      draw_floors(drawEnd, all, x);
-    }
-
-}
-
-void draw_3d(t_cub *cub)
-{
-    ft_bzero(cub->lib_mlx->data_addr, WIDTH * HEIGHT * (cub->lib_mlx->bits_per_pixel / 8));
-    ft_cast_rays(cub);
-    draw_minimap(cub);
-    mlx_put_image_to_window(cub->lib_mlx->mlx, cub->lib_mlx->mlx_win, cub->lib_mlx->img, 0, 0);
 }

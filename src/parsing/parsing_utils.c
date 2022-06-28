@@ -21,6 +21,8 @@ void init_flags(t_key *key)
 	key->d = 0;
 	key->w = 0;
 	key->s = 0;
+	key->mouse_left = 0;
+	key->mouse_right = 0;
 }
 
 t_parse	*init_parse(void)

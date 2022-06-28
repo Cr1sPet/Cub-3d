@@ -1,14 +1,26 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: spurple <spurple@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/06/28 21:20:53 by spurple           #+#    #+#             */
+/*   Updated: 2022/06/28 21:40:34 by spurple          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
-
-
-void put_pixel(int x, int y, t_mlx *lib_mlx, int color)
+void	put_pixel(int x, int y, t_mlx *lib_mlx, int color)
 {
 	char	*dst;
+
 	if (x > 0 && x < WIDTH && y > 0 && y < HEIGHT)
 	{
-		dst = lib_mlx->data_addr + (y * lib_mlx->line_length + x * (lib_mlx->bits_per_pixel / 8));
-		*(unsigned int*)dst = color;
+		dst = lib_mlx->data_addr + (y * lib_mlx->line_length \
+		+ x * (lib_mlx->bits_per_pixel / 8));
+		*(unsigned int *)dst = color;
 	}
 }
 
@@ -84,10 +96,10 @@ void	clean_cub(t_cub *cub)
 		free(cub->pers);
 	clean_config(cub->config, cub);
 	if (cub->lib_mlx)
-	{
-		// free(cub->lib_mlx->mlx);
-		// mlx_destroy_window(cub->lib_mlx->mlx, cub->lib_mlx->mlx_win);
 		free(cub->lib_mlx);
-	}
+	if (cub->dda)
+		free(cub->dda);
+	if (cub->key)
+		free(cub->config);
 	free(cub);
 }
