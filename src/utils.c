@@ -12,18 +12,6 @@
 
 #include "cub3d.h"
 
-void	put_pixel(int x, int y, t_mlx *lib_mlx, int color)
-{
-	char	*dst;
-
-	if (x > 0 && x < WIDTH && y > 0 && y < HEIGHT)
-	{
-		dst = lib_mlx->data_addr + (y * lib_mlx->line_length \
-		+ x * (lib_mlx->bits_per_pixel / 8));
-		*(unsigned int *)dst = color;
-	}
-}
-
 int	len_2d_str(char **str)
 {
 	int	i;
@@ -66,19 +54,16 @@ void	clean_config(t_config *conf, t_cub *cub)
 			mlx_destroy_image(cub->lib_mlx->mlx, conf->no_texture->img);
 			free(conf->no_texture);
 		}
-
 		if (conf->so_texture)
 		{
 			mlx_destroy_image(cub->lib_mlx->mlx, conf->so_texture->img);
 			free(conf->so_texture);
 		}
-	
 		if (conf->we_texture)
 		{
 			mlx_destroy_image(cub->lib_mlx->mlx, conf->we_texture->img);
 			free(conf->we_texture);
 		}
-		
 		if (conf->ea_texture)
 		{
 			mlx_destroy_image(cub->lib_mlx->mlx, conf->ea_texture->img);
@@ -96,10 +81,16 @@ void	clean_cub(t_cub *cub)
 		free(cub->pers);
 	clean_config(cub->config, cub);
 	if (cub->lib_mlx)
+	{
+		if (cub->lib_mlx->mlx && cub->lib_mlx->mlx_win)
+		{
+			mlx_destroy_window(cub->lib_mlx->mlx, cub->lib_mlx->mlx_win);
+		}
 		free(cub->lib_mlx);
+	}
 	if (cub->dda)
 		free(cub->dda);
 	if (cub->key)
-		free(cub->config);
+		free(cub->key);
 	free(cub);
 }

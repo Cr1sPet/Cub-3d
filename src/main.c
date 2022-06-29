@@ -15,7 +15,6 @@
 
 int	ft_exit(t_cub *cub)
 {
-	mlx_destroy_window(cub->lib_mlx->mlx, cub->lib_mlx->mlx_win);
 	clean_cub(cub);
 	exit(0);
 }
