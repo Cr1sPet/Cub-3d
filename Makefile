@@ -7,6 +7,9 @@ SRCS			=	./src/main.c\
 					./src/parsing/validation.c\
 					./src/parsing/parsing_utils.c\
 					./src/parsing/config_identifier.c\
+					./src/parsing/config_identifier2.c\
+					./src/parsing/init.c\
+					./src/parsing/init_cub.c\
 					./src/parsing/parse_map.c\
 					./src/parsing/parse_map_utils.c\
 					./src/drawing/draw_3d.c\

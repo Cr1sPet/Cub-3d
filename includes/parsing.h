@@ -11,15 +11,15 @@
 # define NUMBER_CHAR_FAILURE\
 		"Error\nInvalid map : wrong number of characters. Required : 1."
 # define ALLOWED_SYMB_FAILURE\
-		"Error\nInvalid map : unrecognized sumbol. Allowed : \" 01WSNE\"."
+		"Error\nInvalid map : unrecognized symbol. Allowed : \" 01WSNE\"."
 
 typedef struct s_parse
 {
 	int			config_count;
 	int			status;
 	int			fd_opened;
-	int         fd;
-	t_list      *input_data;
+	int			fd;
+	t_list		*input_data;
 	t_list		*curent_data;
 	t_cub		*cub;
 	char		*trimmed_str;
@@ -38,7 +38,6 @@ void	init_config(t_config *conf);
 t_cub	*init_cub(t_parse *parse);
 
 char	**make_map(char *arg);
-int		ft_strcmp( const char *str1, const char *str2 );
 void	valid_filename(int argc, char **argv);
 void	clean_list(t_list *list);
 void	exit_with_error_parse(char *error, t_parse *parse);
@@ -46,13 +45,13 @@ t_parse	*init_parse(void);
 void	valid_config_str(char *str, t_parse *parse);
 int		check_config(char **config, t_parse *parse);
 void	set_config_funcs(t_parse *parse);
-void init_texture(char *path, t_parse *parse, t_texture **texture1);
-
+void	init_texture(char *path, t_parse *parse, t_texture **texture1);
 int		parse_map(t_parse *parse);
 void	clean_parse_inner(t_parse *parse);
-char    **list_to2darr(t_list *list, t_parse *parse);
+char	**list_to2darr(t_list *list, t_parse *parse);
 void	firstly_parse(char **map, t_parse *parse);
 int		parse_int(char *str);
-
+void	proc_symbol(char **map, int i, int j, t_parse *parse);
+int		check_i(int i, t_parse *parse);
 
 #endif
