@@ -60,21 +60,21 @@ int	check_zerro_sym(char **map, int i, int j)
 {
 	if (i != 0)
 	{
-		if ((ft_strlen(map[i - 1]) - 2 < j))
+		if (((int) ft_strlen(map[i - 1]) - 2 < j))
 			return (0);
 		if ((map[i - 1][j] == ' ') || (j != 0 && map[i - 1][j - 1] == ' '))
 			return (0);
 	}
 	if (i != len_2d_str(map) - 1)
 	{
-		if ((ft_strlen(map[i + 1]) - 2 < j))
+		if (((int) ft_strlen(map[i + 1]) - 2 < j))
 			return (0);
 		if ((map[i + 1][j] == ' ') || (map[i + 1][j - 1] == ' '))
 			return (0);
 	}
 	if (j != 0 && (map[i][j - 1] == ' '))
 		return (0);
-	if (j != ft_strlen(map[i]) - 1 && (map[i][j + 1] == ' '))
+	if (j != (int) ft_strlen(map[i]) - 1 && (map[i][j + 1] == ' '))
 		return (0);
 	return (1);
 }

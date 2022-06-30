@@ -12,11 +12,13 @@ SRCS			=	./src/main.c\
 					./src/parsing/init_cub.c\
 					./src/parsing/parse_map.c\
 					./src/parsing/parse_map_utils.c\
-					./src/drawing/draw_3d.c\
-					./src/drawing/draw_minimap.c\
-					./src/moving/move.c\
-					./src/moving/utils.c\
-					./src/drawing/utils.c\
+					# ./src/drawing/draw_3d.c\
+					# ./src/drawing/draw_minimap.c\
+					# ./src/moving/move.c\
+					# ./src/moving/utils.c\
+					# ./src/drawing/utils.c\
+
+
 
 SRCS_B			=
 
@@ -36,7 +38,7 @@ CC				= gcc -g
 
 RM				= @rm -f
 
-# FLAGS			= -Wall -Wextra -Werror
+FLAGS			= -Wall -Wextra -Werror
 
 .PHONY:			all clean fclean re bonus
 

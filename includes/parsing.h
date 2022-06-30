@@ -34,6 +34,7 @@ void	init_we(char *path, t_parse *parse);
 void	init_ea(char *path, t_parse *parse);
 void	init_f(char *path, t_parse *parse);
 void	init_c(char *path, t_parse *parse);
+void	init_color(char *rgb, t_parse *parse, int	*color);
 void	init_config(t_config *conf);
 t_cub	*init_cub(t_parse *parse);
 
