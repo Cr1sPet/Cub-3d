@@ -23,7 +23,9 @@ SRCS_B			=
 MLX_DIR			=	./mlx/
 MLX_LIB			=	./mlx/libmlx.a
 
-HEADER			= ./includes/
+INCLUDES =	-I includes
+
+HEADER			= ./includes/cub3d.h ./includes/parsing.h ./includes/get_next_line.h 
 
 LIBFT			= libft/libft.a
 
@@ -32,7 +34,7 @@ OBJ				= $(SRCS:.c=.o)
 
 OBJ_B			= $(SRCS_B:.c=.o)
 
-CC				= gcc -g
+CC				= cc
 
 RM				= @rm -f
 
@@ -43,17 +45,14 @@ FLAGS			= -Wall -Wextra -Werror
 all:			$(NAME)
 
 
-$(NAME):		$(OBJ) ./includes/cub3d.h ./includes/parsing.h
-				@($(MAKE)	-C		$(MLX_DIR))
+$(NAME):		$(OBJ)
+				@($(MAKE)	-C $(MLX_DIR))
 				@$(MAKE) all -C ./libft
-				$(CC) $(OBJ) $(MLX_LIB) -Lmlx -lmlx -framework OpenGL -framework AppKit -I${HEADER} ${LIBFT} -o $(NAME)
+				$(CC) $(INCLUDES) $(OBJ) $(MLX_LIB) -Lmlx -lmlx -framework OpenGL -framework AppKit ${LIBFT} -o $(NAME)
 
 
 %.o:			%.c $(HEADER)
-				$(CC) -g $(FLAGS) -I${HEADER} -c $< -o $@
-
-bonus:
-				make OBJ="$(OBJ_B)" all
+				$(CC) -g $(FLAGS) $(INCLUDES) -c $< -o $@
 
 clean:
 				@$(MAKE) clean -C ./libft
