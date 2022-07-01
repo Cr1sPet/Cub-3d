@@ -6,7 +6,7 @@
 /*   By: spurple <spurple@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 21:31:23 by spurple           #+#    #+#             */
-/*   Updated: 2022/07/01 19:55:11 by spurple          ###   ########.fr       */
+/*   Updated: 2022/07/01 19:56:06 by spurple          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ int	mouse_hook(int x, int y, t_cub *cub)
 	else if (x == cub->prev_x)
 		cub->key->mouse_right = 1;
 	cub->prev_x = x;
-
 	return (0);
 }
 
