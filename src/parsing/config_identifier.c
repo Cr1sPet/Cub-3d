@@ -20,16 +20,17 @@ void	init_texture(char *path, t_parse *parse, t_texture **texture1)
 	texture = (t_texture *) malloc(sizeof(t_texture));
 	if (NULL == texture)
 		exit_with_error_parse(MALLOC_FAILURE, parse);
-	texture->img = mlx_xpm_file_to_image(parse->cub->lib_mlx->mlx, path,
-			&texture->width, &texture->height);
-	if (NULL == texture->img)
-		exit_with_error_parse("ERROR\nTexture file reading has failed", parse);
-	texture->data_addr = mlx_get_data_addr(texture->img, \
-		&texture->bits_per_pixel, \
-		&texture->line_length, &texture->endian);
-	if (NULL == texture->data_addr)
-		exit_with_error_parse("ERROR\nMLX get data addr failed", parse);
-	ft_putendl_fd("Success : init ", 1);
+	// texture->img = mlx_xpm_file_to_image(parse->cub->lib_mlx->mlx, path,
+	// 		&texture->width, &texture->height);
+	// if (NULL == texture->img)
+	// 	exit_with_error_parse("ERROR\nTexture file reading has failed", parse);
+	// texture->data_addr = mlx_get_data_addr(texture->img, \
+	// 	&texture->bits_per_pixel, \
+	// 	&texture->line_length, &texture->endian);
+	// if (NULL == texture->data_addr)
+	// 	exit_with_error_parse("ERROR\nMLX get data addr failed", parse);
+	// ft_putendl_fd("Success : init ", 1);
+	texture->path = ft_strdup(path);
 	*texture1 = texture;
 }
 

@@ -38,6 +38,7 @@ typedef struct s_texture
 	int			bits_per_pixel;
 	int			line_length;
 	int			endian;
+	char		*path;
 }				t_texture;
 
 typedef struct s_config

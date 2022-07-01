@@ -47,26 +47,31 @@ void	exit_with_error(char *message, t_cub *cub)
 
 void	clean_config(t_config *conf, t_cub *cub)
 {
+	(void) cub;
 	if (conf)
 	{
 		if (conf->no_texture)
 		{
-			mlx_destroy_image(cub->lib_mlx->mlx, conf->no_texture->img);
+			free(conf->no_texture->path);
+			// mlx_destroy_image(cub->lib_mlx->mlx, conf->no_texture->img);
 			free(conf->no_texture);
 		}
 		if (conf->so_texture)
 		{
-			mlx_destroy_image(cub->lib_mlx->mlx, conf->so_texture->img);
+			free(conf->so_texture->path);
+			// mlx_destroy_image(cub->lib_mlx->mlx, conf->so_texture->img);
 			free(conf->so_texture);
 		}
 		if (conf->we_texture)
 		{
-			mlx_destroy_image(cub->lib_mlx->mlx, conf->we_texture->img);
+			free(conf->we_texture->path);
+			// mlx_destroy_image(cub->lib_mlx->mlx, conf->we_texture->img);
 			free(conf->we_texture);
 		}
 		if (conf->ea_texture)
 		{
-			mlx_destroy_image(cub->lib_mlx->mlx, conf->ea_texture->img);
+			free(conf->ea_texture->path);
+			// mlx_destroy_image(cub->lib_mlx->mlx, conf->ea_texture->img);
 			free(conf->ea_texture);
 		}
 	}

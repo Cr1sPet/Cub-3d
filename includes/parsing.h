@@ -66,5 +66,6 @@ void	firstly_parse(char **map, t_parse *parse);
 int		parse_int(char *str);
 void	proc_symbol(char **map, int i, int j, t_parse *parse);
 int		check_i(int i, t_parse *parse);
+t_mlx	*init_lib_mlx(t_parse *parse);
 
 #endif

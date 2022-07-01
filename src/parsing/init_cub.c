@@ -22,7 +22,7 @@ void	init_flags(t_key *key)
 	key->mouse_right = 0;
 }
 
-static t_mlx	*init_lib_mlx(t_parse *parse)
+t_mlx	*init_lib_mlx(t_parse *parse)
 {
 	t_mlx	*lib_mlx;
 
@@ -71,13 +71,12 @@ t_cub	*init_cub(t_parse *parse)
 		exit_with_error_parse(MALLOC_FAILURE, parse);
 	init_config(cub->config);
 	cub->key = (t_key *)malloc(sizeof(t_key));
-	if (NULL == cub->config)
+	if (NULL == cub->key)
 		exit_with_error_parse(MALLOC_FAILURE, parse);
 	init_flags(cub->key);
 	cub->pers = (t_pers_pos *) malloc(sizeof(t_pers_pos));
 	if (NULL == cub->pers)
 		exit_with_error_parse(MALLOC_FAILURE, parse);
-	cub->lib_mlx = init_lib_mlx(parse);
 	cub->pers->side = 0;
 	return (cub);
 }
