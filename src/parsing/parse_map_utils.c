@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parse_map_utils.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: spurple <spurple@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/01 19:32:33 by spurple           #+#    #+#             */
+/*   Updated: 2022/07/01 19:38:27 by spurple          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "parsing.h"
 
 static void	init_perse2(t_parse *parse, char ch)
@@ -5,26 +17,26 @@ static void	init_perse2(t_parse *parse, char ch)
 	if ('W' == ch)
 	{
 		parse->cub->pers->side = 'W';
-		parse->cub->pers->dirX = 0.0;
-		parse->cub->pers->dirY = -1.0;
-		parse->cub->pers->planeX = -0.66;
-		parse->cub->pers->planeY = 0.0;
+		parse->cub->pers->dir_x = 0.0;
+		parse->cub->pers->dir_y = -1.0;
+		parse->cub->pers->plane_x = -0.66;
+		parse->cub->pers->plane_y = 0.0;
 	}
 	else if ('E' == ch)
 	{
 		parse->cub->pers->side = 'E';
-		parse->cub->pers->dirX = 0.0;
-		parse->cub->pers->dirY = 1.0;
-		parse->cub->pers->planeX = 0.66;
-		parse->cub->pers->planeY = 0.0;
+		parse->cub->pers->dir_x = 0.0;
+		parse->cub->pers->dir_y = 1.0;
+		parse->cub->pers->plane_x = 0.66;
+		parse->cub->pers->plane_y = 0.0;
 	}
 	else if ('S' == ch)
 	{
 		parse->cub->pers->side = 'S';
-		parse->cub->pers->dirX = 1.0;
-		parse->cub->pers->dirY = 0.0;
-		parse->cub->pers->planeX = 0.0;
-		parse->cub->pers->planeY = -0.66;
+		parse->cub->pers->dir_x = 1.0;
+		parse->cub->pers->dir_y = 0.0;
+		parse->cub->pers->plane_x = 0.0;
+		parse->cub->pers->plane_y = -0.66;
 	}
 }
 
@@ -38,10 +50,10 @@ static void	init_perse(char ch, int i, int j, t_parse *parse)
 	if ('N' == ch)
 	{
 		parse->cub->pers->side = 'N';
-		parse->cub->pers->dirX = -1.0;
-		parse->cub->pers->dirY = 0.0;
-		parse->cub->pers->planeX = 0.0;
-		parse->cub->pers->planeY = 0.66;
+		parse->cub->pers->dir_x = -1.0;
+		parse->cub->pers->dir_y = 0.0;
+		parse->cub->pers->plane_x = 0.0;
+		parse->cub->pers->plane_y = 0.66;
 	}
 	else
 		init_perse2(parse, ch);

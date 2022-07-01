@@ -6,7 +6,7 @@
 /*   By: spurple <spurple@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 19:20:11 by spurple           #+#    #+#             */
-/*   Updated: 2022/06/28 21:29:22 by spurple          ###   ########.fr       */
+/*   Updated: 2022/07/01 19:35:07 by spurple          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 void	calc_tex_x(t_cub *cub, t_texture *texture)
 {
 	cub->dda->tex_x = (int)(cub->config->wall_x * (double)texture->width);
-	if (cub->dda->side == 0 && cub->pers->dirX < 0)
+	if (cub->dda->side == 0 && cub->pers->dir_x < 0)
 		cub->dda->tex_x = texture->width - cub->dda->tex_x - 1;
-	if (cub->dda->side == 1 && cub->pers->dirY > 0)
+	if (cub->dda->side == 1 && cub->pers->dir_y > 0)
 		cub->dda->tex_x = texture->width - cub->dda->tex_x - 1;
 }
 

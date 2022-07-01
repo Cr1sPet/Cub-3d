@@ -6,7 +6,7 @@
 /*   By: spurple <spurple@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 20:02:19 by spurple           #+#    #+#             */
-/*   Updated: 2022/06/28 21:16:26 by spurple          ###   ########.fr       */
+/*   Updated: 2022/07/01 19:36:40 by spurple          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,10 @@ void	put_pixel(int x, int y, t_mlx *lib_mlx, int color)
 void	init_t_add(t_cub *cub, int x)
 {
 	cub->dda->camera_x = 2 * x / (double)WIDTH - 1;
-	cub->dda->ray_dir_x = cub->pers->dirX + \
-	cub->pers->planeX * cub->dda->camera_x;
-	cub->dda->ray_dir_y = cub->pers->dirY + \
-	cub->pers->planeY * cub->dda->camera_x;
+	cub->dda->ray_dir_x = cub->pers->dir_x + \
+	cub->pers->plane_x * cub->dda->camera_x;
+	cub->dda->ray_dir_y = cub->pers->dir_y + \
+	cub->pers->plane_y * cub->dda->camera_x;
 	cub->dda->map_x = (int)cub->pers->x;
 	cub->dda->map_y = (int)cub->pers->y;
 	cub->dda->delta_dist_x = fabs(1 / cub->dda->ray_dir_x);

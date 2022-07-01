@@ -6,7 +6,7 @@
 /*   By: spurple <spurple@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 21:31:23 by spurple           #+#    #+#             */
-/*   Updated: 2022/06/28 21:37:14 by spurple          ###   ########.fr       */
+/*   Updated: 2022/07/01 19:55:11 by spurple          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,7 @@ int	render(t_cub *cub)
 
 int	mouse_hook(int x, int y, t_cub *cub)
 {
-	double	z;
-
-	z = (double)x;
+	(void)y;
 	if (abs(x - cub->prev_x) > 10)
 	{
 		if (x - cub->prev_x > 0)
@@ -47,6 +45,8 @@ int	mouse_hook(int x, int y, t_cub *cub)
 	else if (x == cub->prev_x)
 		cub->key->mouse_right = 1;
 	cub->prev_x = x;
+
+	return (0);
 }
 
 int	main(int argc, char **argv)

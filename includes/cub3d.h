@@ -13,9 +13,8 @@
 # define WIDTH 1800
 # define HEIGHT 1200
 # define SCALE 5
-# define CHARACTER_SIZE 5
 # define MOVESPEED 0.1
-# define MOUSESPEED 0.5
+# define MOUSESPEED 0.1
 # define ROTATESPEED 0.1
 
 typedef struct s_texture
@@ -46,10 +45,10 @@ typedef struct s_pers_pos
 	double		x;
 	double		y;
 	char		side;
-	double		dirX;
-	double		dirY;
-	double		planeX;
-	double		planeY;
+	double		dir_x;
+	double		dir_y;
+	double		plane_x;
+	double		plane_y;
 }				t_pers_pos;
 
 typedef struct s_mlx
@@ -113,32 +112,23 @@ typedef struct s_cub
 }				t_cub;
 
 t_cub	*parsing(int argc, char **argv);
-
 int		len_2d_str(char **str);
 void	str_2d_clean(char **s, size_t l);
-// void	ft_cast_ray(t_cub *map);
 void	ft_cast_rays(t_cub *map);
 void	clear_str_arr(char	**arr);
 void	clear_int_arr(int **arr, int len);
 size_t	count_words(char const *str, char c);
-
 void	clean_cub(t_cub *cub);
 void	clean_config(t_config *conf, t_cub *cub);
 void	exit_with_error(char *message, t_cub *cub);
-
 void	str_2d_clean(char **s, size_t l);
-
-//draw
-void draw_minimap(t_cub *cub);
-int	create_rgb(int r, int g, int b);
-void put_pixel(int x, int y, t_mlx *lib_mlx, int color);
+void	draw_minimap(t_cub *cub);
+int		create_rgb(int r, int g, int b);
+void	put_pixel(int x, int y, t_mlx *lib_mlx, int color);
 void	init_t_add(t_cub *cub, int x);
-void calc_ray(t_cub *cub);
-void hit(t_cub *cub);
-void side(t_cub *cub);
-// void draw_3d(t_cub *cub);
-
-//move
+void	calc_ray(t_cub *cub);
+void	hit(t_cub *cub);
+void	side(t_cub *cub);
 int		key_press(int keycode, t_cub *cub);
 int		key_release(int keycode, t_cub *cub);
 void	move(t_cub *cub);
