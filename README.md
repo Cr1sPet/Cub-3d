@@ -7,7 +7,6 @@
 ```
 git clone git@github.com:CrsPet/Cub-3d.git
 ```
-
 ### How to use (macOS only)
 ```
 cd Cub-3d
