@@ -15,3 +15,4 @@ make
 ./cub3D maps/map1.cub
 
 ```
+The project was implemented jointly with my peer [spurple](https://github.com/MamedovOFF).
