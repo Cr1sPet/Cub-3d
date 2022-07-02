@@ -124,6 +124,8 @@ typedef struct s_cub
 }				t_cub;
 
 t_cub	*parsing(int argc, char **argv);
+void	set_images(t_cub *cub);
+t_mlx	*init_lib_mlx(t_cub *cub);
 int		len_2d_str(char **str);
 void	str_2d_clean(char **s, size_t l);
 void	ft_cast_rays(t_cub *map);

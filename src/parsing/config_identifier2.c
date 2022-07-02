@@ -19,7 +19,7 @@ void	init_ea(char *path, t_parse *parse)
 	check_i(i, parse);
 	i = 1;
 	ft_putendl_fd("init EA", 1);
-	init_texture(path, parse, &parse->cub->config->ea_texture);
+	open_texture(path, parse, &parse->cub->config->ea_texture);
 }
 
 void	init_f(char *path, t_parse *parse)

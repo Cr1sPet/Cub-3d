@@ -63,9 +63,9 @@ int	parse_config(t_parse *parse)
 	return (parse->status);
 }
 
-void set_image(t_texture *texture, char *path, t_cub *cub)
+void set_image(t_texture *texture, t_cub *cub)
 {
-	texture->img = mlx_xpm_file_to_image(cub->lib_mlx->mlx, path,
+	texture->img = mlx_xpm_file_to_image(cub->lib_mlx->mlx, texture->path,
 			&texture->width, &texture->height);
 	if (NULL == texture->img)
 		exit_with_error("ERROR\nTexture file reading has failed", cub);
@@ -75,6 +75,14 @@ void set_image(t_texture *texture, char *path, t_cub *cub)
 	if (NULL == texture->data_addr)
 		exit_with_error("ERROR\nMLX get data addr failed", cub);
 	ft_putendl_fd("Success : init ", 1);
+}
+
+void	set_images(t_cub *cub)
+{
+	set_image(cub->config->ea_texture, cub);
+	set_image(cub->config->no_texture, cub);
+	set_image(cub->config->so_texture, cub);
+	set_image(cub->config->we_texture, cub);
 }
 
 t_cub	*parsing(int argc, char **argv)
@@ -96,10 +104,5 @@ t_cub	*parsing(int argc, char **argv)
 	cub = parse->cub;
 	clean_parse_inner(parse);
 	free(parse);
-	cub->lib_mlx = init_lib_mlx(parse);
-	set_image(cub->config->ea_texture, cub->config->ea_texture->path, cub);
-	set_image(cub->config->no_texture, cub->config->no_texture->path, cub);
-	set_image(cub->config->so_texture, cub->config->so_texture->path, cub);
-	set_image(cub->config->we_texture, cub->config->we_texture->path, cub);
 	return (cub);
 }

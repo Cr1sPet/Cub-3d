@@ -32,7 +32,7 @@ HEADER		=	libft.h
 OBJS		=	$(patsubst %.c,%.o,$(SRCS))
 OBJS_B		=	$(SRCS_B:%.c=%.o)
  
-CC			=	gcc
+CC			=	cc
 FLAGS		=	-Wall -Wextra -Werror -I$(HEADER)
 
 .PHONY		:	all clean fclean re bonus

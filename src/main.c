@@ -53,15 +53,15 @@ int	main(int argc, char **argv)
 	t_cub	*cub;
 
 	cub = parsing(argc, argv);
-	cub->x = 0;
-	mlx_hook(cub->lib_mlx->mlx_win, 17, 0, ft_exit, cub);
+	cub->lib_mlx = init_lib_mlx(cub);
+	if (NULL == cub->lib_mlx)
+		exit_with_error(MALLOC_FAILURE, cub);
+	set_images(cub);
 	mlx_hook(cub->lib_mlx->mlx_win, 2, 1L << 0, key_press, cub);
 	mlx_hook(cub->lib_mlx->mlx_win, 3, 1L << 1, key_release, cub);
 	mlx_hook(cub->lib_mlx->mlx_win, 6, 0, mouse_hook, cub);
 	mlx_mouse_hide();
-	cub->dda = (t_dda *)malloc(sizeof(t_dda));
 	mlx_loop_hook(cub->lib_mlx->mlx, &render, (void *) cub);
 	mlx_loop(cub->lib_mlx->mlx);
-	clean_cub(cub);
 	return (0);
 }

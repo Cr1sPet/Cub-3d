@@ -13,8 +13,9 @@
 #include "parsing.h"
 #include "get_next_line.h"
 
-void	init_texture(char *path, t_parse *parse, t_texture **texture1)
+void	open_texture(char *path, t_parse *parse, t_texture **texture1)
 {
+	int			fd;
 	t_texture	*texture;
 
 	texture = (t_texture *) malloc(sizeof(t_texture));
@@ -30,6 +31,16 @@ void	init_texture(char *path, t_parse *parse, t_texture **texture1)
 	// if (NULL == texture->data_addr)
 	// 	exit_with_error_parse("ERROR\nMLX get data addr failed", parse);
 	// ft_putendl_fd("Success : init ", 1);
+	if (!ends_with(path, TEXTURE_FORMAT))
+	{
+		exit_with_error_parse(TEXTURE_FORMAT_FAILURE, parse);
+	}
+	fd = open(path, O_RDONLY);
+	if (-1 == fd)
+	{
+		exit_with_error_parse(strerror(errno), parse);
+	}
+	close(fd);
 	texture->path = ft_strdup(path);
 	*texture1 = texture;
 }
@@ -51,7 +62,7 @@ void	init_no(char *path, t_parse *parse)
 	check_i(i, parse);
 	i = 1;
 	ft_putendl_fd("init NO", 1);
-	init_texture(path, parse, &parse->cub->config->no_texture);
+	open_texture(path, parse, &parse->cub->config->no_texture);
 }
 
 void	init_so(char *path, t_parse *parse)
@@ -61,7 +72,7 @@ void	init_so(char *path, t_parse *parse)
 	check_i(i, parse);
 	i = 1;
 	ft_putendl_fd("init SO", 1);
-	init_texture(path, parse, &parse->cub->config->so_texture);
+	open_texture(path, parse, &parse->cub->config->so_texture);
 }
 
 void	init_we(char *path, t_parse *parse)
@@ -71,5 +82,5 @@ void	init_we(char *path, t_parse *parse)
 	check_i(i, parse);
 	i = 1;
 	ft_putendl_fd("init WE", 1);
-	init_texture(path, parse, &parse->cub->config->we_texture);
+	open_texture(path, parse, &parse->cub->config->we_texture);
 }

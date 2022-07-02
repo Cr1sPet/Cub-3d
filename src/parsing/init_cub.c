@@ -22,13 +22,13 @@ void	init_flags(t_key *key)
 	key->mouse_right = 0;
 }
 
-t_mlx	*init_lib_mlx(t_parse *parse)
+t_mlx	*init_lib_mlx(t_cub *cub)
 {
 	t_mlx	*lib_mlx;
 
 	lib_mlx = (t_mlx *)malloc(sizeof(t_mlx));
 	if (NULL == lib_mlx)
-		exit_with_error_parse(MALLOC_FAILURE, parse);
+		exit_with_error(MALLOC_FAILURE, cub);
 	lib_mlx->mlx = mlx_init();
 	lib_mlx->mlx_win = mlx_new_window(lib_mlx->mlx, WIDTH, HEIGHT, "CUB3D");
 	lib_mlx->img = mlx_new_image(lib_mlx->mlx, WIDTH, HEIGHT);
@@ -46,6 +46,7 @@ void	default_init_cub(t_cub *cub)
 	cub->lib_mlx = NULL;
 	cub->config = NULL;
 	cub->key = NULL;
+	cub->x = 0;
 }
 
 void	init_config(t_config *conf)
@@ -76,6 +77,9 @@ t_cub	*init_cub(t_parse *parse)
 	init_flags(cub->key);
 	cub->pers = (t_pers_pos *) malloc(sizeof(t_pers_pos));
 	if (NULL == cub->pers)
+		exit_with_error_parse(MALLOC_FAILURE, parse);
+	cub->dda = (t_dda *)malloc(sizeof(t_dda));
+	if (NULL == cub->dda)
 		exit_with_error_parse(MALLOC_FAILURE, parse);
 	cub->pers->side = 0;
 	return (cub);
