@@ -9,7 +9,8 @@
         "sstream": "c",
         "cstddef": "c",
         "limits": "c",
-        "get_next_line.h": "c"
+        "get_next_line.h": "c",
+        "stddef.h": "c"
     },
     "C_Cpp.errorSquiggles": "Disabled",
     "makefile.launchConfigurations": [

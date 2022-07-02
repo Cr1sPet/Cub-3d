@@ -45,6 +45,8 @@ int	create_rgb(int r, int g, int b)
 	return (r << 16 | g << 8 | b);
 }
 
+
+
 void	init_color(char *rgb, t_parse *parse, int	*color)
 {
 	int		*colors;
@@ -53,6 +55,8 @@ void	init_color(char *rgb, t_parse *parse, int	*color)
 	splitted = ft_split(rgb, ',');
 	if (NULL == splitted)
 		exit_with_error_parse(MALLOC_FAILURE, parse);
+	if (3 != len_2d_str(splitted))
+		exit_with_error_parse(CONFIG_INFO_FAILURE, parse);
 	colors = (int *)malloc(sizeof(int) * 3);
 	if (NULL == colors)
 	{
