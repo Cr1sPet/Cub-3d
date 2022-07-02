@@ -63,7 +63,7 @@ int	parse_config(t_parse *parse)
 	return (parse->status);
 }
 
-void set_image(t_texture *texture, t_cub *cub)
+void	set_image(t_texture *texture, t_cub *cub)
 {
 	texture->img = mlx_xpm_file_to_image(cub->lib_mlx->mlx, texture->path,
 			&texture->width, &texture->height);

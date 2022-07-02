@@ -38,44 +38,29 @@ void	str_2d_clean(char **s, size_t l)
 	}
 }
 
-void	exit_with_error(char *message, t_cub *cub)
+void	clean_texture(t_texture *texture, t_cub *cub)
 {
-	ft_putendl_fd(message, STDOUT_FILENO);
-	clean_cub(cub);
-	exit(EXIT_FAILURE);
+	(void) cub;
+	if (texture)
+	{
+		if (texture->path)
+			free(texture->path);
+		if (texture->img)
+			mlx_destroy_image(cub->lib_mlx->mlx, texture->img);
+		free(texture);
+	}
 }
 
 void	clean_config(t_config *conf, t_cub *cub)
 {
-	(void) cub;
 	if (conf)
 	{
-		if (conf->no_texture)
-		{
-			free(conf->no_texture->path);
-			// mlx_destroy_image(cub->lib_mlx->mlx, conf->no_texture->img);
-			free(conf->no_texture);
-		}
-		if (conf->so_texture)
-		{
-			free(conf->so_texture->path);
-			// mlx_destroy_image(cub->lib_mlx->mlx, conf->so_texture->img);
-			free(conf->so_texture);
-		}
-		if (conf->we_texture)
-		{
-			free(conf->we_texture->path);
-			// mlx_destroy_image(cub->lib_mlx->mlx, conf->we_texture->img);
-			free(conf->we_texture);
-		}
-		if (conf->ea_texture)
-		{
-			free(conf->ea_texture->path);
-			// mlx_destroy_image(cub->lib_mlx->mlx, conf->ea_texture->img);
-			free(conf->ea_texture);
-		}
+		clean_texture(conf->no_texture, cub);
+		clean_texture(conf->we_texture, cub);
+		clean_texture(conf->so_texture, cub);
+		clean_texture(conf->ea_texture, cub);
+		free(conf);
 	}
-	free(conf);
 }
 
 void	clean_cub(t_cub *cub)

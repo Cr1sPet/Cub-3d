@@ -19,6 +19,13 @@ int	ft_exit(t_cub *cub)
 	exit(0);
 }
 
+void	exit_with_error(char *message, t_cub *cub)
+{
+	ft_putendl_fd(message, STDOUT_FILENO);
+	clean_cub(cub);
+	exit(EXIT_FAILURE);
+}
+
 int	render(t_cub *cub)
 {
 	ft_bzero(cub->lib_mlx->data_addr, WIDTH * \
@@ -57,6 +64,7 @@ int	main(int argc, char **argv)
 	if (NULL == cub->lib_mlx)
 		exit_with_error(MALLOC_FAILURE, cub);
 	set_images(cub);
+	mlx_hook(cub->lib_mlx->mlx_win, 17, 0, ft_exit, cub);
 	mlx_hook(cub->lib_mlx->mlx_win, 2, 1L << 0, key_press, cub);
 	mlx_hook(cub->lib_mlx->mlx_win, 3, 1L << 1, key_release, cub);
 	mlx_hook(cub->lib_mlx->mlx_win, 6, 0, mouse_hook, cub);

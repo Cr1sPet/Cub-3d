@@ -21,7 +21,8 @@
 # define CONFIG_INFO_FAILURE "Error\nInvalid configuration info."
 # define MAP_FAILURE "Error\nInvalid map."
 # define FILE_FORMAT_FAILURE "Error\nInvalid file format. Expected : *.cub"
-# define TEXTURE_FORMAT_FAILURE "Error\nInvalid texture file format. Expected : *.xpm"
+# define TEXTURE_FORMAT_FAILURE\
+		"Error\nInvalid texture file format. Expected : *.xpm"
 # define NUMBER_ARGS_FAILURE "Error\nInvalid number of arguments! Excpected : 2."
 # define NUMBER_CHAR_FAILURE\
 		"Error\nInvalid map : wrong number of characters. Required : 1."
@@ -71,5 +72,5 @@ void	firstly_parse(char **map, t_parse *parse);
 int		parse_int(char *str);
 void	proc_symbol(char **map, int i, int j, t_parse *parse);
 int		check_i(int i, t_parse *parse);
-int	ends_with(char *input, char *postfix);
+int		ends_with(char *input, char *postfix);
 #endif
