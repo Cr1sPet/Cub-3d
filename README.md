@@ -6,6 +6,7 @@
 ### Clone project
 ```
 git clone git@github.com:CrsPet/Cub-3d.git
+```
 
 ### How to use (macOS only)
 ```
